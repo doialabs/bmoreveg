@@ -460,12 +460,6 @@
     (function() {
         'use strict';
 
-        // === Nav scroll shadow ===
-        const nav = document.querySelector('nav');
-        window.addEventListener('scroll', function() {
-            nav.classList.toggle('scrolled', window.scrollY > 10);
-        }, { passive: true });
-
         // === Map initialization ===
         const mapEl = document.getElementById('map');
         const mapLoading = document.getElementById('map-loading');
