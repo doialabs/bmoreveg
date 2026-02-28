@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bmoreveg — A Veg-Friendly Guide to Baltimore Dining</title>
+    <meta name="description" content="A curated guide to vegetarian and veg-friendly restaurants, cafes, and bakeries in Baltimore, Maryland.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #FAFAF8; --text: #1a1a1a; --text-muted: #666; --accent: #2D5A27; --accent-light: rgba(45, 90, 39, 0.08); --border: #e5e5e5; --card-bg: #fff; --carrot: #F5794A; }
+        body { font-family: 'Newsreader', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 18px; }
+        header { padding: 3rem 2rem 2.5rem; text-align: center; border-bottom: 1px solid var(--border); }
+        .logo-container { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+        .carrot-logo { width: 60px; height: 60px; }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 600; letter-spacing: -0.02em; color: var(--accent); }
+        .tagline { font-size: 1.1rem; color: var(--text-muted); max-width: 440px; margin: 0 auto; font-style: italic; }
+        nav { padding: 1.5rem 2rem; display: flex; justify-content: center; gap: 2.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; flex-wrap: wrap; }
+        nav a { font-family: 'Space Grotesk', sans-serif; text-decoration: none; color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; }
+        nav a:hover { color: var(--accent); }
+        #map-section { padding: 3rem 2rem; background: var(--card-bg); border-bottom: 1px solid var(--border); }
+        #map-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500; color: var(--text-muted); margin-bottom: 1.5rem; text-align: center; }
+        #map { height: 400px; width: 100%; max-width: 1000px; margin: 0 auto; border-radius: 8px; border: 1px solid var(--border); }
+        .leaflet-popup-content-wrapper { border-radius: 4px; font-family: 'Space Grotesk', sans-serif; }
+        .leaflet-popup-content { margin: 12px 16px; }
+        .popup-title { font-weight: 600; font-size: 1rem; margin-bottom: 4px; color: var(--accent); }
+        .popup-neighborhood { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
+        .popup-price { font-size: 0.85rem; color: var(--carrot); font-weight: 500; }
+        .carrot-marker { background: transparent; border: none; }
+        .filters { padding: 2rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+        .filters-inner { max-width: 1000px; margin: 0 auto; }
+        .filter-group { margin-bottom: 1.5rem; }
+        .filter-group:last-child { margin-bottom: 0; }
+        .filter-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.75rem; display: block; }
+        .filter-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .filter-btn { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; padding: 0.5rem 1rem; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-muted); border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .filter-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+        .filter-btn.price-btn { font-weight: 600; letter-spacing: 0.05em; }
+        .clear-filters { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; padding: 0.5rem 1rem; border: none; background: transparent; color: var(--carrot); cursor: pointer; text-decoration: underline; transition: color 0.2s; }
+        .clear-filters:hover { color: var(--accent); }
+        .results-count { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 1rem; }
+        main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
+        .section-header { margin-bottom: 3rem; padding-bottom: 1rem; border-bottom: 2px solid var(--text); }
+        .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .section-header p { font-size: 1rem; color: var(--text-muted); }
+        .place { margin-bottom: 3.5rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); transition: opacity 0.3s; }
+        .place.hidden { display: none; }
+        .place:last-child { border-bottom: none; }
+        .place-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .place h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; }
+        .place .neighborhood { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+        .place-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .place .category { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--accent-light); padding: 0.25rem 0.6rem; border-radius: 2px; }
+        .place .price { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--carrot); }
+        .place .description { margin-bottom: 1rem; color: var(--text); }
+        .place .vibe { font-size: 0.95rem; color: var(--text-muted); font-style: italic; }
+        .about { margin-top: 4rem; padding-top: 3rem; border-top: 2px solid var(--text); }
+        .about-image { width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 2rem; }
+        .about-content h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        .about-content p { color: var(--text-muted); }
+        .subscribe { margin-top: 4rem; padding: 3rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; text-align: center; }
+        .subscribe h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .subscribe p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .subscribe-form { display: flex; gap: 0.75rem; max-width: 400px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+        .subscribe-form input[type="email"] { flex: 1; min-width: 200px; padding: 0.75rem 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); }
+        .subscribe-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+        .subscribe-form button { padding: 0.75rem 1.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .subscribe-form button:hover { background: #234a1f; }
+        .privacy-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; }
+        .privacy-note a { color: var(--accent); }
+        .hidden-field { position: absolute; left: -9999px; }
+        footer { padding: 3rem 2rem; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.95rem; }
+        .privacy-policy { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .privacy-policy h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-muted); }
+        .privacy-policy p { font-size: 0.95rem; color: var(--text-muted); }
+        @media (max-width: 600px) { .logo-container { flex-direction: column; gap: 0.5rem; } .carrot-logo { width: 50px; height: 50px; } .logo { font-size: 2rem; } nav { gap: 1.5rem; padding: 1rem; } nav a { font-size: 0.8rem; } #map { height: 300px; } .filter-btn { font-size: 0.75rem; padding: 0.4rem 0.8rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <svg class="carrot-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="60" height="60">
+                <path d="M60 108 C45 108 35 85 33 65 C31 45 38 28 60 28 C82 28 89 45 87 65 C85 85 75 108 60 108Z" fill="#F5794A"/>
+                <path d="M45 50 Q60 48 75 50" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M43 65 Q60 62 77 65" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M46 80 Q60 77 74 80" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <ellipse cx="60" cy="105" rx="8" ry="5" fill="#E8663A"/>
+                <path d="M60 30 C60 30 45 18 42 8 C40 2 48 -2 54 6 C56 9 58 15 60 22" fill="#4A7C42"/>
+                <path d="M60 30 C60 30 60 12 60 4 C60 -2 68 -2 68 4 C68 12 65 22 62 28" fill="#5A9C4E"/>
+                <path d="M60 30 C60 30 75 18 78 8 C80 2 72 -2 66 6 C64 9 62 15 60 22" fill="#4A7C42"/>
+                <ellipse cx="50" cy="55" rx="5" ry="6" fill="#2D2D2D"/>
+                <ellipse cx="70" cy="55" rx="5" ry="6" fill="#2D2D2D"/>
+                <circle cx="48" cy="53" r="2" fill="#FFFFFF"/>
+                <circle cx="68" cy="53" r="2" fill="#FFFFFF"/>
+                <ellipse cx="42" cy="65" rx="5" ry="3" fill="#F5A882" opacity="0.7"/>
+                <ellipse cx="78" cy="65" rx="5" ry="3" fill="#F5A882" opacity="0.7"/>
+                <path d="M52 72 Q60 80 68 72" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+            <h1 class="logo">bmoreveg</h1>
+        </div>
+        <p class="tagline">A guide to veg-friendly dining in Baltimore and beyond</p>
+    </header>
+    <nav>
+        <a href="#map-section">Map</a>
+        <a href="#coffee">Coffee</a>
+        <a href="#bakeries">Bakeries</a>
+        <a href="#restaurants">Restaurants</a>
+        <a href="#about">About</a>
+    </nav>
+    <section id="map-section">
+        <h2>Explore the Map</h2>
+        <div id="map"></div>
+    </section>
+    <div class="filters">
+        <div class="filters-inner">
+            <div class="filter-group">
+                <span class="filter-label">Filter by Neighborhood</span>
+                <div class="filter-buttons" id="neighborhood-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="hampden">Hampden</button>
+                    <button class="filter-btn" data-filter="remington">Remington</button>
+                    <button class="filter-btn" data-filter="canton">Canton</button>
+                    <button class="filter-btn" data-filter="fells-point">Fells Point</button>
+                    <button class="filter-btn" data-filter="downtown">Downtown</button>
+                    <button class="filter-btn" data-filter="mt-vernon">Mt. Vernon</button>
+                    <button class="filter-btn" data-filter="columbia">Columbia / Howard Co.</button>
+                    <button class="filter-btn" data-filter="reisterstown">Reisterstown</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">Filter by Price</span>
+                <div class="filter-buttons" id="price-filters">
+                    <button class="filter-btn price-btn active" data-price="all">All</button>
+                    <button class="filter-btn price-btn" data-price="1">$</button>
+                    <button class="filter-btn price-btn" data-price="2">$$</button>
+                    <button class="filter-btn price-btn" data-price="3">$$$</button>
+                </div>
+                <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
+            </div>
+            <p class="results-count"><span id="count">12</span> spots shown</p>
+        </div>
+    </div>
+    <main>
+        <section id="coffee">
+            <div class="section-header"><h2>Coffee</h2><p>Where to get your fix</p></div>
+            <article class="place" data-neighborhood="mt-vernon,harbor-point" data-price="2" data-lat="39.2904" data-lng="-76.6122" data-name="Ceremony Coffee Roasters">
+                <div class="place-header"><h3>Ceremony Coffee Roasters</h3><span class="neighborhood">Harbor Point · Mt. Vernon · Cross Street</span></div>
+                <div class="place-meta"><span class="category">Specialty Coffee</span><span class="price">$$</span></div>
+                <p class="description">One is reluctant to admit that a modern establishment has achieved anything approaching adequacy, and yet here we are. The proprietors have eschewed the garish plastic décor that plagues our debased century in favor of a minimalist aesthetic that would not entirely offend Boethius himself. They claim to reject any bean scoring below 85 points — a commendable if somewhat arbitrary devotion to standards in an age that has abandoned them entirely. The Harbor Point location offers views of the water, which I found tolerable while nursing my digestive complaints. My valve remained mercifully closed throughout the visit.</p>
+                <p class="vibe">Acceptable for scholarly contemplation, multiple locations for the peripatetic sufferer</p>
+            </article>
+            <article class="place" data-neighborhood="hampden" data-price="1" data-lat="39.3305" data-lng="-76.6402" data-name="Vent Coffee Roasters">
+                <div class="place-header"><h3>Vent Coffee Roasters</h3><span class="neighborhood">Hampden · Union Collective</span></div>
+                <div class="place-meta"><span class="category">Roastery & Café</span><span class="price">$</span></div>
+                <p class="description">This warehouse arrangement initially struck me as yet another symptom of industrial decay, but I was forced to revise my assessment. The proprietress has had the good sense to reject the pretensions that afflict most coffee establishments. One can observe the actual roasting of beans — a mechanical process, yes, but one conducted with proper geometry and without the insufferable explanations that baristas elsewhere seem compelled to deliver. They offer donuts of reasonable quality and, I am told, coffee infused with CBD, which I refused on principle but which may benefit those whose valves are less temperamental than my own. The high ceilings accommodate my considerable presence without complaint.</p>
+                <p class="vibe">Unpretentious, voluminous space, suitable for those who wish to be left alone</p>
+            </article>
+            <article class="place" data-neighborhood="remington" data-price="2" data-lat="39.3248" data-lng="-76.6180" data-name="Doppio Pasticceria">
+                <div class="place-header"><h3>Doppio Pasticceria</h3><span class="neighborhood">Remington</span></div>
+                <div class="place-meta"><span class="category">Sicilian Bakery & Coffee</span><span class="price">$$</span></div>
+                <p class="description">At last! An establishment that understands the medieval Sicilian traditions that modern America has so grotesquely abandoned. These people mill their own grains — MILL THEIR OWN GRAINS — as if the twelfth century had never ended. The arancini achieves a proper spherical geometry that would satisfy Euclid himself. They have rejected single-use plastics, demonstrating an ethical sensibility that my mother, with her endless parade of cellophane-wrapped horrors, could never comprehend. The evening pizza service employs sourdough in the New York fashion, which is acceptable if not strictly Sicilian. One feels that Fortuna's wheel has, for once, rotated in a favorable direction.</p>
+                <p class="vibe">Old World methods preserved, my digestion notably improved, seasonal offerings</p>
+            </article>
+        </section>
+        <section id="bakeries">
+            <div class="section-header"><h2>Bakeries</h2><p>Pastries worth the wait</p></div>
+            <article class="place" data-neighborhood="canton" data-price="2" data-lat="39.2819" data-lng="-76.5780" data-name="Café Dear Leon">
+                <div class="place-header"><h3>Café Dear Leon</h3><span class="neighborhood">Canton</span></div>
+                <div class="place-meta"><span class="category">Bakery & Café</span><span class="price">$$</span></div>
+                <p class="description">The lines that form outside this establishment are an abomination — hordes of the unwashed masses clutching their telephone devices, utterly devoid of interior lives, waiting like cattle for pastries. And yet. AND YET. I must confess that the pastries themselves achieve a level of craftsmanship that this degraded century scarcely deserves. The crab dip bagel, about which the internet froths endlessly, is admittedly a work of some sophistication. They bake according to a published schedule, and when items are exhausted, they simply close — a philosophy of limits that our bloated consumer culture desperately needs. The Japanese influences would have confused Thomas Aquinas, but he would have appreciated the discipline.</p>
+                <p class="vibe">Worth the indignity of waiting among philistines, items sell out as God intended</p>
+            </article>
+            <article class="place" data-neighborhood="remington" data-price="2" data-lat="39.3262" data-lng="-76.6185" data-name="La Maison">
+                <div class="place-header"><h3>La Maison</h3><span class="neighborhood">Remington</span></div>
+                <div class="place-meta"><span class="category">Bakery & Café</span><span class="price">$$</span></div>
+                <p class="description">The same culinary artisans behind Café Dear Leon have opened this larger establishment, presumably to accommodate my physical requirements, which the Canton location could not. Here one may actually SIT, a luxury that modern commerce has nearly extinguished in its endless pursuit of "turnover." The high ceilings permit proper air circulation, beneficial to those of us with sensitive respiratory constitutions. They have dedicated an entire room to the lamination of dough — a commitment to craft that brings tears to my eyes, or would if my tear ducts were not compromised by years of maternal disappointment. The WiFi functions adequately for those who must, regrettably, engage with the digital realm.</p>
+                <p class="vibe">Space for contemplation, proper seating, the same excellent pastries with room to breathe</p>
+            </article>
+        </section>
+        <section id="restaurants">
+            <div class="section-header"><h2>Restaurants</h2><p>Full meals and good times</p></div>
+            <article class="place" data-neighborhood="hampden,fells-point" data-price="2" data-lat="39.3295" data-lng="-76.6295" data-name="Ekiben">
+                <div class="place-header"><h3>Ekiben</h3><span class="neighborhood">Hampden · Fells Point · Locust Point</span></div>
+                <div class="place-meta"><span class="category">Asian Fusion</span><span class="price">$$</span></div>
+                <p class="description">The concept of "fusion" cuisine typically offends my medievalist sensibilities — it suggests a mongrelization of tradition that would have horrified the monks who preserved civilization through the Dark Ages. However, I must grudgingly report that this Taiwanese-Ethiopian-American amalgamation achieves a certain harmony. The steamed buns, made from a family recipe, possess the proper pillowy geometry. The portions are GENEROUS, a quality so rare in our miserly age that I nearly wept into my tempura broccoli. The vegetarian options — tofu nuggets, the aforementioned broccoli — satisfy without the moral complications of flesh. The hip-hop soundtrack is regrettable but tolerable.</p>
+                <p class="vibe">Portions worthy of my appetite, excellent vegetables, music too loud but food compensates</p>
+            </article>
+            <article class="place" data-neighborhood="hampden" data-price="3" data-lat="39.3313" data-lng="-76.6394" data-name="True Chesapeake Oyster Co.">
+                <div class="place-header"><h3>True Chesapeake Oyster Co.</h3><span class="neighborhood">Whitehall Mill · Hampden</span></div>
+                <div class="place-meta"><span class="category">Oyster Bar & Seafood</span><span class="price">$$$</span></div>
+                <p class="description">I approached this establishment with considerable skepticism, as the "farm-to-table" movement has become yet another vehicle for bourgeois self-congratulation. Nevertheless, these people actually OWN their oyster farm — they are not merely invoking pastoral fantasies but engaging in genuine aquaculture. The building itself dates to the eighteenth century, when Americans still possessed some connection to proper craft and geometry. The bars are constructed from crushed oyster shells, a use of materials that demonstrates actual thought. The vegetarian options are limited, which I mention only for completeness. My valve found the atmosphere surprisingly congenial, though the prices suggest this is an establishment for celebrating rare victories over Fortuna.</p>
+                <p class="vibe">Historic premises, genuine agricultural connection, expensive but historically grounded</p>
+            </article>
+            <article class="place" data-neighborhood="canton" data-price="2" data-lat="39.2822" data-lng="-76.5694" data-name="Di Pasquale's Italian Marketplace">
+                <div class="place-header"><h3>Di Pasquale's Italian Marketplace</h3><span class="neighborhood">Canton · Brewers Hill</span></div>
+                <div class="place-meta"><span class="category">Italian Market & Deli</span><span class="price">$$</span></div>
+                <p class="description">HERE is an establishment that understands the weight of tradition! Operating since 1914 — before the catastrophic twentieth century had fully unleashed its horrors — this Italian marketplace represents everything our degraded commercial culture has abandoned. They bake their own bread. They make fresh mozzarella DAILY. They import the proper Nutella from Italy, not the adulterated American version that tastes of compromise and despair. The grandson of the founder still operates the establishment, maintaining a lineage that would warm the heart of any medieval guild master. The vegetarian lasagna achieves proper density and moral weight. Even that television program hosted by the objectionable fellow with the automobile could not ruin this place.</p>
+                <p class="vibe">A century of tradition, proper Italian methods, my mother should take notes</p>
+            </article>
+            <article class="place" data-neighborhood="downtown" data-price="2" data-lat="39.3021" data-lng="-76.6167" data-name="Cazbar">
+                <div class="place-header"><h3>Cazbar</h3><span class="neighborhood">Downtown Baltimore</span></div>
+                <div class="place-meta"><span class="category">Turkish</span><span class="price">$$</span></div>
+                <p class="description">The Byzantine Empire, despite its theological errors, produced a cuisine of considerable merit, and this Turkish establishment preserves those traditions with admirable fidelity. The ornate décor — which lesser critics might dismiss as excessive — actually reflects the proper medieval understanding that beauty serves moral purposes. Over 150 dishes populate the menu, suggesting a comprehensive worldview rather than the pathetic "small plates" philosophy that has infected modern dining. The vegetarian mezes are numerous and satisfying. On weekend evenings, belly dancers perform, which I observed with purely anthropological interest while my valve registered mild perturbation. The Turkish coffee is served correctly, as a vehicle for philosophical contemplation.</p>
+                <p class="vibe">Byzantine splendor preserved, extensive vegetarian options, entertainment of historical interest</p>
+            </article>
+            <article class="place" data-neighborhood="reisterstown" data-price="2" data-lat="39.4699" data-lng="-76.8290" data-name="Little Georgia">
+                <div class="place-header"><h3>Little Georgia</h3><span class="neighborhood">Reisterstown</span></div>
+                <div class="place-meta"><span class="category">Georgian</span><span class="price">$$</span></div>
+                <p class="description">The nation of Georgia — not the wretched American state — possesses a winemaking tradition spanning ten millennia, which is to say they were cultivating civilization while my ancestors were presumably grunting in forests. The proprietor abandoned postal work to open this establishment, demonstrating the kind of vocational courage that our bureaucratic age typically punishes. The khachapuri — a boat-shaped bread vessel containing cheese and egg — achieves perfect geometric form. The khinkali dumplings require proper technique to consume, separating the civilized from the barbarous. They stock 450 Georgian wine varietals. FOUR HUNDRED AND FIFTY. The drive to Reisterstown tests one's patience, but Boethius reminds us that the journey itself builds character.</p>
+                <p class="vibe">Ancient traditions, geometric perfection in bread form, worth the pilgrimage</p>
+            </article>
+            <article class="place" data-neighborhood="columbia" data-price="3" data-lat="39.2137" data-lng="-76.8610" data-name="Royal Taj">
+                <div class="place-header"><h3>Royal Taj</h3><span class="neighborhood">Columbia</span></div>
+                <div class="place-meta"><span class="category">Fine Dining Indian</span><span class="price">$$$</span></div>
+                <p class="description">At last, an establishment that comprehends the proper relationship between diner and staff! The service here approaches the feudal ideal — attentive, deferential, and conducted with genuine ceremony. The manager escorts guests to their vehicles, a courtesy so extraordinary in our democratized age that I initially suspected mockery. The vegetarian menu is extensive, as befits a cuisine shaped by genuine philosophical traditions rather than mere fashion. The naan achieves proper inflation. The sauces possess appropriate richness without the cloying sweetness that lesser Indian restaurants deploy to flatter American palates. Some internet publication named this among America's most romantic restaurants, a designation I find irrelevant but which may interest those whose valves function normally.</p>
+                <p class="vibe">Service befitting one's dignity, extensive vegetarian offerings, palatial atmosphere</p>
+            </article>
+            <article class="place" data-neighborhood="columbia" data-price="3" data-lat="39.1804" data-lng="-76.8830" data-name="Ananda">
+                <div class="place-header"><h3>Ananda</h3><span class="neighborhood">Maple Lawn · Fulton</span></div>
+                <div class="place-meta"><span class="category">Elevated Indian</span><span class="price">$$$</span></div>
+                <p class="description">The name means "bliss" in Hindi, and while I am constitutionally suspicious of any establishment promising emotional states, I must concede that this one approaches its aspirations. The proprietor raises his own chickens nearby for the restaurant's eggs — a commitment to agricultural integrity that recalls the monastery gardens of the High Middle Ages. EIGHT FIREPLACES warm the premises, suggesting a proper understanding of thermal comfort that modern architecture has criminally neglected. The stained-glass windows filter light in a manner that soothes my perpetually agitated optical nerves. The vegetarian options reflect Northern Indian traditions executed with refinement. Live jazz performs on certain evenings, which I endure for the sake of the food.</p>
+                <p class="vibe">Genuine farm connection, medieval fireplace abundance, bliss may actually be achievable here</p>
+            </article>
+        </section>
+        <section id="about" class="about">
+            <img src="baltimore-skyline.jpg" alt="Baltimore Inner Harbor skyline at dusk" class="about-image">
+            <div class="about-content">
+                <h2>What is bmoreveg?</h2>
+                <p>This is a guide for plant-forward folks navigating Baltimore's food scene. Not every spot is strictly vegan or vegetarian — but every place here is somewhere a veg person can eat well and feel good about it. We're looking for quality, character, and kitchens that know their way around vegetables. Baltimore's food culture is unpretentious and real. This guide reflects that.</p>
+            </div>
+        </section>
+        <section class="subscribe">
+            <h2>Get new recommendations</h2>
+            <p>Sign up for occasional emails when we add new spots to the guide.</p>
+            <form class="subscribe-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+                <input type="email" name="email" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="privacy-note">No spam, ever. <a href="#privacy">Privacy policy</a></p>
+        </section>
+        <section id="privacy" class="privacy-policy">
+            <h3>Privacy Policy</h3>
+            <p>bmoreveg collects email addresses solely to send occasional updates about new restaurant recommendations. We will never sell, share, or distribute your email address to third parties. We don't use tracking cookies or analytics beyond basic Netlify server logs. You can unsubscribe at any time by replying to any email and asking to be removed, and we'll delete your information promptly. That's it — we just want to tell you about good food.</p>
+        </section>
+    </main>
+    <footer><p>Made with 🥬 in Baltimore</p></footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([39.2904, -76.6122], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+        const carrotIcon = L.divIcon({ html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32"><path d="M60 108 C45 108 35 85 33 65 C31 45 38 28 60 28 C82 28 89 45 87 65 C85 85 75 108 60 108Z" fill="#F5794A"/><path d="M60 30 C60 30 45 18 42 8 C40 2 48 -2 54 6 C56 9 58 15 60 22" fill="#4A7C42"/><path d="M60 30 C60 30 60 12 60 4 C60 -2 68 -2 68 4 C68 12 65 22 62 28" fill="#5A9C4E"/><path d="M60 30 C60 30 75 18 78 8 C80 2 72 -2 66 6 C64 9 62 15 60 22" fill="#4A7C42"/><ellipse cx="50" cy="55" rx="4" ry="5" fill="#2D2D2D"/><ellipse cx="70" cy="55" rx="4" ry="5" fill="#2D2D2D"/><circle cx="48" cy="53" r="1.5" fill="#FFF"/><circle cx="68" cy="53" r="1.5" fill="#FFF"/><path d="M52 70 Q60 76 68 70" stroke="#2D2D2D" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`, className: 'carrot-marker', iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -32] });
+        const places = document.querySelectorAll('.place');
+        const markers = [];
+        places.forEach(place => { const lat = parseFloat(place.dataset.lat), lng = parseFloat(place.dataset.lng), name = place.dataset.name, neighborhood = place.querySelector('.neighborhood').textContent, price = place.querySelector('.price').textContent; if (lat && lng) { const marker = L.marker([lat, lng], { icon: carrotIcon }).addTo(map).bindPopup(`<div class="popup-title">${name}</div><div class="popup-neighborhood">${neighborhood}</div><div class="popup-price">${price}</div>`); markers.push({ marker, element: place, lat, lng }); } });
+        let activeNeighborhood = 'all', activePrice = 'all';
+        function applyFilters() { let visibleCount = 0; const visibleBounds = []; places.forEach(place => { const placeNeighborhoods = place.dataset.neighborhood.split(','), placePrice = place.dataset.price, matchesNeighborhood = activeNeighborhood === 'all' || placeNeighborhoods.some(n => n.trim() === activeNeighborhood), matchesPrice = activePrice === 'all' || placePrice === activePrice; if (matchesNeighborhood && matchesPrice) { place.classList.remove('hidden'); visibleCount++; const markerData = markers.find(m => m.element === place); if (markerData) { markerData.marker.addTo(map); visibleBounds.push([markerData.lat, markerData.lng]); } } else { place.classList.add('hidden'); const markerData = markers.find(m => m.element === place); if (markerData) map.removeLayer(markerData.marker); } }); document.getElementById('count').textContent = visibleCount; if (visibleBounds.length > 0) { if (visibleBounds.length === 1) map.setView(visibleBounds[0], 14); else map.fitBounds(visibleBounds, { padding: [50, 50] }); } }
+        document.querySelectorAll('#neighborhood-filters .filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('#neighborhood-filters .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); activeNeighborhood = btn.dataset.filter; applyFilters(); }); });
+        document.querySelectorAll('#price-filters .filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('#price-filters .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); activePrice = btn.dataset.price; applyFilters(); }); });
+        function clearFilters() { activeNeighborhood = 'all'; activePrice = 'all'; document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active')); document.querySelector('#neighborhood-filters .filter-btn[data-filter="all"]').classList.add('active'); document.querySelector('#price-filters .filter-btn[data-price="all"]').classList.add('active'); applyFilters(); }
+        document.getElementById('count').textContent = places.length;
+    </script>
+</body>
+</html>
