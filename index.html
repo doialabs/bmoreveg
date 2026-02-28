@@ -3,87 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bmoreveg — A Veg-Friendly Guide to Baltimore Dining</title>
-    <meta name="description" content="A curated guide to vegetarian and veg-friendly restaurants, cafes, and bakeries in Baltimore, Maryland.">
+    <title>bmoreveg — Vegetarian &amp; Veg-Friendly Restaurant Guide for Baltimore</title>
+    <meta name="description" content="A curated guide to the best vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD. Filter by neighborhood, price, and cuisine.">
+    <link rel="canonical" href="https://bmoreveg.com/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="bmoreveg — Veg-Friendly Dining in Baltimore">
+    <meta property="og:description" content="A curated guide to the best vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD.">
+    <meta property="og:image" content="https://bmoreveg.com/files/baltimore-skyline.jpg">
+    <meta property="og:url" content="https://bmoreveg.com/">
+    <meta property="og:site_name" content="bmoreveg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="bmoreveg — Veg-Friendly Dining in Baltimore">
+    <meta name="twitter:description" content="A curated guide to the best vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD.">
+    <meta name="twitter:image" content="https://bmoreveg.com/files/baltimore-skyline.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #FAFAF8; --text: #1a1a1a; --text-muted: #666; --accent: #2D5A27; --accent-light: rgba(45, 90, 39, 0.08); --border: #e5e5e5; --card-bg: #fff; --carrot: #F5794A; }
-        body { font-family: 'Newsreader', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 18px; }
-        header { padding: 3rem 2rem 2.5rem; text-align: center; border-bottom: 1px solid var(--border); }
-        .logo-container { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
-        .carrot-logo { width: 60px; height: 60px; }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 600; letter-spacing: -0.02em; color: var(--accent); }
-        .tagline { font-size: 1.1rem; color: var(--text-muted); max-width: 440px; margin: 0 auto; font-style: italic; }
-        nav { padding: 1.5rem 2rem; display: flex; justify-content: center; gap: 2.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; flex-wrap: wrap; }
-        nav a { font-family: 'Space Grotesk', sans-serif; text-decoration: none; color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; }
-        nav a:hover { color: var(--accent); }
-        #map-section { padding: 3rem 2rem; background: var(--card-bg); border-bottom: 1px solid var(--border); }
-        #map-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500; color: var(--text-muted); margin-bottom: 1.5rem; text-align: center; }
-        #map { height: 400px; width: 100%; max-width: 1000px; margin: 0 auto; border-radius: 8px; border: 1px solid var(--border); }
-        .leaflet-popup-content-wrapper { border-radius: 4px; font-family: 'Space Grotesk', sans-serif; }
-        .leaflet-popup-content { margin: 12px 16px; }
-        .popup-title { font-weight: 600; font-size: 1rem; margin-bottom: 4px; color: var(--accent); }
-        .popup-neighborhood { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px; }
-        .popup-price { font-size: 0.85rem; color: var(--carrot); font-weight: 500; }
-        .carrot-marker { background: transparent; border: none; }
-        .filters { padding: 2rem; background: var(--bg); border-bottom: 1px solid var(--border); }
-        .filters-inner { max-width: 1000px; margin: 0 auto; }
-        .filter-group { margin-bottom: 1.5rem; }
-        .filter-group:last-child { margin-bottom: 0; }
-        .filter-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.75rem; display: block; }
-        .filter-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .filter-btn { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; padding: 0.5rem 1rem; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-muted); border-radius: 20px; cursor: pointer; transition: all 0.2s; }
-        .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-        .filter-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
-        .filter-btn.price-btn { font-weight: 600; letter-spacing: 0.05em; }
-        .clear-filters { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; padding: 0.5rem 1rem; border: none; background: transparent; color: var(--carrot); cursor: pointer; text-decoration: underline; transition: color 0.2s; }
-        .clear-filters:hover { color: var(--accent); }
-        .results-count { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 1rem; }
-        main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
-        .section-header { margin-bottom: 3rem; padding-bottom: 1rem; border-bottom: 2px solid var(--text); }
-        .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500; color: var(--text-muted); margin-bottom: 0.5rem; }
-        .section-header p { font-size: 1rem; color: var(--text-muted); }
-        .place { margin-bottom: 3.5rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); transition: opacity 0.3s; }
-        .place.hidden { display: none; }
-        .place:last-child { border-bottom: none; }
-        .place-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
-        .place h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; }
-        .place .neighborhood { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
-        .place-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .place .category { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--accent-light); padding: 0.25rem 0.6rem; border-radius: 2px; }
-        .place .price { font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--carrot); }
-        .place .description { margin-bottom: 1rem; color: var(--text); }
-        .place .vibe { font-size: 0.95rem; color: var(--text-muted); font-style: italic; }
-        .about { margin-top: 4rem; padding-top: 3rem; border-top: 2px solid var(--text); }
-        .about-image { width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 2rem; }
-        .about-content h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
-        .about-content p { color: var(--text-muted); }
-        .subscribe { margin-top: 4rem; padding: 3rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; text-align: center; }
-        .subscribe h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .subscribe p { color: var(--text-muted); margin-bottom: 1.5rem; }
-        .subscribe-form { display: flex; gap: 0.75rem; max-width: 400px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
-        .subscribe-form input[type="email"] { flex: 1; min-width: 200px; padding: 0.75rem 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); }
-        .subscribe-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
-        .subscribe-form button { padding: 0.75rem 1.5rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; background: var(--accent); color: white; border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
-        .subscribe-form button:hover { background: #234a1f; }
-        .privacy-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; }
-        .privacy-note a { color: var(--accent); }
-        .hidden-field { position: absolute; left: -9999px; }
-        footer { padding: 3rem 2rem; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.95rem; }
-        .privacy-policy { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-        .privacy-policy h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-muted); }
-        .privacy-policy p { font-size: 0.95rem; color: var(--text-muted); }
-        @media (max-width: 600px) { .logo-container { flex-direction: column; gap: 0.5rem; } .carrot-logo { width: 50px; height: 50px; } .logo { font-size: 2rem; } nav { gap: 1.5rem; padding: 1rem; } nav a { font-size: 0.8rem; } #map { height: 300px; } .filter-btn { font-size: 0.75rem; padding: 0.4rem 0.8rem; } }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <header>
         <div class="logo-container">
-            <svg class="carrot-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="60" height="60">
+            <svg class="carrot-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="60" height="60" role="img" aria-label="bmoreveg carrot logo">
+                <title>bmoreveg carrot logo</title>
                 <path d="M60 108 C45 108 35 85 33 65 C31 45 38 28 60 28 C82 28 89 45 87 65 C85 85 75 108 60 108Z" fill="#F5794A"/>
                 <path d="M45 50 Q60 48 75 50" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
                 <path d="M43 65 Q60 62 77 65" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
@@ -104,165 +55,866 @@
         </div>
         <p class="tagline">A guide to veg-friendly dining in Baltimore and beyond</p>
     </header>
-    <nav>
+
+    <nav aria-label="Main navigation">
         <a href="#map-section">Map</a>
         <a href="#coffee">Coffee</a>
         <a href="#bakeries">Bakeries</a>
         <a href="#restaurants">Restaurants</a>
         <a href="#about">About</a>
     </nav>
+
     <section id="map-section">
-        <h2>Explore the Map</h2>
-        <div id="map"></div>
+        <h2>Find Your Next Meal</h2>
+        <div id="map">
+            <div class="map-loading" id="map-loading">Loading map&hellip;</div>
+        </div>
     </section>
-    <div class="filters">
+
+    <div class="filters" role="search" aria-label="Filter restaurants">
         <div class="filters-inner">
             <div class="filter-group">
-                <span class="filter-label">Filter by Neighborhood</span>
-                <div class="filter-buttons" id="neighborhood-filters">
+                <span class="filter-label" id="neighborhood-label">Neighborhood</span>
+                <div class="filter-buttons" id="neighborhood-filters" role="group" aria-labelledby="neighborhood-label">
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="hampden">Hampden</button>
                     <button class="filter-btn" data-filter="remington">Remington</button>
                     <button class="filter-btn" data-filter="canton">Canton</button>
                     <button class="filter-btn" data-filter="fells-point">Fells Point</button>
-                    <button class="filter-btn" data-filter="downtown">Downtown</button>
                     <button class="filter-btn" data-filter="mt-vernon">Mt. Vernon</button>
-                    <button class="filter-btn" data-filter="columbia">Columbia / Howard Co.</button>
+                    <button class="filter-btn" data-filter="downtown">Downtown</button>
+                    <button class="filter-btn" data-filter="station-north">Station North</button>
+                    <button class="filter-btn" data-filter="charles-village">Charles Village</button>
+                    <button class="filter-btn" data-filter="roland-park">Roland Park</button>
+                    <button class="filter-btn" data-filter="parkville">Parkville</button>
+                    <button class="filter-btn" data-filter="timonium">Timonium</button>
+                    <button class="filter-btn" data-filter="columbia">Columbia</button>
                     <button class="filter-btn" data-filter="reisterstown">Reisterstown</button>
                 </div>
             </div>
             <div class="filter-group">
-                <span class="filter-label">Filter by Price</span>
-                <div class="filter-buttons" id="price-filters">
-                    <button class="filter-btn price-btn active" data-price="all">All</button>
+                <span class="filter-label" id="price-label">Price</span>
+                <div class="filter-buttons" id="price-filters" role="group" aria-labelledby="price-label">
+                    <button class="filter-btn active" data-price="all">All</button>
                     <button class="filter-btn price-btn" data-price="1">$</button>
                     <button class="filter-btn price-btn" data-price="2">$$</button>
                     <button class="filter-btn price-btn" data-price="3">$$$</button>
                 </div>
-                <button class="clear-filters" onclick="clearFilters()">Clear all filters</button>
             </div>
-            <p class="results-count"><span id="count">12</span> spots shown</p>
+            <button class="clear-filters" id="clear-filters-btn">Clear all filters</button>
+            <p class="results-count">Showing <span id="count">0</span> spots</p>
         </div>
     </div>
-    <main>
+
+    <main id="main-content">
+        <!-- ===== COFFEE ===== -->
         <section id="coffee">
-            <div class="section-header"><h2>Coffee</h2><p>Where to get your fix</p></div>
-            <article class="place" data-neighborhood="mt-vernon,harbor-point" data-price="2" data-lat="39.2904" data-lng="-76.6122" data-name="Ceremony Coffee Roasters">
+            <div class="section-header"><h2>Coffee</h2><p>For the properly caffeinated</p></div>
+            <p class="section-empty">No coffee spots match your current filters.</p>
+
+            <article class="place" data-neighborhood="mt-vernon" data-price="2" data-veg="veg-friendly" data-lat="39.2904" data-lng="-76.6122" data-name="Ceremony Coffee Roasters">
                 <div class="place-header"><h3>Ceremony Coffee Roasters</h3><span class="neighborhood">Harbor Point · Mt. Vernon · Cross Street</span></div>
-                <div class="place-meta"><span class="category">Specialty Coffee</span><span class="price">$$</span></div>
+                <div class="place-meta">
+                    <span class="category">Specialty Coffee</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
                 <p class="description">One is reluctant to admit that a modern establishment has achieved anything approaching adequacy, and yet here we are. The proprietors have eschewed the garish plastic décor that plagues our debased century in favor of a minimalist aesthetic that would not entirely offend Boethius himself. They claim to reject any bean scoring below 85 points — a commendable if somewhat arbitrary devotion to standards in an age that has abandoned them entirely. The Harbor Point location offers views of the water, which I found tolerable while nursing my digestive complaints. My valve remained mercifully closed throughout the visit.</p>
                 <p class="vibe">Acceptable for scholarly contemplation, multiple locations for the peripatetic sufferer</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.2904,-76.6122" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="hampden" data-price="1" data-lat="39.3305" data-lng="-76.6402" data-name="Vent Coffee Roasters">
-                <div class="place-header"><h3>Vent Coffee Roasters</h3><span class="neighborhood">Hampden · Union Collective</span></div>
-                <div class="place-meta"><span class="category">Roastery & Café</span><span class="price">$</span></div>
-                <p class="description">This warehouse arrangement initially struck me as yet another symptom of industrial decay, but I was forced to revise my assessment. The proprietress has had the good sense to reject the pretensions that afflict most coffee establishments. One can observe the actual roasting of beans — a mechanical process, yes, but one conducted with proper geometry and without the insufferable explanations that baristas elsewhere seem compelled to deliver. They offer donuts of reasonable quality and, I am told, coffee infused with CBD, which I refused on principle but which may benefit those whose valves are less temperamental than my own. The high ceilings accommodate my considerable presence without complaint.</p>
+
+            <article class="place" data-neighborhood="hampden" data-price="1" data-veg="veg-friendly" data-lat="39.3301" data-lng="-76.6316" data-name="Artifact Coffee">
+                <div class="place-header"><h3>Artifact Coffee</h3><span class="neighborhood">Hampden</span></div>
+                <div class="place-meta">
+                    <span class="category">Roastery &amp; Café</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$</span>
+                </div>
+                <p class="description">This warehouse arrangement initially struck me as yet another symptom of industrial decay, but I was forced to revise my assessment. The proprietress has had the good sense to reject the pretensions that afflict most coffee establishments. One can observe the actual roasting of beans — a mechanical process, yes, but one conducted with proper geometry and without the insufferable explanations that baristas elsewhere seem compelled to deliver. They offer <strong>donuts</strong> of reasonable quality and, I am told, coffee infused with CBD, which I refused on principle but which may benefit those whose valves are less temperamental than my own. The high ceilings accommodate my considerable presence without complaint. When the weather permits, the outdoor space allows one to contemplate the moral failings of passing pedestrians while consuming adequate provisions.</p>
                 <p class="vibe">Unpretentious, voluminous space, suitable for those who wish to be left alone</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3301,-76.6316" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="remington" data-price="2" data-lat="39.3248" data-lng="-76.6180" data-name="Doppio Pasticceria">
+
+            <article class="place" data-neighborhood="remington" data-price="2" data-veg="veg-friendly" data-lat="39.3248" data-lng="-76.6180" data-name="Doppio Pasticceria">
                 <div class="place-header"><h3>Doppio Pasticceria</h3><span class="neighborhood">Remington</span></div>
-                <div class="place-meta"><span class="category">Sicilian Bakery & Coffee</span><span class="price">$$</span></div>
-                <p class="description">At last! An establishment that understands the medieval Sicilian traditions that modern America has so grotesquely abandoned. These people mill their own grains — MILL THEIR OWN GRAINS — as if the twelfth century had never ended. The arancini achieves a proper spherical geometry that would satisfy Euclid himself. They have rejected single-use plastics, demonstrating an ethical sensibility that my mother, with her endless parade of cellophane-wrapped horrors, could never comprehend. The evening pizza service employs sourdough in the New York fashion, which is acceptable if not strictly Sicilian. One feels that Fortuna's wheel has, for once, rotated in a favorable direction.</p>
+                <div class="place-meta">
+                    <span class="category">Sicilian Bakery &amp; Coffee</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">At last! An establishment that understands the medieval Sicilian traditions that modern America has so grotesquely abandoned. These people mill their own grains — MILL THEIR OWN GRAINS — as if the twelfth century had never ended. The <strong>arancini</strong> achieves a proper spherical geometry that would satisfy Euclid himself. They have rejected single-use plastics, demonstrating an ethical sensibility that my mother, with her endless parade of cellophane-wrapped horrors, could never comprehend. The evening <strong>pizza</strong> service employs sourdough in the New York fashion, which is acceptable if not strictly Sicilian. One feels that Fortuna's wheel has, for once, rotated in a favorable direction.</p>
                 <p class="vibe">Old World methods preserved, my digestion notably improved, seasonal offerings</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3248,-76.6180" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
         </section>
+
+        <!-- ===== BAKERIES ===== -->
         <section id="bakeries">
             <div class="section-header"><h2>Bakeries</h2><p>Pastries worth the wait</p></div>
-            <article class="place" data-neighborhood="canton" data-price="2" data-lat="39.2819" data-lng="-76.5780" data-name="Café Dear Leon">
+            <p class="section-empty">No bakeries match your current filters.</p>
+
+            <article class="place" data-neighborhood="canton" data-price="2" data-veg="veg-friendly" data-lat="39.2819" data-lng="-76.5780" data-name="Café Dear Leon">
                 <div class="place-header"><h3>Café Dear Leon</h3><span class="neighborhood">Canton</span></div>
-                <div class="place-meta"><span class="category">Bakery & Café</span><span class="price">$$</span></div>
-                <p class="description">The lines that form outside this establishment are an abomination — hordes of the unwashed masses clutching their telephone devices, utterly devoid of interior lives, waiting like cattle for pastries. And yet. AND YET. I must confess that the pastries themselves achieve a level of craftsmanship that this degraded century scarcely deserves. The crab dip bagel, about which the internet froths endlessly, is admittedly a work of some sophistication. They bake according to a published schedule, and when items are exhausted, they simply close — a philosophy of limits that our bloated consumer culture desperately needs. The Japanese influences would have confused Thomas Aquinas, but he would have appreciated the discipline.</p>
+                <div class="place-meta">
+                    <span class="category">Bakery &amp; Café</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The lines that form outside this establishment are an abomination — hordes of the unwashed masses clutching their telephone devices, utterly devoid of interior lives, waiting like cattle for pastries. And yet. AND YET. I must confess that the pastries themselves achieve a level of craftsmanship that this degraded century scarcely deserves. The <strong>crab dip bagel</strong>, about which the internet froths endlessly, is admittedly a work of some sophistication. They bake according to a published schedule, and when items are exhausted, they simply close — a philosophy of limits that our bloated consumer culture desperately needs. The Japanese influences would have confused Thomas Aquinas, but he would have appreciated the discipline.</p>
                 <p class="vibe">Worth the indignity of waiting among philistines, items sell out as God intended</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.2819,-76.5780" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="remington" data-price="2" data-lat="39.3262" data-lng="-76.6185" data-name="La Maison">
+
+            <article class="place" data-neighborhood="remington" data-price="2" data-veg="veg-friendly" data-lat="39.3262" data-lng="-76.6185" data-name="La Maison">
                 <div class="place-header"><h3>La Maison</h3><span class="neighborhood">Remington</span></div>
-                <div class="place-meta"><span class="category">Bakery & Café</span><span class="price">$$</span></div>
-                <p class="description">The same culinary artisans behind Café Dear Leon have opened this larger establishment, presumably to accommodate my physical requirements, which the Canton location could not. Here one may actually SIT, a luxury that modern commerce has nearly extinguished in its endless pursuit of "turnover." The high ceilings permit proper air circulation, beneficial to those of us with sensitive respiratory constitutions. They have dedicated an entire room to the lamination of dough — a commitment to craft that brings tears to my eyes, or would if my tear ducts were not compromised by years of maternal disappointment. The WiFi functions adequately for those who must, regrettably, engage with the digital realm.</p>
+                <div class="place-meta">
+                    <span class="category">Bakery &amp; Café</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The same culinary artisans behind Café Dear Leon have opened this larger establishment, presumably to accommodate my physical requirements, which the Canton location could not. Here one may actually SIT, a luxury that modern commerce has nearly extinguished in its endless pursuit of "turnover." The high ceilings permit proper air circulation, beneficial to those of us with sensitive respiratory constitutions. They have dedicated an entire room to the <strong>lamination of dough</strong> — a commitment to craft that brings tears to my eyes, or would if my tear ducts were not compromised by years of maternal disappointment. The WiFi functions adequately for those who must, regrettably, engage with the digital realm.</p>
                 <p class="vibe">Space for contemplation, proper seating, the same excellent pastries with room to breathe</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3262,-76.6185" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
         </section>
+
+        <!-- ===== RESTAURANTS ===== -->
         <section id="restaurants">
             <div class="section-header"><h2>Restaurants</h2><p>Full meals and good times</p></div>
-            <article class="place" data-neighborhood="hampden,fells-point" data-price="2" data-lat="39.3295" data-lng="-76.6295" data-name="Ekiben">
+            <p class="section-empty">No restaurants match your current filters.</p>
+
+            <article class="place" data-neighborhood="canton" data-price="2" data-veg="veg-friendly" data-lat="39.2815" data-lng="-76.5820" data-name="Love Pomelo">
+                <div class="place-header"><h3>Love Pomelo</h3><span class="neighborhood">Canton Square</span></div>
+                <div class="place-meta">
+                    <span class="category">Italian</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">Canton Square — that curious municipal arrangement where the city's middle classes gather to congratulate themselves on their proximity to water — conceals, in one of its corners, a restaurant of genuine merit. This cozy establishment has the wisdom to remain tucked away, as if embarrassed by the mediocrity surrounding it. The pasta is made in-house, a practice so elementary that one hesitates to praise it, and yet so rare that praise becomes necessary. The <strong>truffle pasta</strong> achieves the proper balance between earthly pleasure and spiritual aspiration. The <strong>leek soup</strong> demonstrates that vegetables, properly treated, need not be punished for their moral superiority over flesh. The number of vegetarian options suggests a kitchen that has actually THOUGHT about its craft, rather than merely appending a token salad to placate the righteous.</p>
+                <p class="vibe">Hidden competence, homemade pasta as it should be, vegetables treated with dignity</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.2815,-76.5820" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="fells-point" data-price="2" data-veg="veg-friendly" data-lat="39.2831" data-lng="-76.5930" data-name="Little Donna's">
+                <div class="place-header"><h3>Little Donna's</h3><span class="neighborhood">Fells Point</span></div>
+                <div class="place-meta">
+                    <span class="category">Polish-Italian</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The combination of Polish and Italian cuisines would seem, to the uninitiated, as incongruous as a marriage between a Scholastic philosopher and a Byzantine empress. And yet! History teaches us that the Slavic and Mediterranean worlds have always maintained complex relations, and this establishment honors both traditions with surprising coherence. The atmosphere evokes a living room designed by someone who has actually READ — eclectic, yes, but with intention. The <strong>pizza</strong> is excellent. The <strong>cabbage pancake</strong> — CABBAGE, that most maligned of vegetables — achieves a crispness that would satisfy any Central European grandmother, including, one imagines, those who are not mine. The <strong>pierogi</strong> maintain proper density. The prices, mercifully, do not punish the economically precarious scholar.</p>
+                <p class="vibe">Eclectic charm, pan-European competence, intimate without being cloying</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.2831,-76.5930" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="station-north" data-price="2" data-veg="veg-friendly" data-lat="39.3115" data-lng="-76.6155" data-name="Toki Underground">
+                <div class="place-header"><h3>Toki Underground</h3><span class="neighborhood">Greenmount Avenue</span></div>
+                <div class="place-meta">
+                    <span class="category">Ramen</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The name suggests a subterranean establishment, which appeals to my general preference for avoiding the sunlit world of the morally compromised surface-dwellers. This ramen establishment — and I use the term "ramen" advisedly, as it has been debased by the instant variety that sustained my undergraduate years — offers vegan options of genuine quality. The <strong>Dan Dan noodles</strong> achieve the proper ratio of heat to umami that lesser establishments bungle through ignorance or cowardice. The <strong>cauliflower bao bun</strong> represents vegetable cookery at its apex — crispy, flavorful, and possessed of the geometric integrity that I demand from all baked goods. The ceiling displays rotating skateboard fragments, a decorative choice that confuses my medieval sensibilities but which the younger patrons seem to regard with enthusiasm.</p>
+                <p class="vibe">Excellent vegetable preparations, proper noodle discipline, youthful energy that I tolerate</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3115,-76.6155" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="remington" data-price="2" data-veg="veg-friendly" data-lat="39.3233" data-lng="-76.6166" data-name="Clavel">
+                <div class="place-header"><h3>Clavel</h3><span class="neighborhood">Remington</span></div>
+                <div class="place-meta">
+                    <span class="category">Mexican &amp; Mezcaleria</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The proprietors of this establishment have committed what I initially considered an act of geographical hubris — transporting the taqueria tradition of Oaxaca to a former auto garage in Remington. And yet the results compel grudging admiration. The <strong>tacos</strong> arrive on proper corn tortillas, hand-pressed with a devotion to craft that my mother's microwave cuisine could never approach. The vegetarian options — <strong>mushroom</strong>, <strong>squash blossom</strong>, roasted vegetables — demonstrate that a taco need not contain flesh to achieve moral and gustatory weight. The mezcal selection is extensive, each bottle representing some agave plant's noble sacrifice to human civilization. The outdoor patio achieves a conviviality that I observe with anthropological detachment while my valve registers cautious approval. The space itself retains its industrial bones, which is honest, and the food retains its Mexican ones, which is essential.</p>
+                <p class="vibe">Proper tortillas, excellent vegetable tacos, mezcal for the philosophically inclined</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3233,-76.6166" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="parkville" data-price="1" data-veg="all-veg" data-lat="39.3773" data-lng="-76.5396" data-name="Pavan Foods">
+                <div class="place-header"><h3>Pavan Foods</h3><span class="neighborhood">Parkville</span></div>
+                <div class="place-meta">
+                    <span class="category">South Indian</span>
+                    <span class="veg-badge all-veg">All Veg</span>
+                    <span class="price">$</span>
+                </div>
+                <p class="description">I must report a discovery of considerable importance: in Parkville — a suburb whose existence I had heretofore regarded as purely theoretical — there operates a South Indian establishment of the first order. The wait is long, which I initially regarded as an insult to persons of my stature and digestive urgency, but which I have come to understand as evidence of genuine cooking rather than the industrial reheating that plagues lesser establishments. Everything is fresh. FRESH! The <strong>samosa chaat</strong> achieves proper textural complexity. The <strong>chhole poori</strong> demonstrates the Punjabi understanding that fried bread is not merely acceptable but spiritually necessary. The <strong>masala dosa</strong> — that great gift of Karnataka to human civilization — unfolds with appropriate crispness and geometric ambition. The décor is decidedly casual, which is to say honest, and the establishment is attached to a mini market, suggesting the immigrant entrepreneurial spirit that built civilizations. The prices are so reasonable that I suspect the proprietors of operating from charitable rather than commercial motives. Everything we consumed was vegan, though I did not require this; virtue was simply offered without fanfare.</p>
+                <p class="vibe">Worth the drive, worth the wait, vegetables prepared by those who understand vegetables</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3773,-76.5396" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="roland-park" data-price="2" data-veg="veg-friendly" data-lat="39.3665" data-lng="-76.6315" data-name="Namaste">
+                <div class="place-header"><h3>Namaste</h3><span class="neighborhood">Roland Park</span></div>
+                <div class="place-meta">
+                    <span class="category">Indian</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">Roland Park, that bastion of old Baltimore gentility, has long needed an Indian restaurant of substance rather than mere respectability. Namaste fulfills this requirement admirably. The establishment opens 365 days per year — a commitment to consistency that would warm the heart of any Benedictine monk. The vegan options are extensive, but I caution the diner against the folly of ordering familiar dishes simply because they appear recognizable. ASK THE WAITER. This is advice I offer rarely, as waitstaff typically disappoint, but here they demonstrate actual knowledge of the menu and will steer you toward excellence. The <strong>dal tadka</strong>, recommended thus, achieved a complexity my mother's boiled vegetables could never approach. The <strong>tofu chili</strong> demonstrated that even soy protein can transcend its institutional associations. The <strong>momo</strong> — those Nepali dumplings that have migrated through the Himalayan trading routes — were EXCELLENT, wrapped with the precision that dumpling-making demands.</p>
+                <p class="vibe">Staff who actually guide, excellent dumplings, open every single day</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3665,-76.6315" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="charles-village" data-price="1" data-veg="veg-friendly" data-lat="39.3262" data-lng="-76.6155" data-name="Peter Chang">
+                <div class="place-header"><h3>Peter Chang</h3><span class="neighborhood">Charles Village</span></div>
+                <div class="place-meta">
+                    <span class="category">Sichuan Chinese</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$</span>
+                </div>
+                <p class="description">The eponymous Peter Chang has, I am told, established a minor empire of Sichuan establishments throughout the mid-Atlantic region, which normally would provoke my suspicion of corporate homogenization. However, one must acknowledge competence where it exists, and this Charles Village location demonstrates genuine culinary facility. The service is FAST — so fast that I initially suspected mechanical assistance — which benefits those of us whose digestive schedules demand punctuality. The <strong>eggplant</strong> preparation is magnificent, that noble nightshade finally receiving the treatment it deserves: silky, properly oiled, infused with the numbing heat that distinguishes Sichuan cuisine from its Cantonese compromises. The prices remain reasonable, a miracle in any university-adjacent neighborhood. One enters, consumes excellent vegetables, and departs without the performative rituals that burden so much contemporary dining.</p>
+                <p class="vibe">Swift efficiency, extraordinary eggplant, no nonsense</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3262,-76.6155" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="timonium" data-price="2" data-veg="veg-friendly" data-lat="39.4520" data-lng="-76.6195" data-name="Sangam">
+                <div class="place-header"><h3>Sangam</h3><span class="neighborhood">North of Timonium</span></div>
+                <div class="place-meta">
+                    <span class="category">South Indian</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The northern suburbs of Baltimore extend into territories I had previously considered beyond the pale of civilization, but Fortuna occasionally rewards the intrepid traveler. Sangam — the word refers to a sacred confluence of rivers in Hindu geography, which demonstrates the proprietors' theological seriousness — offers <strong>dosas</strong> of quality. The dosa, for the uninitiated, is a fermented rice and lentil crepe that represents one of South India's great contributions to human flourishing. Here they are prepared with appropriate crispness and served with the proper accompaniments. The establishment requires a journey that tests one's commitment to vegetable excellence, but as Boethius taught us in his Consolation, the difficulty of the path often corresponds to the value of the destination. I make no extravagant claims for this place — it is nice, the dosas are nice — but in our degraded age, "nice" has become a form of excellence.</p>
+                <p class="vibe">Proper dosas in the suburbs, worth the northern expedition</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.4520,-76.6195" target="_blank" rel="noopener">Directions</a>
+                </div>
+            </article>
+
+            <article class="place" data-neighborhood="hampden,fells-point" data-price="2" data-veg="veg-friendly" data-lat="39.3295" data-lng="-76.6295" data-name="Ekiben">
                 <div class="place-header"><h3>Ekiben</h3><span class="neighborhood">Hampden · Fells Point · Locust Point</span></div>
-                <div class="place-meta"><span class="category">Asian Fusion</span><span class="price">$$</span></div>
-                <p class="description">The concept of "fusion" cuisine typically offends my medievalist sensibilities — it suggests a mongrelization of tradition that would have horrified the monks who preserved civilization through the Dark Ages. However, I must grudgingly report that this Taiwanese-Ethiopian-American amalgamation achieves a certain harmony. The steamed buns, made from a family recipe, possess the proper pillowy geometry. The portions are GENEROUS, a quality so rare in our miserly age that I nearly wept into my tempura broccoli. The vegetarian options — tofu nuggets, the aforementioned broccoli — satisfy without the moral complications of flesh. The hip-hop soundtrack is regrettable but tolerable.</p>
+                <div class="place-meta">
+                    <span class="category">Asian Fusion</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The concept of "fusion" cuisine typically offends my medievalist sensibilities — it suggests a mongrelization of tradition that would have horrified the monks who preserved civilization through the Dark Ages. However, I must grudgingly report that this Taiwanese-Ethiopian-American amalgamation achieves a certain harmony. The <strong>steamed buns</strong>, made from a family recipe, possess the proper pillowy geometry. The portions are GENEROUS, a quality so rare in our miserly age that I nearly wept into my <strong>tempura broccoli</strong>. The vegetarian options — <strong>tofu nuggets</strong>, the aforementioned broccoli — satisfy without the moral complications of flesh. The hip-hop soundtrack is regrettable but tolerable.</p>
                 <p class="vibe">Portions worthy of my appetite, excellent vegetables, music too loud but food compensates</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3295,-76.6295" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="hampden" data-price="3" data-lat="39.3313" data-lng="-76.6394" data-name="True Chesapeake Oyster Co.">
+
+            <article class="place" data-neighborhood="hampden" data-price="3" data-veg="pescatarian" data-lat="39.3313" data-lng="-76.6394" data-name="True Chesapeake Oyster Co.">
                 <div class="place-header"><h3>True Chesapeake Oyster Co.</h3><span class="neighborhood">Whitehall Mill · Hampden</span></div>
-                <div class="place-meta"><span class="category">Oyster Bar & Seafood</span><span class="price">$$$</span></div>
-                <p class="description">I approached this establishment with considerable skepticism, as the "farm-to-table" movement has become yet another vehicle for bourgeois self-congratulation. Nevertheless, these people actually OWN their oyster farm — they are not merely invoking pastoral fantasies but engaging in genuine aquaculture. The building itself dates to the eighteenth century, when Americans still possessed some connection to proper craft and geometry. The bars are constructed from crushed oyster shells, a use of materials that demonstrates actual thought. The vegetarian options are limited, which I mention only for completeness. My valve found the atmosphere surprisingly congenial, though the prices suggest this is an establishment for celebrating rare victories over Fortuna.</p>
+                <div class="place-meta">
+                    <span class="category">Oyster Bar &amp; Seafood</span>
+                    <span class="veg-badge pescatarian">Pescatarian</span>
+                    <span class="price">$$$</span>
+                </div>
+                <p class="description">I approached this establishment with considerable skepticism, as the "farm-to-table" movement has become yet another vehicle for bourgeois self-congratulation. Nevertheless, these people actually OWN their oyster farm — they are not merely invoking pastoral fantasies but engaging in genuine aquaculture. The building itself dates to the eighteenth century, when Americans still possessed some connection to proper craft and geometry. The bars are constructed from crushed <strong>oyster shells</strong>, a use of materials that demonstrates actual thought. The seafood is impeccable for the pescatarian diner. My valve found the atmosphere surprisingly congenial, though the prices suggest this is an establishment for celebrating rare victories over Fortuna.</p>
                 <p class="vibe">Historic premises, genuine agricultural connection, expensive but historically grounded</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3313,-76.6394" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="canton" data-price="2" data-lat="39.2822" data-lng="-76.5694" data-name="Di Pasquale's Italian Marketplace">
+
+            <article class="place" data-neighborhood="canton" data-price="2" data-veg="veg-friendly" data-lat="39.2822" data-lng="-76.5694" data-name="Di Pasquale's Italian Marketplace">
                 <div class="place-header"><h3>Di Pasquale's Italian Marketplace</h3><span class="neighborhood">Canton · Brewers Hill</span></div>
-                <div class="place-meta"><span class="category">Italian Market & Deli</span><span class="price">$$</span></div>
-                <p class="description">HERE is an establishment that understands the weight of tradition! Operating since 1914 — before the catastrophic twentieth century had fully unleashed its horrors — this Italian marketplace represents everything our degraded commercial culture has abandoned. They bake their own bread. They make fresh mozzarella DAILY. They import the proper Nutella from Italy, not the adulterated American version that tastes of compromise and despair. The grandson of the founder still operates the establishment, maintaining a lineage that would warm the heart of any medieval guild master. The vegetarian lasagna achieves proper density and moral weight. Even that television program hosted by the objectionable fellow with the automobile could not ruin this place.</p>
+                <div class="place-meta">
+                    <span class="category">Italian Market &amp; Deli</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">HERE is an establishment that understands the weight of tradition! Operating since 1914 — before the catastrophic twentieth century had fully unleashed its horrors — this Italian marketplace represents everything our degraded commercial culture has abandoned. They bake their own bread. They make <strong>fresh mozzarella</strong> DAILY. They import the proper Nutella from Italy, not the adulterated American version that tastes of compromise and despair. The grandson of the founder still operates the establishment, maintaining a lineage that would warm the heart of any medieval guild master. The <strong>vegetarian lasagna</strong> achieves proper density and moral weight. The calzone and vegetables demonstrate competence without pretension. Even that television program hosted by the objectionable fellow with the automobile could not ruin this place.</p>
                 <p class="vibe">A century of tradition, proper Italian methods, my mother should take notes</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.2822,-76.5694" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="downtown" data-price="2" data-lat="39.3021" data-lng="-76.6167" data-name="Cazbar">
+
+            <article class="place" data-neighborhood="downtown" data-price="2" data-veg="veg-friendly" data-lat="39.3021" data-lng="-76.6167" data-name="Cazbar">
                 <div class="place-header"><h3>Cazbar</h3><span class="neighborhood">Downtown Baltimore</span></div>
-                <div class="place-meta"><span class="category">Turkish</span><span class="price">$$</span></div>
-                <p class="description">The Byzantine Empire, despite its theological errors, produced a cuisine of considerable merit, and this Turkish establishment preserves those traditions with admirable fidelity. The ornate décor — which lesser critics might dismiss as excessive — actually reflects the proper medieval understanding that beauty serves moral purposes. Over 150 dishes populate the menu, suggesting a comprehensive worldview rather than the pathetic "small plates" philosophy that has infected modern dining. The vegetarian mezes are numerous and satisfying. On weekend evenings, belly dancers perform, which I observed with purely anthropological interest while my valve registered mild perturbation. The Turkish coffee is served correctly, as a vehicle for philosophical contemplation.</p>
+                <div class="place-meta">
+                    <span class="category">Turkish</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The Byzantine Empire, despite its theological errors, produced a cuisine of considerable merit, and this Turkish establishment preserves those traditions with admirable fidelity. The ornate décor — which lesser critics might dismiss as excessive — actually reflects the proper medieval understanding that beauty serves moral purposes. Over 150 dishes populate the menu, suggesting a comprehensive worldview rather than the pathetic "small plates" philosophy that has infected modern dining. The <strong>vegetarian mezes</strong> are numerous and satisfying. On weekend evenings, belly dancers perform, which I observed with purely anthropological interest while my valve registered mild perturbation. The <strong>Turkish coffee</strong> is served correctly, as a vehicle for philosophical contemplation.</p>
                 <p class="vibe">Byzantine splendor preserved, extensive vegetarian options, entertainment of historical interest</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.3021,-76.6167" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="reisterstown" data-price="2" data-lat="39.4699" data-lng="-76.8290" data-name="Little Georgia">
+
+            <article class="place" data-neighborhood="reisterstown" data-price="2" data-veg="veg-friendly" data-lat="39.4699" data-lng="-76.8290" data-name="Little Georgia">
                 <div class="place-header"><h3>Little Georgia</h3><span class="neighborhood">Reisterstown</span></div>
-                <div class="place-meta"><span class="category">Georgian</span><span class="price">$$</span></div>
-                <p class="description">The nation of Georgia — not the wretched American state — possesses a winemaking tradition spanning ten millennia, which is to say they were cultivating civilization while my ancestors were presumably grunting in forests. The proprietor abandoned postal work to open this establishment, demonstrating the kind of vocational courage that our bureaucratic age typically punishes. The khachapuri — a boat-shaped bread vessel containing cheese and egg — achieves perfect geometric form. The khinkali dumplings require proper technique to consume, separating the civilized from the barbarous. They stock 450 Georgian wine varietals. FOUR HUNDRED AND FIFTY. The drive to Reisterstown tests one's patience, but Boethius reminds us that the journey itself builds character.</p>
+                <div class="place-meta">
+                    <span class="category">Georgian</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="description">The nation of Georgia — not the wretched American state — possesses a winemaking tradition spanning ten millennia, which is to say they were cultivating civilization while my ancestors were presumably grunting in forests. The proprietor abandoned postal work to open this establishment, demonstrating the kind of vocational courage that our bureaucratic age typically punishes. The <strong>khachapuri</strong> — a boat-shaped bread vessel containing cheese and egg — achieves perfect geometric form. The <strong>khinkali</strong> dumplings require proper technique to consume, separating the civilized from the barbarous. They stock 450 Georgian wine varietals. FOUR HUNDRED AND FIFTY. The drive to Reisterstown tests one's patience, but Boethius reminds us that the journey itself builds character.</p>
                 <p class="vibe">Ancient traditions, geometric perfection in bread form, worth the pilgrimage</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.4699,-76.8290" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="columbia" data-price="3" data-lat="39.2137" data-lng="-76.8610" data-name="Royal Taj">
+
+            <article class="place" data-neighborhood="columbia" data-price="3" data-veg="veg-friendly" data-lat="39.2137" data-lng="-76.8610" data-name="Royal Taj">
                 <div class="place-header"><h3>Royal Taj</h3><span class="neighborhood">Columbia</span></div>
-                <div class="place-meta"><span class="category">Fine Dining Indian</span><span class="price">$$$</span></div>
-                <p class="description">At last, an establishment that comprehends the proper relationship between diner and staff! The service here approaches the feudal ideal — attentive, deferential, and conducted with genuine ceremony. The manager escorts guests to their vehicles, a courtesy so extraordinary in our democratized age that I initially suspected mockery. The vegetarian menu is extensive, as befits a cuisine shaped by genuine philosophical traditions rather than mere fashion. The naan achieves proper inflation. The sauces possess appropriate richness without the cloying sweetness that lesser Indian restaurants deploy to flatter American palates. Some internet publication named this among America's most romantic restaurants, a designation I find irrelevant but which may interest those whose valves function normally.</p>
+                <div class="place-meta">
+                    <span class="category">Fine Dining Indian</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$$</span>
+                </div>
+                <p class="description">At last, an establishment that comprehends the proper relationship between diner and staff! The service here approaches the feudal ideal — attentive, deferential, and conducted with genuine ceremony. The manager escorts guests to their vehicles, a courtesy so extraordinary in our democratized age that I initially suspected mockery. The vegetarian menu is extensive, as befits a cuisine shaped by genuine philosophical traditions rather than mere fashion. The <strong>naan</strong> achieves proper inflation. The sauces possess appropriate richness without the cloying sweetness that lesser Indian restaurants deploy to flatter American palates. Some internet publication named this among America's most romantic restaurants, a designation I find irrelevant but which may interest those whose valves function normally.</p>
                 <p class="vibe">Service befitting one's dignity, extensive vegetarian offerings, palatial atmosphere</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.2137,-76.8610" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
-            <article class="place" data-neighborhood="columbia" data-price="3" data-lat="39.1804" data-lng="-76.8830" data-name="Ananda">
+
+            <article class="place" data-neighborhood="columbia" data-price="3" data-veg="veg-friendly" data-lat="39.1804" data-lng="-76.8830" data-name="Ananda">
                 <div class="place-header"><h3>Ananda</h3><span class="neighborhood">Maple Lawn · Fulton</span></div>
-                <div class="place-meta"><span class="category">Elevated Indian</span><span class="price">$$$</span></div>
+                <div class="place-meta">
+                    <span class="category">Elevated Indian</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$$</span>
+                </div>
                 <p class="description">The name means "bliss" in Hindi, and while I am constitutionally suspicious of any establishment promising emotional states, I must concede that this one approaches its aspirations. The proprietor raises his own chickens nearby for the restaurant's eggs — a commitment to agricultural integrity that recalls the monastery gardens of the High Middle Ages. EIGHT FIREPLACES warm the premises, suggesting a proper understanding of thermal comfort that modern architecture has criminally neglected. The stained-glass windows filter light in a manner that soothes my perpetually agitated optical nerves. The vegetarian options reflect Northern Indian traditions executed with refinement. Live jazz performs on certain evenings, which I endure for the sake of the food.</p>
                 <p class="vibe">Genuine farm connection, medieval fireplace abundance, bliss may actually be achievable here</p>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=39.1804,-76.8830" target="_blank" rel="noopener">Directions</a>
+                </div>
             </article>
         </section>
+
+        <!-- ===== ABOUT ===== -->
         <section id="about" class="about">
-            <img src="baltimore-skyline.jpg" alt="Baltimore Inner Harbor skyline at dusk" class="about-image">
+            <img src="/files/baltimore-skyline.jpg" alt="Baltimore Inner Harbor skyline at dusk" class="about-image" width="1200" height="925" loading="lazy">
             <div class="about-content">
                 <h2>What is bmoreveg?</h2>
-                <p>This is a guide for plant-forward folks navigating Baltimore's food scene. Not every spot is strictly vegan or vegetarian — but every place here is somewhere a veg person can eat well and feel good about it. We're looking for quality, character, and kitchens that know their way around vegetables. Baltimore's food culture is unpretentious and real. This guide reflects that.</p>
+                <p>This is a guide for plant-forward folks navigating Baltimore's food scene. Not every spot is strictly vegan or vegetarian — but every place here is somewhere a veg person can eat well and feel good about it. We're looking for quality, character, and kitchens that know their way around vegetables.</p>
+                <p>Baltimore's food culture is unpretentious and real. This guide reflects that.</p>
+                <p class="last-updated">Last updated: February 2026</p>
             </div>
         </section>
+
+        <!-- ===== NEWSLETTER ===== -->
         <section class="subscribe">
             <h2>Get new recommendations</h2>
             <p>Sign up for occasional emails when we add new spots to the guide.</p>
-            <form class="subscribe-form" name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-                <p class="hidden-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
-                <input type="email" name="email" placeholder="your@email.com" required>
-                <button type="submit">Subscribe</button>
+            <form class="subscribe-form" id="newsletter-form" name="newsletter" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="newsletter">
+                <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+                <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+                <button type="submit" id="subscribe-btn">Subscribe</button>
             </form>
             <p class="privacy-note">No spam, ever. <a href="#privacy">Privacy policy</a></p>
         </section>
+
+        <!-- ===== SUGGEST A SPOT ===== -->
+        <section class="suggest">
+            <h2>Know a spot we're missing?</h2>
+            <p>Tell us about a veg-friendly restaurant, café, or bakery in the Baltimore area.</p>
+            <form class="suggest-form" id="suggest-form" name="suggestion" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="suggestion">
+                <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+                <input type="text" name="restaurant-name" placeholder="Restaurant name" required aria-label="Restaurant name">
+                <input type="text" name="neighborhood" placeholder="Neighborhood (optional)" aria-label="Neighborhood">
+                <textarea name="details" placeholder="What makes it great for veg diners?" aria-label="Details about the restaurant"></textarea>
+                <button type="submit" id="suggest-btn">Send suggestion</button>
+            </form>
+        </section>
+
+        <!-- ===== PRIVACY ===== -->
         <section id="privacy" class="privacy-policy">
             <h3>Privacy Policy</h3>
             <p>bmoreveg collects email addresses solely to send occasional updates about new restaurant recommendations. We will never sell, share, or distribute your email address to third parties. We don't use tracking cookies or analytics beyond basic Netlify server logs. You can unsubscribe at any time by replying to any email and asking to be removed, and we'll delete your information promptly. That's it — we just want to tell you about good food.</p>
         </section>
     </main>
-    <footer><p>Made with 🥬 in Baltimore</p></footer>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <footer>
+        <p><a href="/">bmoreveg</a> — Made with care in Baltimore</p>
+        <p class="footer-updated">Last updated February 2026</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
     <script>
-        const map = L.map('map').setView([39.2904, -76.6122], 11);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-        const carrotIcon = L.divIcon({ html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32"><path d="M60 108 C45 108 35 85 33 65 C31 45 38 28 60 28 C82 28 89 45 87 65 C85 85 75 108 60 108Z" fill="#F5794A"/><path d="M60 30 C60 30 45 18 42 8 C40 2 48 -2 54 6 C56 9 58 15 60 22" fill="#4A7C42"/><path d="M60 30 C60 30 60 12 60 4 C60 -2 68 -2 68 4 C68 12 65 22 62 28" fill="#5A9C4E"/><path d="M60 30 C60 30 75 18 78 8 C80 2 72 -2 66 6 C64 9 62 15 60 22" fill="#4A7C42"/><ellipse cx="50" cy="55" rx="4" ry="5" fill="#2D2D2D"/><ellipse cx="70" cy="55" rx="4" ry="5" fill="#2D2D2D"/><circle cx="48" cy="53" r="1.5" fill="#FFF"/><circle cx="68" cy="53" r="1.5" fill="#FFF"/><path d="M52 70 Q60 76 68 70" stroke="#2D2D2D" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`, className: 'carrot-marker', iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -32] });
+    (function() {
+        'use strict';
+
+        // === Nav scroll shadow ===
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('scrolled', window.scrollY > 10);
+        }, { passive: true });
+
+        // === Map initialization ===
+        const mapEl = document.getElementById('map');
+        const mapLoading = document.getElementById('map-loading');
+        let map, markers = [];
+
+        try {
+            map = L.map('map').setView([39.2904, -76.6122], 11);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            map.whenReady(function() {
+                if (mapLoading) mapLoading.remove();
+            });
+
+            const carrotIcon = L.divIcon({
+                html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32"><path d="M60 108 C45 108 35 85 33 65 C31 45 38 28 60 28 C82 28 89 45 87 65 C85 85 75 108 60 108Z" fill="#F5794A"/><path d="M60 30 C60 30 45 18 42 8 C40 2 48 -2 54 6 C56 9 58 15 60 22" fill="#4A7C42"/><path d="M60 30 C60 30 60 12 60 4 C60 -2 68 -2 68 4 C68 12 65 22 62 28" fill="#5A9C4E"/><path d="M60 30 C60 30 75 18 78 8 C80 2 72 -2 66 6 C64 9 62 15 60 22" fill="#4A7C42"/><ellipse cx="50" cy="55" rx="4" ry="5" fill="#2D2D2D"/><ellipse cx="70" cy="55" rx="4" ry="5" fill="#2D2D2D"/><circle cx="48" cy="53" r="1.5" fill="#FFF"/><circle cx="68" cy="53" r="1.5" fill="#FFF"/><path d="M52 70 Q60 76 68 70" stroke="#2D2D2D" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
+                className: 'carrot-marker',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+                popupAnchor: [0, -32]
+            });
+
+            // Create markers for each place
+            const places = document.querySelectorAll('.place');
+            places.forEach(function(place) {
+                const lat = parseFloat(place.dataset.lat);
+                const lng = parseFloat(place.dataset.lng);
+                const name = place.dataset.name;
+                const neighborhood = place.querySelector('.neighborhood').textContent;
+                const price = place.querySelector('.price').textContent;
+                const placeId = place.querySelector('h3').textContent.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+
+                if (lat && lng) {
+                    const marker = L.marker([lat, lng], { icon: carrotIcon }).addTo(map)
+                        .bindPopup(
+                            '<div class="popup-title">' + name + '</div>' +
+                            '<div class="popup-neighborhood">' + neighborhood + '</div>' +
+                            '<div class="popup-price">' + price + '</div>' +
+                            '<div class="popup-link"><a data-scroll-to="' + placeId + '" href="#">View details</a></div>'
+                        );
+                    markers.push({ marker: marker, element: place, lat: lat, lng: lng });
+                }
+            });
+
+            // Handle popup "View details" clicks — scroll to listing
+            map.on('popupopen', function(e) {
+                const link = e.popup.getElement().querySelector('[data-scroll-to]');
+                if (link) {
+                    link.addEventListener('click', function(ev) {
+                        ev.preventDefault();
+                        var targetId = this.getAttribute('data-scroll-to');
+                        var allPlaces = document.querySelectorAll('.place');
+                        for (var i = 0; i < allPlaces.length; i++) {
+                            var heading = allPlaces[i].querySelector('h3').textContent.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+                            if (heading === targetId) {
+                                allPlaces[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                break;
+                            }
+                        }
+                        map.closePopup();
+                    });
+                }
+            });
+        } catch (err) {
+            mapEl.innerHTML = '<div class="map-error">Map could not be loaded. Please try refreshing the page.</div>';
+        }
+
+        // === Filtering ===
         const places = document.querySelectorAll('.place');
-        const markers = [];
-        places.forEach(place => { const lat = parseFloat(place.dataset.lat), lng = parseFloat(place.dataset.lng), name = place.dataset.name, neighborhood = place.querySelector('.neighborhood').textContent, price = place.querySelector('.price').textContent; if (lat && lng) { const marker = L.marker([lat, lng], { icon: carrotIcon }).addTo(map).bindPopup(`<div class="popup-title">${name}</div><div class="popup-neighborhood">${neighborhood}</div><div class="popup-price">${price}</div>`); markers.push({ marker, element: place, lat, lng }); } });
-        let activeNeighborhood = 'all', activePrice = 'all';
-        function applyFilters() { let visibleCount = 0; const visibleBounds = []; places.forEach(place => { const placeNeighborhoods = place.dataset.neighborhood.split(','), placePrice = place.dataset.price, matchesNeighborhood = activeNeighborhood === 'all' || placeNeighborhoods.some(n => n.trim() === activeNeighborhood), matchesPrice = activePrice === 'all' || placePrice === activePrice; if (matchesNeighborhood && matchesPrice) { place.classList.remove('hidden'); visibleCount++; const markerData = markers.find(m => m.element === place); if (markerData) { markerData.marker.addTo(map); visibleBounds.push([markerData.lat, markerData.lng]); } } else { place.classList.add('hidden'); const markerData = markers.find(m => m.element === place); if (markerData) map.removeLayer(markerData.marker); } }); document.getElementById('count').textContent = visibleCount; if (visibleBounds.length > 0) { if (visibleBounds.length === 1) map.setView(visibleBounds[0], 14); else map.fitBounds(visibleBounds, { padding: [50, 50] }); } }
-        document.querySelectorAll('#neighborhood-filters .filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('#neighborhood-filters .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); activeNeighborhood = btn.dataset.filter; applyFilters(); }); });
-        document.querySelectorAll('#price-filters .filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('#price-filters .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); activePrice = btn.dataset.price; applyFilters(); }); });
-        function clearFilters() { activeNeighborhood = 'all'; activePrice = 'all'; document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active')); document.querySelector('#neighborhood-filters .filter-btn[data-filter="all"]').classList.add('active'); document.querySelector('#price-filters .filter-btn[data-price="all"]').classList.add('active'); applyFilters(); }
-        document.getElementById('count').textContent = places.length;
+        const countEl = document.getElementById('count');
+        let activeNeighborhood = 'all';
+        let activePrice = 'all';
+
+        // Read initial filter state from URL
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('neighborhood')) activeNeighborhood = params.get('neighborhood');
+        if (params.get('price')) activePrice = params.get('price');
+
+        function updateURL() {
+            var p = new URLSearchParams();
+            if (activeNeighborhood !== 'all') p.set('neighborhood', activeNeighborhood);
+            if (activePrice !== 'all') p.set('price', activePrice);
+            var qs = p.toString();
+            var url = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+            history.replaceState(null, '', url);
+        }
+
+        function applyFilters() {
+            var visibleCount = 0;
+            var visibleBounds = [];
+            var sectionCounts = { coffee: 0, bakeries: 0, restaurants: 0 };
+
+            places.forEach(function(place) {
+                var placeNeighborhoods = place.dataset.neighborhood.split(',');
+                var placePrice = place.dataset.price;
+                var matchesNeighborhood = activeNeighborhood === 'all' || placeNeighborhoods.some(function(n) { return n.trim() === activeNeighborhood; });
+                var matchesPrice = activePrice === 'all' || placePrice === activePrice;
+
+                if (matchesNeighborhood && matchesPrice) {
+                    place.classList.remove('hidden');
+                    visibleCount++;
+                    // Count per section
+                    var section = place.closest('section');
+                    if (section && section.id) sectionCounts[section.id] = (sectionCounts[section.id] || 0) + 1;
+                    // Map marker
+                    var markerData = markers.find(function(m) { return m.element === place; });
+                    if (markerData && map) { markerData.marker.addTo(map); visibleBounds.push([markerData.lat, markerData.lng]); }
+                } else {
+                    place.classList.add('hidden');
+                    var markerData = markers.find(function(m) { return m.element === place; });
+                    if (markerData && map) map.removeLayer(markerData.marker);
+                }
+            });
+
+            // Show/hide empty section messages
+            ['coffee', 'bakeries', 'restaurants'].forEach(function(id) {
+                var section = document.getElementById(id);
+                if (section) {
+                    var emptyMsg = section.querySelector('.section-empty');
+                    if (emptyMsg) {
+                        emptyMsg.classList.toggle('visible', (sectionCounts[id] || 0) === 0);
+                    }
+                }
+            });
+
+            countEl.textContent = visibleCount;
+
+            if (map && visibleBounds.length > 0) {
+                if (visibleBounds.length === 1) map.setView(visibleBounds[0], 14);
+                else map.fitBounds(visibleBounds, { padding: [50, 50] });
+            }
+
+            updateURL();
+        }
+
+        // Set active state for filter buttons based on URL params
+        function syncFilterButtons() {
+            document.querySelectorAll('#neighborhood-filters .filter-btn').forEach(function(b) {
+                b.classList.toggle('active', b.dataset.filter === activeNeighborhood);
+            });
+            document.querySelectorAll('#price-filters .filter-btn').forEach(function(b) {
+                b.classList.toggle('active', b.dataset.price === activePrice);
+            });
+        }
+
+        // Neighborhood filter buttons
+        document.querySelectorAll('#neighborhood-filters .filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                activeNeighborhood = btn.dataset.filter;
+                syncFilterButtons();
+                applyFilters();
+            });
+        });
+
+        // Price filter buttons
+        document.querySelectorAll('#price-filters .filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                activePrice = btn.dataset.price;
+                syncFilterButtons();
+                applyFilters();
+            });
+        });
+
+        // Clear filters button (no inline onclick)
+        document.getElementById('clear-filters-btn').addEventListener('click', function() {
+            activeNeighborhood = 'all';
+            activePrice = 'all';
+            syncFilterButtons();
+            applyFilters();
+        });
+
+        // Initial render
+        syncFilterButtons();
+        applyFilters();
+
+        // === Form submission feedback ===
+        document.querySelectorAll('form').forEach(function(form) {
+            form.addEventListener('submit', function() {
+                var btn = form.querySelector('button[type="submit"]');
+                if (btn) {
+                    btn.disabled = true;
+                    btn.textContent = 'Sending\u2026';
+                }
+            });
+        });
+
+    })();
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "bmoreveg",
+        "url": "https://bmoreveg.com",
+        "description": "A curated guide to vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Veg-Friendly Restaurants in Baltimore",
+        "numberOfItems": 20,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Ceremony Coffee Roasters",
+                    "servesCuisine": "Coffee",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Artifact Coffee",
+                    "servesCuisine": "Coffee",
+                    "priceRange": "$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3301, "longitude": -76.6316 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Doppio Pasticceria",
+                    "servesCuisine": "Sicilian",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3248, "longitude": -76.618 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Café Dear Leon",
+                    "servesCuisine": "Bakery",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2819, "longitude": -76.578 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "La Maison",
+                    "servesCuisine": "Bakery",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3262, "longitude": -76.6185 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 6,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Love Pomelo",
+                    "servesCuisine": "Italian",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2815, "longitude": -76.582 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 7,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Little Donna's",
+                    "servesCuisine": "Polish-Italian",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2831, "longitude": -76.593 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 8,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Toki Underground",
+                    "servesCuisine": "Ramen",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3115, "longitude": -76.6155 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 9,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Clavel",
+                    "servesCuisine": "Mexican",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3233, "longitude": -76.6166 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 10,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Pavan Foods",
+                    "servesCuisine": "South Indian",
+                    "priceRange": "$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Parkville", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3773, "longitude": -76.5396 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 11,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Namaste",
+                    "servesCuisine": "Indian",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3665, "longitude": -76.6315 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 12,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Peter Chang",
+                    "servesCuisine": "Sichuan Chinese",
+                    "priceRange": "$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3262, "longitude": -76.6155 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 13,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Sangam",
+                    "servesCuisine": "South Indian",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Timonium", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.452, "longitude": -76.6195 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 14,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Ekiben",
+                    "servesCuisine": "Asian Fusion",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3295, "longitude": -76.6295 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 15,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "True Chesapeake Oyster Co.",
+                    "servesCuisine": "Seafood",
+                    "priceRange": "$$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3313, "longitude": -76.6394 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 16,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Di Pasquale's Italian Marketplace",
+                    "servesCuisine": "Italian",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2822, "longitude": -76.5694 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 17,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Cazbar",
+                    "servesCuisine": "Turkish",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3021, "longitude": -76.6167 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 18,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Little Georgia",
+                    "servesCuisine": "Georgian",
+                    "priceRange": "$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Reisterstown", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.4699, "longitude": -76.829 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 19,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Royal Taj",
+                    "servesCuisine": "Indian",
+                    "priceRange": "$$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Columbia", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2137, "longitude": -76.861 }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 20,
+                "item": {
+                    "@type": "Restaurant",
+                    "name": "Ananda",
+                    "servesCuisine": "Indian",
+                    "priceRange": "$$$",
+                    "address": { "@type": "PostalAddress", "addressLocality": "Fulton", "addressRegion": "MD" },
+                    "geo": { "@type": "GeoCoordinates", "latitude": 39.1804, "longitude": -76.883 }
+                }
+            }
+        ]
+    }
     </script>
 </body>
 </html>

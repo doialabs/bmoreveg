@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanks for subscribing! — bmoreveg</title>
+    <title>Thanks! — bmoreveg</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #FAFAF8; --text: #1a1a1a; --text-muted: #666; --accent: #2D5A27; --accent-light: rgba(45, 90, 39, 0.08); --border: #e5e5e5; --card-bg: #fff; --carrot: #F5794A; }
-        body { font-family: 'Newsreader', Georgia, serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 18px; min-height: 100vh; display: flex; flex-direction: column; }
-        header { padding: 2rem; text-align: center; border-bottom: 1px solid var(--border); }
-        .logo-container { display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+        body { min-height: 100vh; display: flex; flex-direction: column; }
+        header { padding: 2rem; }
+        .logo-container { gap: 0.75rem; }
         .carrot-logo { width: 50px; height: 50px; }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; color: var(--accent); text-decoration: none; }
+        .logo { font-size: 2rem; text-decoration: none; }
         .logo:hover { color: var(--carrot); }
         main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; }
         .thank-you { text-align: center; max-width: 500px; }
@@ -23,13 +24,14 @@
         .thank-you p { color: var(--text-muted); margin-bottom: 2rem; }
         .back-link { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
         .back-link:hover { background: #234a1f; }
-        footer { padding: 2rem; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.95rem; }
+        @media (prefers-color-scheme: dark) { .back-link:hover { background: #4a9e40; } }
     </style>
 </head>
 <body>
     <header>
         <a href="/" class="logo-container">
-            <svg class="carrot-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="50" height="50">
+            <svg class="carrot-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="50" height="50" role="img" aria-label="bmoreveg carrot logo">
+                <title>bmoreveg carrot logo</title>
                 <path d="M60 108 C45 108 35 85 33 65 C31 45 38 28 60 28 C82 28 89 45 87 65 C85 85 75 108 60 108Z" fill="#F5794A"/>
                 <path d="M45 50 Q60 48 75 50" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
                 <path d="M43 65 Q60 62 77 65" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
@@ -51,12 +53,12 @@
     </header>
     <main>
         <div class="thank-you">
-            <div class="thank-you-icon">🥕</div>
+            <div class="thank-you-icon" aria-hidden="true">&#x1F955;</div>
             <h1>You're on the list!</h1>
-            <p>Thanks for subscribing. We'll send you an email when we add new veg-friendly spots to the guide. No spam, just good food.</p>
-            <a href="/" class="back-link">← Back to the guide</a>
+            <p>Thanks for reaching out. We'll be in touch. No spam, just good food.</p>
+            <a href="/" class="back-link">Back to the guide</a>
         </div>
     </main>
-    <footer><p>Made with 🥬 in Baltimore</p></footer>
+    <footer><p><a href="/">bmoreveg</a> — Made with care in Baltimore</p></footer>
 </body>
 </html>
