@@ -433,8 +433,8 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
 .place[data-veg="veg-friendly"]::before { background: var(--carrot); }
 
 @media (prefers-color-scheme: dark) {
-    .place[data-veg="all-veg"]::before { background: #81c784; }
-    .place[data-veg="pescatarian"]::before { background: #64b5f6; }
+    .place[data-veg="all-veg"]::before { background: #a5d6a7; }
+    .place[data-veg="pescatarian"]::before { background: #90caf9; }
     .place[data-veg="veg-friendly"]::before { background: var(--carrot); }
 }
 
@@ -596,7 +596,8 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
 }
 .about-image {
     width: 100%;
-    height: 300px;
+    height: auto;
+    max-height: 300px;
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 2rem;

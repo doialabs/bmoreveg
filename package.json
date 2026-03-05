@@ -1,0 +1,8 @@
+{
+  "name": "bmoreveg",
+  "private": true,
+  "dependencies": {
+    "@netlify/functions": "^2.8.0",
+    "rss-parser": "^3.13.0"
+  }
+}

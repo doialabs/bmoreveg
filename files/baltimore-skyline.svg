@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a3e"/>
+      <stop offset="40%" stop-color="#2d3a6e"/>
+      <stop offset="70%" stop-color="#e8845c"/>
+      <stop offset="100%" stop-color="#f5a882"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d3a6e" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#1a1a3e" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1200" height="500" fill="url(#sky)"/>
+
+  <!-- Stars -->
+  <circle cx="100" cy="40" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="250" cy="80" r="1" fill="white" opacity="0.5"/>
+  <circle cx="400" cy="30" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="550" cy="60" r="1" fill="white" opacity="0.4"/>
+  <circle cx="700" cy="45" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="850" cy="75" r="1" fill="white" opacity="0.5"/>
+  <circle cx="1000" cy="35" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="1100" cy="55" r="1" fill="white" opacity="0.4"/>
+  <circle cx="180" cy="100" r="1" fill="white" opacity="0.3"/>
+  <circle cx="950" cy="90" r="1" fill="white" opacity="0.3"/>
+
+  <!-- Baltimore skyline silhouette -->
+  <g fill="#1a1a2a">
+    <!-- Transamerica Tower (left area) -->
+    <rect x="150" y="180" width="30" height="150"/>
+    <polygon points="150,180 165,140 180,180"/>
+
+    <!-- Commerce Place -->
+    <rect x="200" y="160" width="45" height="170"/>
+    <rect x="210" y="155" width="25" height="5"/>
+
+    <!-- 100 East Pratt -->
+    <rect x="260" y="170" width="50" height="160"/>
+    <rect x="265" y="165" width="40" height="5"/>
+
+    <!-- World Trade Center (distinctive pentagon shape) -->
+    <rect x="330" y="130" width="55" height="200"/>
+    <rect x="340" y="125" width="35" height="5"/>
+    <!-- Windows pattern -->
+    <rect x="338" y="140" width="8" height="4" fill="#3d4a7e" opacity="0.6"/>
+    <rect x="352" y="140" width="8" height="4" fill="#3d4a7e" opacity="0.6"/>
+    <rect x="366" y="140" width="8" height="4" fill="#3d4a7e" opacity="0.6"/>
+    <rect x="338" y="155" width="8" height="4" fill="#e8845c" opacity="0.4"/>
+    <rect x="352" y="155" width="8" height="4" fill="#3d4a7e" opacity="0.6"/>
+    <rect x="366" y="155" width="8" height="4" fill="#e8845c" opacity="0.3"/>
+    <rect x="338" y="170" width="8" height="4" fill="#3d4a7e" opacity="0.5"/>
+    <rect x="352" y="170" width="8" height="4" fill="#e8845c" opacity="0.4"/>
+    <rect x="366" y="170" width="8" height="4" fill="#3d4a7e" opacity="0.6"/>
+
+    <!-- Baltimore Marriott Waterfront -->
+    <rect x="405" y="175" width="40" height="155"/>
+
+    <!-- Legg Mason / Harbor East buildings -->
+    <rect x="460" y="190" width="35" height="140"/>
+    <rect x="510" y="200" width="30" height="130"/>
+
+    <!-- National Aquarium (distinctive triangular glass) -->
+    <rect x="555" y="220" width="60" height="110"/>
+    <polygon points="555,220 585,175 615,220" fill="#1a1a2a"/>
+    <polygon points="560,220 585,185 610,220" fill="#2d3a5e" opacity="0.4"/>
+
+    <!-- Power Plant -->
+    <rect x="630" y="240" width="50" height="90"/>
+    <!-- Smokestack -->
+    <rect x="660" y="200" width="8" height="40"/>
+
+    <!-- USS Constellation masts area -->
+    <line x1="700" y1="260" x2="700" y2="190" stroke="#1a1a2a" stroke-width="2"/>
+    <line x1="720" y1="260" x2="720" y2="200" stroke="#1a1a2a" stroke-width="2"/>
+    <line x1="690" y1="210" x2="730" y2="210" stroke="#1a1a2a" stroke-width="1.5"/>
+    <line x1="693" y1="225" x2="727" y2="225" stroke="#1a1a2a" stroke-width="1.5"/>
+
+    <!-- Federal Hill area buildings -->
+    <rect x="750" y="230" width="40" height="100"/>
+    <rect x="800" y="245" width="35" height="85"/>
+    <rect x="845" y="250" width="30" height="80"/>
+
+    <!-- Domino Sugar sign building -->
+    <rect x="900" y="235" width="55" height="95"/>
+    <!-- Domino sign -->
+    <rect x="905" y="238" width="45" height="12" fill="#2a2a3a" rx="1"/>
+    <text x="927" y="248" font-family="sans-serif" font-size="8" fill="#e8845c" text-anchor="middle" font-weight="bold">DOMINO</text>
+
+    <!-- More buildings right side -->
+    <rect x="970" y="255" width="30" height="75"/>
+    <rect x="1010" y="260" width="40" height="70"/>
+    <rect x="1060" y="265" width="35" height="65"/>
+
+    <!-- Small buildings / row houses filling gaps -->
+    <rect x="100" y="290" width="50" height="40"/>
+    <rect x="120" y="280" width="20" height="50"/>
+    <rect x="1100" y="275" width="40" height="55"/>
+    <rect x="1145" y="280" width="30" height="50"/>
+  </g>
+
+  <!-- Harbor waterline -->
+  <rect x="0" y="330" width="1200" height="170" fill="url(#water)"/>
+
+  <!-- Water reflections -->
+  <g opacity="0.15">
+    <rect x="330" y="340" width="55" height="80" fill="#e8845c"/>
+    <rect x="555" y="345" width="60" height="60" fill="#e8845c"/>
+    <rect x="200" y="340" width="45" height="70" fill="#e8845c"/>
+  </g>
+
+  <!-- Water ripple lines -->
+  <g stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none">
+    <path d="M0,350 Q200,345 400,352 Q600,359 800,348 Q1000,337 1200,350"/>
+    <path d="M0,375 Q300,370 600,378 Q900,386 1200,372"/>
+    <path d="M0,400 Q250,395 500,403 Q750,411 1000,398 Q1100,392 1200,400"/>
+    <path d="M0,430 Q350,425 700,435 Q1050,445 1200,428"/>
+    <path d="M0,460 Q300,455 600,465 Q900,475 1200,458"/>
+  </g>
+
+  <!-- Subtle glow on horizon -->
+  <ellipse cx="400" cy="330" rx="300" ry="15" fill="#f5a882" opacity="0.15"/>
+</svg>
