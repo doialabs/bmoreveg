@@ -12,7 +12,22 @@
     <link rel="stylesheet" href="/styles.css">
     <style>
         body { min-height: 100vh; display: flex; flex-direction: column; }
-        header { padding: 2rem; }
+        header {
+            padding: 2rem;
+            min-height: auto;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(245, 121, 74, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(45, 90, 39, 0.12) 0%, transparent 50%),
+                var(--bg);
+        }
+        @media (prefers-color-scheme: dark) {
+            header {
+                background:
+                    radial-gradient(ellipse at 20% 80%, rgba(245, 121, 74, 0.08) 0%, transparent 50%),
+                    radial-gradient(ellipse at 80% 20%, rgba(92, 180, 80, 0.06) 0%, transparent 50%),
+                    var(--bg);
+            }
+        }
         .logo-container { gap: 0.75rem; }
         .carrot-logo { width: 50px; height: 50px; }
         .logo { font-size: 2rem; text-decoration: none; }
@@ -20,15 +35,34 @@
         main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; }
         .thank-you { text-align: center; max-width: 500px; }
         .thank-you-icon { font-size: 4rem; margin-bottom: 1.5rem; }
-        .thank-you h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 600; margin-bottom: 1rem; color: var(--accent); }
+        .thank-you h1 {
+            font-family: 'Newsreader', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
         .thank-you p { color: var(--text-muted); margin-bottom: 2rem; }
-        .back-link { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; background: var(--accent); color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
-        .back-link:hover { background: #234a1f; }
-        @media (prefers-color-scheme: dark) { .back-link:hover { background: #4a9e40; } }
+        .back-link {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .back-link:hover { opacity: 0.9; transform: translateY(-1px); }
     </style>
 </head>
 <body>
-    <header>
+    <header class="hero">
         <a href="/" class="logo-container">
             <svg class="carrot-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="50" height="50" role="img" aria-label="bmoreveg carrot logo">
                 <title>bmoreveg carrot logo</title>
