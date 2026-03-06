@@ -446,32 +446,97 @@
         <!-- ===== NEWSLETTER ===== -->
         <!-- NOTE: Form submissions go to your Netlify dashboard under Forms.
              Set up email notifications at: Site settings > Forms > Form notifications > Email notification -->
-        <section class="subscribe animate-on-scroll">
-            <h2>Get new recommendations</h2>
-            <p>Sign up for occasional emails when we add new spots to the guide.</p>
-            <form class="subscribe-form" id="newsletter-form" name="newsletter" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="newsletter">
-                <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-                <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
-                <button type="submit" id="subscribe-btn">Subscribe</button>
-            </form>
-            <p class="form-error" id="newsletter-error">Something went wrong. Please try again.</p>
-            <p class="privacy-note">No spam, ever. <a href="#privacy">Privacy policy</a></p>
+        <section class="subscribe animate-on-scroll" id="newsletter-section">
+            <div class="form-state form-state--input">
+                <div class="subscribe-icon" aria-hidden="true">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
+                </div>
+                <h2>Get new recommendations</h2>
+                <p>We'll drop you a note when we add new spots. A few emails a month, tops.</p>
+                <form class="subscribe-form" id="newsletter-form" name="newsletter" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="newsletter">
+                    <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+                    <div class="input-group">
+                        <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address">
+                        <button type="submit" id="subscribe-btn">Subscribe</button>
+                    </div>
+                </form>
+                <p class="form-error" id="newsletter-error">Something went wrong. Please try again.</p>
+                <p class="privacy-note">No spam, ever. <a href="#privacy">Privacy policy</a></p>
+            </div>
+            <div class="form-state form-state--success" aria-live="polite">
+                <div class="success-checkmark" aria-hidden="true">
+                    <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="var(--accent)" stroke-width="2" class="success-circle"/><path d="M14 24L21 31L34 18" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="success-check"/></svg>
+                </div>
+                <h2>You're on the list!</h2>
+                <p>We'll let you know when we find new spots. No spam, just good food.</p>
+            </div>
         </section>
 
         <!-- ===== SUGGEST A SPOT ===== -->
-        <section class="suggest animate-on-scroll">
-            <h2>Know a spot we're missing?</h2>
-            <p>Tell us about a veg-friendly restaurant, café, or bakery in the Baltimore area.</p>
-            <form class="suggest-form" id="suggest-form" name="suggestion" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="suggestion">
-                <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-                <input type="text" name="restaurant-name" placeholder="Restaurant name" required aria-label="Restaurant name">
-                <input type="text" name="neighborhood" placeholder="Neighborhood (optional)" aria-label="Neighborhood">
-                <textarea name="details" placeholder="What makes it great for veg diners?" aria-label="Details about the restaurant"></textarea>
-                <button type="submit" id="suggest-btn">Send suggestion</button>
-            </form>
-            <p class="form-error" id="suggest-error">Something went wrong. Please try again.</p>
+        <section class="suggest animate-on-scroll" id="suggest-section">
+            <div class="form-state form-state--input">
+                <div class="suggest-icon" aria-hidden="true">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                </div>
+                <h2>Know a spot we're missing?</h2>
+                <p>Tell us about a veg-friendly restaurant, café, or bakery in the Baltimore area.</p>
+                <form class="suggest-form" id="suggest-form" name="suggestion" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="suggestion">
+                    <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="restaurant-name">Restaurant name</label>
+                            <input type="text" id="restaurant-name" name="restaurant-name" placeholder="e.g. The Green Bowl" required aria-label="Restaurant name">
+                        </div>
+                        <div class="form-field">
+                            <label for="spot-type">Type</label>
+                            <select id="spot-type" name="spot-type" aria-label="Type of spot">
+                                <option value="restaurant">Restaurant</option>
+                                <option value="cafe">Café / Coffee</option>
+                                <option value="bakery">Bakery</option>
+                                <option value="food-truck">Food Truck</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="spot-neighborhood">Neighborhood</label>
+                        <select id="spot-neighborhood" name="neighborhood" aria-label="Neighborhood">
+                            <option value="">Select a neighborhood (optional)</option>
+                            <option value="hampden">Hampden</option>
+                            <option value="remington">Remington</option>
+                            <option value="canton">Canton</option>
+                            <option value="fells-point">Fells Point</option>
+                            <option value="mt-vernon">Mt. Vernon</option>
+                            <option value="downtown">Downtown</option>
+                            <option value="station-north">Station North</option>
+                            <option value="charles-village">Charles Village</option>
+                            <option value="roland-park">Roland Park</option>
+                            <option value="parkville">Parkville</option>
+                            <option value="timonium">Timonium</option>
+                            <option value="columbia">Columbia</option>
+                            <option value="reisterstown">Reisterstown</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="spot-details">What makes it great for veg diners?</label>
+                        <textarea id="spot-details" name="details" placeholder="Tell us about the veg options, your favorite dish, the vibe…" aria-label="Details about the restaurant" maxlength="500"></textarea>
+                        <span class="char-count" aria-live="polite"><span class="char-current">0</span>/500</span>
+                    </div>
+                    <button type="submit" id="suggest-btn">Send suggestion</button>
+                </form>
+                <p class="form-error" id="suggest-error">Something went wrong. Please try again.</p>
+            </div>
+            <div class="form-state form-state--success" aria-live="polite">
+                <div class="success-checkmark" aria-hidden="true">
+                    <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="none" stroke="var(--carrot)" stroke-width="2" class="success-circle"/><path d="M14 24L21 31L34 18" fill="none" stroke="var(--carrot)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="success-check"/></svg>
+                </div>
+                <h2>Thanks for the tip!</h2>
+                <p>We'll check it out. The best guides are built by the community.</p>
+                <button type="button" class="suggest-another-btn" aria-label="Suggest another spot">Suggest another spot</button>
+            </div>
         </section>
 
         <!-- ===== NEIGHBORHOOD LINKS (SEO) ===== -->
@@ -733,12 +798,33 @@
             });
         });
 
-        // === Form submission with fetch (better error handling) ===
+        // === Form submission with inline success states ===
+        function showSuccess(section) {
+            var inputState = section.querySelector('.form-state--input');
+            var successState = section.querySelector('.form-state--success');
+            if (inputState) inputState.classList.add('hidden');
+            if (successState) successState.classList.add('active');
+        }
+
+        function resetForm(section) {
+            var inputState = section.querySelector('.form-state--input');
+            var successState = section.querySelector('.form-state--success');
+            var form = section.querySelector('form');
+            if (successState) successState.classList.remove('active');
+            if (inputState) inputState.classList.remove('hidden');
+            if (form) form.reset();
+            var charCurrent = section.querySelector('.char-current');
+            if (charCurrent) charCurrent.textContent = '0';
+            var charCount = section.querySelector('.char-count');
+            if (charCount) { charCount.classList.remove('near-limit', 'at-limit'); }
+        }
+
         document.querySelectorAll('form[data-netlify="true"]').forEach(function(form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 var btn = form.querySelector('button[type="submit"]');
-                var errorEl = form.closest('section').querySelector('.form-error');
+                var section = form.closest('section');
+                var errorEl = section.querySelector('.form-error');
                 if (errorEl) errorEl.classList.remove('visible');
                 if (btn) { btn.disabled = true; btn.textContent = 'Sending\u2026'; }
 
@@ -751,7 +837,7 @@
                 })
                 .then(function(response) {
                     if (response.ok) {
-                        window.location.href = '/thank-you';
+                        showSuccess(section);
                     } else {
                         throw new Error('Form submission failed');
                     }
@@ -762,6 +848,33 @@
                 });
             });
         });
+
+        // === "Suggest another" button ===
+        var suggestAnotherBtn = document.querySelector('.suggest-another-btn');
+        if (suggestAnotherBtn) {
+            suggestAnotherBtn.addEventListener('click', function() {
+                var section = this.closest('section');
+                resetForm(section);
+                var btn = section.querySelector('button[type="submit"]');
+                if (btn) { btn.disabled = false; btn.textContent = 'Send suggestion'; }
+            });
+        }
+
+        // === Character count for textarea ===
+        var detailsTextarea = document.getElementById('spot-details');
+        if (detailsTextarea) {
+            detailsTextarea.addEventListener('input', function() {
+                var current = this.value.length;
+                var max = 500;
+                var charEl = this.closest('.form-field').querySelector('.char-current');
+                var countEl = this.closest('.form-field').querySelector('.char-count');
+                if (charEl) charEl.textContent = current;
+                if (countEl) {
+                    countEl.classList.toggle('near-limit', current >= max * 0.8 && current < max);
+                    countEl.classList.toggle('at-limit', current >= max);
+                }
+            });
+        }
 
     })();
     </script>
