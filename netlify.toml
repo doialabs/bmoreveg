@@ -12,16 +12,6 @@
 
 # Redirect broken/placeholder pages to homepage
 [[redirects]]
-  from = "/restaurants"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  from = "/restaurants/"
-  to = "/"
-  status = 301
-
-[[redirects]]
   from = "/blog"
   to = "/"
   status = 301
@@ -40,6 +30,13 @@
   from = "/contact/"
   to = "/"
   status = 301
+
+# Old query-param neighborhood URLs redirect to new pages
+[[redirects]]
+  from = "/?neighborhood=:slug"
+  to = "/:slug/"
+  status = 301
+  force = true
 
 # Security headers
 [[headers]]
