@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bmoreveg — Vegetarian &amp; Veg-Friendly Restaurant Guide for Baltimore</title>
-    <meta name="description" content="Discover 20+ curated vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD. Filter by neighborhood and price. Updated March 2026.">
+    <meta name="description" content="Curated guide to the best vegetarian, vegan, and veg-friendly restaurants, cafes, and bakeries in Baltimore. 20+ spots reviewed.">
     <link rel="canonical" href="https://bmoreveg.com/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="bmoreveg — Veg-Friendly Dining in Baltimore">
-    <meta property="og:description" content="A curated guide to the best vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD.">
+    <meta property="og:description" content="Curated guide to the best vegetarian, vegan, and veg-friendly restaurants, cafes, and bakeries in Baltimore. 20+ spots reviewed.">
     <meta property="og:image" content="https://bmoreveg.com/files/baltimore-skyline.jpg">
     <meta property="og:url" content="https://bmoreveg.com/">
     <meta property="og:site_name" content="bmoreveg">
     <meta property="og:locale" content="en_US">
-    <meta property="og:updated_time" content="2026-03-05T00:00:00Z">
+    <meta property="og:updated_time" content="2026-03-18T00:00:00Z">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="bmoreveg — Veg-Friendly Dining in Baltimore">
-    <meta name="twitter:description" content="A curated guide to the best vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD.">
+    <meta name="twitter:description" content="Curated guide to the best vegetarian, vegan, and veg-friendly restaurants, cafes, and bakeries in Baltimore. 20+ spots reviewed.">
     <meta name="twitter:image" content="https://bmoreveg.com/files/baltimore-skyline.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -113,6 +113,9 @@
         </div>
     </div>
 
+    <!-- Neighborhood intro banner (shown when a neighborhood filter is active) -->
+    <div class="neighborhood-intro" id="neighborhood-intro" aria-live="polite" hidden></div>
+
     <main id="main-content">
         <!-- ===== COFFEE ===== -->
         <section id="coffee">
@@ -126,8 +129,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">One is reluctant to admit that a modern establishment has achieved anything approaching adequacy, and yet here we are. The proprietors have eschewed the garish plastic décor that plagues our debased century in favor of a minimalist aesthetic that would not entirely offend Boethius himself. They claim to reject any bean scoring below 85 points — a commendable if somewhat arbitrary devotion to standards in an age that has abandoned them entirely. The Harbor Point location offers views of the water, which I found tolerable while nursing my digestive complaints. My valve remained mercifully closed throughout the visit.</p>
-                <p class="vibe">Acceptable for scholarly contemplation, multiple locations for the peripatetic sufferer</p>
+                <p class="vibe">Minimalist specialty roaster with multiple locations and waterfront views</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Single-origin pour-over, seasonal espresso drinks
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.2904,-76.6122" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -137,12 +143,15 @@
             <article class="place animate-on-scroll" id="artifact-coffee" data-neighborhood="hampden" data-price="1" data-veg="veg-friendly" data-lat="39.3301" data-lng="-76.6316" data-name="Artifact Coffee">
                 <div class="place-header"><h3>Artifact Coffee</h3><span class="neighborhood">Hampden</span></div>
                 <div class="place-meta">
-                    <span class="category">Roastery &amp; Café</span>
+                    <span class="category">Roastery &amp; Caf&eacute;</span>
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$</span>
                 </div>
-                <p class="description">This warehouse arrangement initially struck me as yet another symptom of industrial decay, but I was forced to revise my assessment. The proprietress has had the good sense to reject the pretensions that afflict most coffee establishments. One can observe the actual roasting of beans — a mechanical process, yes, but one conducted with proper geometry and without the insufferable explanations that baristas elsewhere seem compelled to deliver. They offer <strong>donuts</strong> of reasonable quality and, I am told, coffee infused with CBD, which I refused on principle but which may benefit those whose valves are less temperamental than my own. The high ceilings accommodate my considerable presence without complaint. When the weather permits, the outdoor space allows one to contemplate the moral failings of passing pedestrians while consuming adequate provisions.</p>
-                <p class="vibe">Unpretentious, voluminous space, suitable for those who wish to be left alone</p>
+                <p class="vibe">Spacious warehouse roastery with outdoor seating — unpretentious and chill</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    House-roasted drip coffee, donuts, CBD-infused coffee
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3301,-76.6316" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -156,8 +165,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">At last! An establishment that understands the medieval Sicilian traditions that modern America has so grotesquely abandoned. These people mill their own grains — MILL THEIR OWN GRAINS — as if the twelfth century had never ended. The <strong>arancini</strong> achieves a proper spherical geometry that would satisfy Euclid himself. They have rejected single-use plastics, demonstrating an ethical sensibility that my mother, with her endless parade of cellophane-wrapped horrors, could never comprehend. The evening <strong>pizza</strong> service employs sourdough in the New York fashion, which is acceptable if not strictly Sicilian. One feels that Fortuna's wheel has, for once, rotated in a favorable direction.</p>
-                <p class="vibe">Old World methods preserved, my digestion notably improved, seasonal offerings</p>
+                <p class="vibe">Old-world Sicilian bakery that mills their own grains — zero single-use plastic</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Arancini, sourdough pizza, seasonal pastries
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3248,-76.6180" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -170,15 +182,18 @@
             <div class="section-header animate-on-scroll"><h2>Bakeries</h2><p>Pastries worth the wait</p></div>
             <p class="section-empty">No bakeries match your current filters.</p>
 
-            <article class="place animate-on-scroll" id="cafe-dear-leon" data-neighborhood="canton" data-price="2" data-veg="veg-friendly" data-lat="39.2819" data-lng="-76.5780" data-name="Café Dear Leon">
-                <div class="place-header"><h3>Café Dear Leon</h3><span class="neighborhood">Canton</span></div>
+            <article class="place animate-on-scroll" id="cafe-dear-leon" data-neighborhood="canton" data-price="2" data-veg="veg-friendly" data-lat="39.2819" data-lng="-76.5780" data-name="Caf&eacute; Dear Leon">
+                <div class="place-header"><h3>Caf&eacute; Dear Leon</h3><span class="neighborhood">Canton</span></div>
                 <div class="place-meta">
-                    <span class="category">Bakery &amp; Café</span>
+                    <span class="category">Bakery &amp; Caf&eacute;</span>
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The lines that form outside this establishment are an abomination — hordes of the unwashed masses clutching their telephone devices, utterly devoid of interior lives, waiting like cattle for pastries. And yet. AND YET. I must confess that the pastries themselves achieve a level of craftsmanship that this degraded century scarcely deserves. The <strong>crab dip bagel</strong>, about which the internet froths endlessly, is admittedly a work of some sophistication. They bake according to a published schedule, and when items are exhausted, they simply close — a philosophy of limits that our bloated consumer culture desperately needs. The Japanese influences would have confused Thomas Aquinas, but he would have appreciated the discipline.</p>
-                <p class="vibe">Worth the indignity of waiting among philistines, items sell out as God intended</p>
+                <p class="vibe">Japanese-inspired bakery with cult following — items sell out daily</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Crab dip bagel, seasonal pastries, matcha drinks
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.2819,-76.5780" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -188,12 +203,15 @@
             <article class="place animate-on-scroll" id="la-maison" data-neighborhood="remington" data-price="2" data-veg="veg-friendly" data-lat="39.3262" data-lng="-76.6185" data-name="La Maison">
                 <div class="place-header"><h3>La Maison</h3><span class="neighborhood">Remington</span></div>
                 <div class="place-meta">
-                    <span class="category">Bakery &amp; Café</span>
+                    <span class="category">Bakery &amp; Caf&eacute;</span>
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The same culinary artisans behind Café Dear Leon have opened this larger establishment, presumably to accommodate my physical requirements, which the Canton location could not. Here one may actually SIT, a luxury that modern commerce has nearly extinguished in its endless pursuit of "turnover." The high ceilings permit proper air circulation, beneficial to those of us with sensitive respiratory constitutions. They have dedicated an entire room to the <strong>lamination of dough</strong> — a commitment to craft that brings tears to my eyes, or would if my tear ducts were not compromised by years of maternal disappointment. The WiFi functions adequately for those who must, regrettably, engage with the digital realm.</p>
-                <p class="vibe">Space for contemplation, proper seating, the same excellent pastries with room to breathe</p>
+                <p class="vibe">Spacious sister caf&eacute; to Dear Leon with a dedicated lamination room</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Laminated pastries, croissants, coffee
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3262,-76.6185" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -213,8 +231,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">Canton Square — that curious municipal arrangement where the city's middle classes gather to congratulate themselves on their proximity to water — conceals, in one of its corners, a restaurant of genuine merit. This cozy establishment has the wisdom to remain tucked away, as if embarrassed by the mediocrity surrounding it. The pasta is made in-house, a practice so elementary that one hesitates to praise it, and yet so rare that praise becomes necessary. The <strong>truffle pasta</strong> achieves the proper balance between earthly pleasure and spiritual aspiration. The <strong>leek soup</strong> demonstrates that vegetables, properly treated, need not be punished for their moral superiority over flesh. The number of vegetarian options suggests a kitchen that has actually THOUGHT about its craft, rather than merely appending a token salad to placate the righteous.</p>
-                <p class="vibe">Hidden competence, homemade pasta as it should be, vegetables treated with dignity</p>
+                <p class="vibe">Cozy Canton corner spot with house-made pasta and lots of veg options</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Truffle pasta, leek soup, seasonal vegetable dishes
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.2815,-76.5820" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -228,8 +249,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The combination of Polish and Italian cuisines would seem, to the uninitiated, as incongruous as a marriage between a Scholastic philosopher and a Byzantine empress. And yet! History teaches us that the Slavic and Mediterranean worlds have always maintained complex relations, and this establishment honors both traditions with surprising coherence. The atmosphere evokes a living room designed by someone who has actually READ — eclectic, yes, but with intention. The <strong>pizza</strong> is excellent. The <strong>cabbage pancake</strong> — CABBAGE, that most maligned of vegetables — achieves a crispness that would satisfy any Central European grandmother, including, one imagines, those who are not mine. The <strong>pierogi</strong> maintain proper density. The prices, mercifully, do not punish the economically precarious scholar.</p>
-                <p class="vibe">Eclectic charm, pan-European competence, intimate without being cloying</p>
+                <p class="vibe">Eclectic Polish-Italian gem with cozy living-room vibes</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Pizza, cabbage pancake, pierogi
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.2831,-76.5930" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -243,8 +267,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The name suggests a subterranean establishment, which appeals to my general preference for avoiding the sunlit world of the morally compromised surface-dwellers. This ramen establishment — and I use the term "ramen" advisedly, as it has been debased by the instant variety that sustained my undergraduate years — offers vegan options of genuine quality. The <strong>Dan Dan noodles</strong> achieve the proper ratio of heat to umami that lesser establishments bungle through ignorance or cowardice. The <strong>cauliflower bao bun</strong> represents vegetable cookery at its apex — crispy, flavorful, and possessed of the geometric integrity that I demand from all baked goods. The ceiling displays rotating skateboard fragments, a decorative choice that confuses my medieval sensibilities but which the younger patrons seem to regard with enthusiasm.</p>
-                <p class="vibe">Excellent vegetable preparations, proper noodle discipline, youthful energy that I tolerate</p>
+                <p class="vibe">Creative ramen shop with strong vegan options and skater-art decor</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Dan Dan noodles, cauliflower bao bun, vegan ramen
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3115,-76.6155" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -258,8 +285,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The proprietors of this establishment have committed what I initially considered an act of geographical hubris — transporting the taqueria tradition of Oaxaca to a former auto garage in Remington. And yet the results compel grudging admiration. The <strong>tacos</strong> arrive on proper corn tortillas, hand-pressed with a devotion to craft that my mother's microwave cuisine could never approach. The vegetarian options — <strong>mushroom</strong>, <strong>squash blossom</strong>, roasted vegetables — demonstrate that a taco need not contain flesh to achieve moral and gustatory weight. The mezcal selection is extensive, each bottle representing some agave plant's noble sacrifice to human civilization. The outdoor patio achieves a conviviality that I observe with anthropological detachment while my valve registers cautious approval. The space itself retains its industrial bones, which is honest, and the food retains its Mexican ones, which is essential.</p>
-                <p class="vibe">Proper tortillas, excellent vegetable tacos, mezcal for the philosophically inclined</p>
+                <p class="vibe">Oaxacan taqueria in a converted auto garage with killer mezcal</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Mushroom tacos, squash blossom tacos, mezcal flight
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3233,-76.6166" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -273,8 +303,11 @@
                     <span class="veg-badge all-veg">All Veg</span>
                     <span class="price">$</span>
                 </div>
-                <p class="description">I must report a discovery of considerable importance: in Parkville — a suburb whose existence I had heretofore regarded as purely theoretical — there operates a South Indian establishment of the first order. The wait is long, which I initially regarded as an insult to persons of my stature and digestive urgency, but which I have come to understand as evidence of genuine cooking rather than the industrial reheating that plagues lesser establishments. Everything is fresh. FRESH! The <strong>samosa chaat</strong> achieves proper textural complexity. The <strong>chhole poori</strong> demonstrates the Punjabi understanding that fried bread is not merely acceptable but spiritually necessary. The <strong>masala dosa</strong> — that great gift of Karnataka to human civilization — unfolds with appropriate crispness and geometric ambition. The décor is decidedly casual, which is to say honest, and the establishment is attached to a mini market, suggesting the immigrant entrepreneurial spirit that built civilizations. The prices are so reasonable that I suspect the proprietors of operating from charitable rather than commercial motives. Everything we consumed was vegan, though I did not require this; virtue was simply offered without fanfare.</p>
-                <p class="vibe">Worth the drive, worth the wait, vegetables prepared by those who understand vegetables</p>
+                <p class="vibe">Authentic all-veg South Indian — everything made fresh, worth the wait</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Samosa chaat, chhole poori, masala dosa
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3773,-76.5396" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -288,8 +321,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">Roland Park, that bastion of old Baltimore gentility, has long needed an Indian restaurant of substance rather than mere respectability. Namaste fulfills this requirement admirably. The establishment opens 365 days per year — a commitment to consistency that would warm the heart of any Benedictine monk. The vegan options are extensive, but I caution the diner against the folly of ordering familiar dishes simply because they appear recognizable. ASK THE WAITER. This is advice I offer rarely, as waitstaff typically disappoint, but here they demonstrate actual knowledge of the menu and will steer you toward excellence. The <strong>dal tadka</strong>, recommended thus, achieved a complexity my mother's boiled vegetables could never approach. The <strong>tofu chili</strong> demonstrated that even soy protein can transcend its institutional associations. The <strong>momo</strong> — those Nepali dumplings that have migrated through the Himalayan trading routes — were EXCELLENT, wrapped with the precision that dumpling-making demands.</p>
-                <p class="vibe">Staff who actually guide, excellent dumplings, open every single day</p>
+                <p class="vibe">Welcoming Indian spot open 365 days a year with great vegan options</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Dal tadka, tofu chili, momo dumplings
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3665,-76.6315" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -303,8 +339,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$</span>
                 </div>
-                <p class="description">The eponymous Peter Chang has, I am told, established a minor empire of Sichuan establishments throughout the mid-Atlantic region, which normally would provoke my suspicion of corporate homogenization. However, one must acknowledge competence where it exists, and this Charles Village location demonstrates genuine culinary facility. The service is FAST — so fast that I initially suspected mechanical assistance — which benefits those of us whose digestive schedules demand punctuality. The <strong>eggplant</strong> preparation is magnificent, that noble nightshade finally receiving the treatment it deserves: silky, properly oiled, infused with the numbing heat that distinguishes Sichuan cuisine from its Cantonese compromises. The prices remain reasonable, a miracle in any university-adjacent neighborhood. One enters, consumes excellent vegetables, and departs without the performative rituals that burden so much contemporary dining.</p>
-                <p class="vibe">Swift efficiency, extraordinary eggplant, no nonsense</p>
+                <p class="vibe">Fast, no-frills Sichuan with outstanding vegetable dishes</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Sichuan eggplant, dry-fried green beans, mapo tofu
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3262,-76.6155" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -318,8 +357,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The northern suburbs of Baltimore extend into territories I had previously considered beyond the pale of civilization, but Fortuna occasionally rewards the intrepid traveler. Sangam — the word refers to a sacred confluence of rivers in Hindu geography, which demonstrates the proprietors' theological seriousness — offers <strong>dosas</strong> of quality. The dosa, for the uninitiated, is a fermented rice and lentil crepe that represents one of South India's great contributions to human flourishing. Here they are prepared with appropriate crispness and served with the proper accompaniments. The establishment requires a journey that tests one's commitment to vegetable excellence, but as Boethius taught us in his Consolation, the difficulty of the path often corresponds to the value of the destination. I make no extravagant claims for this place — it is nice, the dosas are nice — but in our degraded age, "nice" has become a form of excellence.</p>
-                <p class="vibe">Proper dosas in the suburbs, worth the northern expedition</p>
+                <p class="vibe">Solid South Indian in the northern suburbs — known for crispy dosas</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Masala dosa, South Indian thali, idli sambar
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.4520,-76.6195" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -333,8 +375,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The concept of "fusion" cuisine typically offends my medievalist sensibilities — it suggests a mongrelization of tradition that would have horrified the monks who preserved civilization through the Dark Ages. However, I must grudgingly report that this Taiwanese-Ethiopian-American amalgamation achieves a certain harmony. The <strong>steamed buns</strong>, made from a family recipe, possess the proper pillowy geometry. The portions are GENEROUS, a quality so rare in our miserly age that I nearly wept into my <strong>tempura broccoli</strong>. The vegetarian options — <strong>tofu nuggets</strong>, the aforementioned broccoli — satisfy without the moral complications of flesh. The hip-hop soundtrack is regrettable but tolerable.</p>
-                <p class="vibe">Portions worthy of my appetite, excellent vegetables, music too loud but food compensates</p>
+                <p class="vibe">Taiwanese-Ethiopian fusion with generous portions and big flavors</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Steamed buns, tempura broccoli, tofu nuggets
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3295,-76.6295" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -348,8 +393,11 @@
                     <span class="veg-badge pescatarian">Pescatarian</span>
                     <span class="price">$$$</span>
                 </div>
-                <p class="description">I approached this establishment with considerable skepticism, as the "farm-to-table" movement has become yet another vehicle for bourgeois self-congratulation. Nevertheless, these people actually OWN their oyster farm — they are not merely invoking pastoral fantasies but engaging in genuine aquaculture. The building itself dates to the eighteenth century, when Americans still possessed some connection to proper craft and geometry. The bars are constructed from crushed <strong>oyster shells</strong>, a use of materials that demonstrates actual thought. The seafood is impeccable for the pescatarian diner. My valve found the atmosphere surprisingly congenial, though the prices suggest this is an establishment for celebrating rare victories over Fortuna.</p>
-                <p class="vibe">Historic premises, genuine agricultural connection, expensive but historically grounded</p>
+                <p class="vibe">Farm-to-table oyster bar in a historic 18th-century mill building</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Fresh oysters, seasonal seafood plates, oyster shell bar snacks
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3313,-76.6394" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -363,8 +411,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">HERE is an establishment that understands the weight of tradition! Operating since 1914 — before the catastrophic twentieth century had fully unleashed its horrors — this Italian marketplace represents everything our degraded commercial culture has abandoned. They bake their own bread. They make <strong>fresh mozzarella</strong> DAILY. They import the proper Nutella from Italy, not the adulterated American version that tastes of compromise and despair. The grandson of the founder still operates the establishment, maintaining a lineage that would warm the heart of any medieval guild master. The <strong>vegetarian lasagna</strong> achieves proper density and moral weight. The calzone and vegetables demonstrate competence without pretension. Even that television program hosted by the objectionable fellow with the automobile could not ruin this place.</p>
-                <p class="vibe">A century of tradition, proper Italian methods, my mother should take notes</p>
+                <p class="vibe">Family-run Italian market since 1914 with house-made everything</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Fresh mozzarella, vegetarian lasagna, calzone
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.2822,-76.5694" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -378,8 +429,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The Byzantine Empire, despite its theological errors, produced a cuisine of considerable merit, and this Turkish establishment preserves those traditions with admirable fidelity. The ornate décor — which lesser critics might dismiss as excessive — actually reflects the proper medieval understanding that beauty serves moral purposes. Over 150 dishes populate the menu, suggesting a comprehensive worldview rather than the pathetic "small plates" philosophy that has infected modern dining. The <strong>vegetarian mezes</strong> are numerous and satisfying. On weekend evenings, belly dancers perform, which I observed with purely anthropological interest while my valve registered mild perturbation. The <strong>Turkish coffee</strong> is served correctly, as a vehicle for philosophical contemplation.</p>
-                <p class="vibe">Byzantine splendor preserved, extensive vegetarian options, entertainment of historical interest</p>
+                <p class="vibe">Ornate Turkish restaurant with 150+ dishes and weekend belly dancing</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Vegetarian mezes platter, Turkish coffee, pide
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.3021,-76.6167" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -393,8 +447,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$</span>
                 </div>
-                <p class="description">The nation of Georgia — not the wretched American state — possesses a winemaking tradition spanning ten millennia, which is to say they were cultivating civilization while my ancestors were presumably grunting in forests. The proprietor abandoned postal work to open this establishment, demonstrating the kind of vocational courage that our bureaucratic age typically punishes. The <strong>khachapuri</strong> — a boat-shaped bread vessel containing cheese and egg — achieves perfect geometric form. The <strong>khinkali</strong> dumplings require proper technique to consume, separating the civilized from the barbarous. They stock 450 Georgian wine varietals. FOUR HUNDRED AND FIFTY. The drive to Reisterstown tests one's patience, but Boethius reminds us that the journey itself builds character.</p>
-                <p class="vibe">Ancient traditions, geometric perfection in bread form, worth the pilgrimage</p>
+                <p class="vibe">Authentic Georgian dining with an epic 450-bottle wine list</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Khachapuri, khinkali dumplings, Georgian wine
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.4699,-76.8290" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -408,8 +465,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$$</span>
                 </div>
-                <p class="description">At last, an establishment that comprehends the proper relationship between diner and staff! The service here approaches the feudal ideal — attentive, deferential, and conducted with genuine ceremony. The manager escorts guests to their vehicles, a courtesy so extraordinary in our democratized age that I initially suspected mockery. The vegetarian menu is extensive, as befits a cuisine shaped by genuine philosophical traditions rather than mere fashion. The <strong>naan</strong> achieves proper inflation. The sauces possess appropriate richness without the cloying sweetness that lesser Indian restaurants deploy to flatter American palates. Some internet publication named this among America's most romantic restaurants, a designation I find irrelevant but which may interest those whose valves function normally.</p>
-                <p class="vibe">Service befitting one's dignity, extensive vegetarian offerings, palatial atmosphere</p>
+                <p class="vibe">Elegant Indian fine dining with impeccable, attentive service</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Garlic naan, paneer tikka, rich vegetable curries
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.2137,-76.8610" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -423,8 +483,11 @@
                     <span class="veg-badge veg-friendly">Veg-Friendly</span>
                     <span class="price">$$$</span>
                 </div>
-                <p class="description">The name means "bliss" in Hindi, and while I am constitutionally suspicious of any establishment promising emotional states, I must concede that this one approaches its aspirations. The proprietor raises his own chickens nearby for the restaurant's eggs — a commitment to agricultural integrity that recalls the monastery gardens of the High Middle Ages. EIGHT FIREPLACES warm the premises, suggesting a proper understanding of thermal comfort that modern architecture has criminally neglected. The stained-glass windows filter light in a manner that soothes my perpetually agitated optical nerves. The vegetarian options reflect Northern Indian traditions executed with refinement. Live jazz performs on certain evenings, which I endure for the sake of the food.</p>
-                <p class="vibe">Genuine farm connection, medieval fireplace abundance, bliss may actually be achievable here</p>
+                <p class="vibe">Refined Indian with eight fireplaces, stained glass, and farm-raised ingredients</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Northern Indian vegetarian thali, chef's tasting menu
+                </div>
                 <div class="place-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=39.1804,-76.8830" target="_blank" rel="noopener">Directions</a>
                     <button class="share-btn" type="button">Share</button>
@@ -444,8 +507,6 @@
         </section>
 
         <!-- ===== NEWSLETTER ===== -->
-        <!-- NOTE: Form submissions go to your Netlify dashboard under Forms.
-             Set up email notifications at: Site settings > Forms > Form notifications > Email notification -->
         <section class="subscribe animate-on-scroll">
             <h2>Get new recommendations</h2>
             <p>Sign up for occasional emails when we add new spots to the guide.</p>
@@ -462,7 +523,7 @@
         <!-- ===== SUGGEST A SPOT ===== -->
         <section class="suggest animate-on-scroll">
             <h2>Know a spot we're missing?</h2>
-            <p>Tell us about a veg-friendly restaurant, café, or bakery in the Baltimore area.</p>
+            <p>Tell us about a veg-friendly restaurant, caf&eacute;, or bakery in the Baltimore area.</p>
             <form class="suggest-form" id="suggest-form" name="suggestion" method="POST" action="/thank-you" data-netlify="true" data-netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="suggestion">
                 <p class="hidden-field"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
@@ -510,6 +571,31 @@
     <script>
     (function() {
         'use strict';
+
+        // === Neighborhood intro data ===
+        var neighborhoodIntros = {
+            'hampden': 'Hampden is home to some of Baltimore\u2019s best veg-friendly dining, from Asian fusion at Ekiben to craft roastery Artifact Coffee and the farm-to-table oyster bar at Whitehall Mill.',
+            'remington': 'Remington\u2019s food scene punches above its weight with Sicilian baking at Doppio, Oaxacan tacos at Clavel, and the beloved laminated pastries of La Maison.',
+            'canton': 'Canton offers everything from Japanese-inspired pastries at Caf\u00e9 Dear Leon to house-made Italian at Love Pomelo and a 100-year-old Italian marketplace at Di Pasquale\u2019s.',
+            'fells-point': 'Fells Point brings eclectic charm with Polish-Italian comfort food at Little Donna\u2019s and multiple Ekiben locations serving generous Asian fusion bowls.',
+            'mt-vernon': 'Mt. Vernon anchors Baltimore\u2019s specialty coffee scene with Ceremony Coffee Roasters, offering minimalist vibes and high-scoring single-origin beans.',
+            'downtown': 'Downtown Baltimore surprises with Cazbar, an ornate Turkish restaurant boasting 150+ dishes and a full vegetarian mezes spread.',
+            'station-north': 'Station North\u2019s arts district is home to Toki Underground, a creative ramen shop with some of the best vegan bowls and bao buns in the city.',
+            'charles-village': 'Charles Village\u2019s university-adjacent dining scene includes Peter Chang, serving fast and exceptional Sichuan vegetable dishes at wallet-friendly prices.',
+            'roland-park': 'Roland Park\u2019s tree-lined streets lead to Namaste, a welcoming Indian restaurant open every single day with extensive vegan and vegetarian options.',
+            'parkville': 'Parkville is a hidden gem for veg diners thanks to Pavan Foods, an all-vegetarian South Indian spot where everything is made fresh from scratch.',
+            'timonium': 'North of Timonium, Sangam offers crispy dosas and South Indian thalis that make the suburban drive well worth it for veg-food lovers.',
+            'columbia': 'Columbia\u2019s dining scene shines with two elevated Indian options: Royal Taj for fine-dining service and Ananda for a farm-to-table experience with eight fireplaces.',
+            'reisterstown': 'Reisterstown rewards the adventurous diner with Little Georgia, an authentic Georgian restaurant featuring khachapuri, khinkali, and 450 Georgian wine varietals.'
+        };
+
+        var neighborhoodNames = {
+            'hampden': 'Hampden', 'remington': 'Remington', 'canton': 'Canton',
+            'fells-point': 'Fells Point', 'mt-vernon': 'Mt. Vernon', 'downtown': 'Downtown',
+            'station-north': 'Station North', 'charles-village': 'Charles Village',
+            'roland-park': 'Roland Park', 'parkville': 'Parkville', 'timonium': 'Timonium',
+            'columbia': 'Columbia', 'reisterstown': 'Reisterstown'
+        };
 
         // === Nav scroll shadow ===
         const nav = document.querySelector('nav');
@@ -588,6 +674,7 @@
         // === Filtering ===
         const places = document.querySelectorAll('.place');
         const countEl = document.getElementById('count');
+        const introEl = document.getElementById('neighborhood-intro');
         let activeNeighborhood = 'all';
         let activePrice = 'all';
 
@@ -603,6 +690,26 @@
             var qs = p.toString();
             var url = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
             history.replaceState(null, '', url);
+        }
+
+        function updateNeighborhoodIntro() {
+            if (activeNeighborhood !== 'all' && neighborhoodIntros[activeNeighborhood]) {
+                var name = neighborhoodNames[activeNeighborhood] || activeNeighborhood;
+                introEl.innerHTML = '<div class="neighborhood-intro-inner"><h2 id="neighborhood-anchor-' + activeNeighborhood + '">' + name + '</h2><p>' + neighborhoodIntros[activeNeighborhood] + '</p></div>';
+                introEl.removeAttribute('hidden');
+            } else {
+                introEl.setAttribute('hidden', '');
+                introEl.innerHTML = '';
+            }
+
+            // Update meta description dynamically for neighborhood views
+            var metaDesc = document.querySelector('meta[name="description"]');
+            if (activeNeighborhood !== 'all' && neighborhoodNames[activeNeighborhood]) {
+                var name = neighborhoodNames[activeNeighborhood];
+                metaDesc.setAttribute('content', 'Best vegetarian and veg-friendly restaurants in ' + name + ', Baltimore. Browse curated picks with dish recommendations, prices, and directions.');
+            } else {
+                metaDesc.setAttribute('content', 'Curated guide to the best vegetarian, vegan, and veg-friendly restaurants, cafes, and bakeries in Baltimore. 20+ spots reviewed.');
+            }
         }
 
         function applyFilters() {
@@ -644,6 +751,7 @@
             });
 
             countEl.textContent = visibleCount;
+            updateNeighborhoodIntro();
 
             if (map && visibleBounds.length > 0) {
                 if (visibleBounds.length === 1) map.setView(visibleBounds[0], 14);
@@ -681,7 +789,7 @@
             });
         });
 
-        // Clear filters button (no inline onclick)
+        // Clear filters button
         document.getElementById('clear-filters-btn').addEventListener('click', function() {
             activeNeighborhood = 'all';
             activePrice = 'all';
@@ -733,7 +841,7 @@
             });
         });
 
-        // === Form submission with fetch (better error handling) ===
+        // === Form submission with fetch ===
         document.querySelectorAll('form[data-netlify="true"]').forEach(function(form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -766,17 +874,19 @@
     })();
     </script>
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data: WebSite -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "bmoreveg",
         "url": "https://bmoreveg.com",
-        "description": "A curated guide to vegetarian, vegan, and plant-friendly restaurants, cafes, and bakeries in Baltimore, MD.",
-        "dateModified": "2026-03-05"
+        "description": "Curated guide to the best vegetarian, vegan, and veg-friendly restaurants, cafes, and bakeries in Baltimore, MD.",
+        "dateModified": "2026-03-18"
     }
     </script>
+
+    <!-- Structured Data: FAQ -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -809,255 +919,211 @@
         ]
     }
     </script>
+
+    <!-- Structured Data: Individual Restaurant Listings (LocalBusiness/Restaurant) -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Veg-Friendly Restaurants in Baltimore",
-        "numberOfItems": 20,
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Ceremony Coffee Roasters",
-                    "servesCuisine": "Coffee",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Artifact Coffee",
-                    "servesCuisine": "Coffee",
-                    "priceRange": "$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3301, "longitude": -76.6316 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Doppio Pasticceria",
-                    "servesCuisine": "Sicilian",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3248, "longitude": -76.618 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Café Dear Leon",
-                    "servesCuisine": "Bakery",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2819, "longitude": -76.578 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 5,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "La Maison",
-                    "servesCuisine": "Bakery",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3262, "longitude": -76.6185 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 6,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Love Pomelo",
-                    "servesCuisine": "Italian",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2815, "longitude": -76.582 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 7,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Little Donna's",
-                    "servesCuisine": "Polish-Italian",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2831, "longitude": -76.593 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 8,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Toki Underground",
-                    "servesCuisine": "Ramen",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3115, "longitude": -76.6155 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 9,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Clavel",
-                    "servesCuisine": "Mexican",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3233, "longitude": -76.6166 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 10,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Pavan Foods",
-                    "servesCuisine": "South Indian",
-                    "priceRange": "$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Parkville", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3773, "longitude": -76.5396 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 11,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Namaste",
-                    "servesCuisine": "Indian",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3665, "longitude": -76.6315 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 12,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Peter Chang",
-                    "servesCuisine": "Sichuan Chinese",
-                    "priceRange": "$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3262, "longitude": -76.6155 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 13,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Sangam",
-                    "servesCuisine": "South Indian",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Timonium", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.452, "longitude": -76.6195 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 14,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Ekiben",
-                    "servesCuisine": "Asian Fusion",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3295, "longitude": -76.6295 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 15,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "True Chesapeake Oyster Co.",
-                    "servesCuisine": "Seafood",
-                    "priceRange": "$$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3313, "longitude": -76.6394 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 16,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Di Pasquale's Italian Marketplace",
-                    "servesCuisine": "Italian",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2822, "longitude": -76.5694 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 17,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Cazbar",
-                    "servesCuisine": "Turkish",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.3021, "longitude": -76.6167 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 18,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Little Georgia",
-                    "servesCuisine": "Georgian",
-                    "priceRange": "$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Reisterstown", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.4699, "longitude": -76.829 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 19,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Royal Taj",
-                    "servesCuisine": "Indian",
-                    "priceRange": "$$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Columbia", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.2137, "longitude": -76.861 }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 20,
-                "item": {
-                    "@type": "Restaurant",
-                    "name": "Ananda",
-                    "servesCuisine": "Indian",
-                    "priceRange": "$$$",
-                    "address": { "@type": "PostalAddress", "addressLocality": "Fulton", "addressRegion": "MD" },
-                    "geo": { "@type": "GeoCoordinates", "latitude": 39.1804, "longitude": -76.883 }
-                }
-            }
-        ]
-    }
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "CafeOrCoffeeShop",
+            "name": "Ceremony Coffee Roasters",
+            "servesCuisine": "Specialty Coffee",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 },
+            "url": "https://bmoreveg.com/#ceremony-coffee-roasters"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "CafeOrCoffeeShop",
+            "name": "Artifact Coffee",
+            "servesCuisine": "Roastery & Cafe",
+            "priceRange": "$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3301, "longitude": -76.6316 },
+            "url": "https://bmoreveg.com/#artifact-coffee"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Bakery",
+            "name": "Doppio Pasticceria",
+            "servesCuisine": "Sicilian",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3248, "longitude": -76.618 },
+            "url": "https://bmoreveg.com/#doppio-pasticceria"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Bakery",
+            "name": "Cafe Dear Leon",
+            "servesCuisine": "Bakery",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.2819, "longitude": -76.578 },
+            "url": "https://bmoreveg.com/#cafe-dear-leon"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Bakery",
+            "name": "La Maison",
+            "servesCuisine": "Bakery",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3262, "longitude": -76.6185 },
+            "url": "https://bmoreveg.com/#la-maison"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Love Pomelo",
+            "servesCuisine": "Italian",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.2815, "longitude": -76.582 },
+            "url": "https://bmoreveg.com/#love-pomelo"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Little Donna's",
+            "servesCuisine": "Polish-Italian",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.2831, "longitude": -76.593 },
+            "url": "https://bmoreveg.com/#little-donnas"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Toki Underground",
+            "servesCuisine": "Ramen",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3115, "longitude": -76.6155 },
+            "url": "https://bmoreveg.com/#toki-underground"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Clavel",
+            "servesCuisine": "Mexican",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3233, "longitude": -76.6166 },
+            "url": "https://bmoreveg.com/#clavel"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Pavan Foods",
+            "servesCuisine": "South Indian",
+            "priceRange": "$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Parkville", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3773, "longitude": -76.5396 },
+            "url": "https://bmoreveg.com/#pavan-foods"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Namaste",
+            "servesCuisine": "Indian",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3665, "longitude": -76.6315 },
+            "url": "https://bmoreveg.com/#namaste"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Peter Chang",
+            "servesCuisine": "Sichuan Chinese",
+            "priceRange": "$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3262, "longitude": -76.6155 },
+            "url": "https://bmoreveg.com/#peter-chang"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Sangam",
+            "servesCuisine": "South Indian",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Timonium", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.452, "longitude": -76.6195 },
+            "url": "https://bmoreveg.com/#sangam"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Ekiben",
+            "servesCuisine": "Asian Fusion",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3295, "longitude": -76.6295 },
+            "url": "https://bmoreveg.com/#ekiben"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "True Chesapeake Oyster Co.",
+            "servesCuisine": "Seafood",
+            "priceRange": "$$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3313, "longitude": -76.6394 },
+            "url": "https://bmoreveg.com/#true-chesapeake-oyster-co"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Di Pasquale's Italian Marketplace",
+            "servesCuisine": "Italian",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.2822, "longitude": -76.5694 },
+            "url": "https://bmoreveg.com/#di-pasquales-italian-marketplace"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Cazbar",
+            "servesCuisine": "Turkish",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Baltimore", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.3021, "longitude": -76.6167 },
+            "url": "https://bmoreveg.com/#cazbar"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Little Georgia",
+            "servesCuisine": "Georgian",
+            "priceRange": "$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Reisterstown", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.4699, "longitude": -76.829 },
+            "url": "https://bmoreveg.com/#little-georgia"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Royal Taj",
+            "servesCuisine": "Indian",
+            "priceRange": "$$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Columbia", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.2137, "longitude": -76.861 },
+            "url": "https://bmoreveg.com/#royal-taj"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Ananda",
+            "servesCuisine": "Indian",
+            "priceRange": "$$$",
+            "address": { "@type": "PostalAddress", "addressLocality": "Fulton", "addressRegion": "MD", "addressCountry": "US" },
+            "geo": { "@type": "GeoCoordinates", "latitude": 39.1804, "longitude": -76.883 },
+            "url": "https://bmoreveg.com/#ananda"
+        }
+    ]
     </script>
 </body>
 </html>

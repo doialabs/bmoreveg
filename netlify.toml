@@ -10,6 +10,37 @@
   to = "/"
   status = 301
 
+# Redirect broken/placeholder pages to homepage
+[[redirects]]
+  from = "/restaurants"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/restaurants/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/contact/"
+  to = "/"
+  status = 301
+
 # Security headers
 [[headers]]
   for = "/*"

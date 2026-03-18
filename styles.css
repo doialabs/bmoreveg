@@ -541,17 +541,57 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     vertical-align: middle;
 }
 
-.place .description {
-    margin-bottom: 1rem;
+.place .vibe {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+}
+
+/* === What to Order === */
+.what-to-order {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
     color: var(--text);
-    font-size: 1.05rem;
-    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
 }
-.place .description strong {
-    font-weight: 500;
+.what-to-order-label {
+    font-weight: 600;
     color: var(--accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-right: 0.4rem;
 }
-.place .vibe { font-size: 0.95rem; color: var(--text-muted); font-style: italic; }
+
+/* === Neighborhood Intro Banner === */
+.neighborhood-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+}
+.neighborhood-intro[hidden] { display: none; }
+.neighborhood-intro-inner {
+    background: var(--accent-light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+.neighborhood-intro-inner h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+.neighborhood-intro-inner p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
 
 /* === Place Links === */
 .place-links {
