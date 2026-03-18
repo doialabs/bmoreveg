@@ -73,6 +73,15 @@ body {
     font-size: 18px;
 }
 
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--carrot);
+}
+
 /* === Skip Link (Accessibility) === */
 .skip-link {
     position: absolute;
@@ -429,12 +438,12 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     border-radius: 12px 0 0 12px;
 }
 .place[data-veg="all-veg"]::before { background: #2e7d32; }
-.place[data-veg="pescatarian"]::before { background: #1565c0; }
+.place[data-veg="pescatarian"]::before { background: #3D7A7A; }
 .place[data-veg="veg-friendly"]::before { background: var(--carrot); }
 
 @media (prefers-color-scheme: dark) {
     .place[data-veg="all-veg"]::before { background: #81c784; }
-    .place[data-veg="pescatarian"]::before { background: #64b5f6; }
+    .place[data-veg="pescatarian"]::before { background: #6BB8B8; }
     .place[data-veg="veg-friendly"]::before { background: var(--carrot); }
 }
 
@@ -516,13 +525,13 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     color: #e65100;
 }
 .veg-badge.pescatarian {
-    background: #e3f2fd;
-    color: #1565c0;
+    background: #E5F0F0;
+    color: #3D7A7A;
 }
 @media (prefers-color-scheme: dark) {
     .veg-badge.all-veg { background: rgba(46, 125, 50, 0.2); color: #81c784; }
     .veg-badge.veg-friendly { background: rgba(230, 81, 0, 0.2); color: #ffb74d; }
-    .veg-badge.pescatarian { background: rgba(21, 101, 192, 0.2); color: #64b5f6; }
+    .veg-badge.pescatarian { background: rgba(61, 122, 122, 0.2); color: #6BB8B8; }
 }
 
 /* === New Badge === */
@@ -1082,6 +1091,13 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.7;
+}
+.faq-item a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.faq-item a:hover {
+    color: var(--carrot);
 }
 
 /* === Footer === */
