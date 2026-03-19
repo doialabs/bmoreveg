@@ -73,6 +73,15 @@ body {
     font-size: 18px;
 }
 
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+a:hover {
+    color: var(--carrot);
+}
+
 /* === Skip Link (Accessibility) === */
 .skip-link {
     position: absolute;
@@ -100,28 +109,22 @@ body {
 
 /* === Hero Header === */
 header.hero {
-    min-height: 85vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    padding: 3rem 2rem 2.5rem;
-    background:
-        radial-gradient(ellipse at 20% 80%, rgba(245, 121, 74, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(45, 90, 39, 0.12) 0%, transparent 50%),
-        var(--bg);
+    padding: 5rem 2rem 4rem;
+    background: #1a1a1a;
+    color: #e8e8e6;
 }
-
-@media (prefers-color-scheme: dark) {
-    header.hero {
-        background:
-            radial-gradient(ellipse at 20% 80%, rgba(245, 121, 74, 0.08) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 20%, rgba(92, 180, 80, 0.06) 0%, transparent 50%),
-            var(--bg);
-    }
-}
+header.hero .logo { color: #5cb450; }
+header.hero .tagline { color: #b0b0a8; }
+header.hero .hero-stat { color: #8a8a82; }
+header.hero .hero-scroll-cue { color: #8a8a82; }
+header.hero .hero-scroll-cue svg { stroke: #8a8a82; }
 
 .logo-container {
     display: flex;
@@ -429,12 +432,12 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     border-radius: 12px 0 0 12px;
 }
 .place[data-veg="all-veg"]::before { background: #2e7d32; }
-.place[data-veg="pescatarian"]::before { background: #1565c0; }
+.place[data-veg="pescatarian"]::before { background: #3D7A7A; }
 .place[data-veg="veg-friendly"]::before { background: var(--carrot); }
 
 @media (prefers-color-scheme: dark) {
     .place[data-veg="all-veg"]::before { background: #81c784; }
-    .place[data-veg="pescatarian"]::before { background: #64b5f6; }
+    .place[data-veg="pescatarian"]::before { background: #6BB8B8; }
     .place[data-veg="veg-friendly"]::before { background: var(--carrot); }
 }
 
@@ -516,13 +519,13 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     color: #e65100;
 }
 .veg-badge.pescatarian {
-    background: #e3f2fd;
-    color: #1565c0;
+    background: #E5F0F0;
+    color: #3D7A7A;
 }
 @media (prefers-color-scheme: dark) {
     .veg-badge.all-veg { background: rgba(46, 125, 50, 0.2); color: #81c784; }
     .veg-badge.veg-friendly { background: rgba(230, 81, 0, 0.2); color: #ffb74d; }
-    .veg-badge.pescatarian { background: rgba(21, 101, 192, 0.2); color: #64b5f6; }
+    .veg-badge.pescatarian { background: rgba(61, 122, 122, 0.2); color: #6BB8B8; }
 }
 
 /* === New Badge === */
@@ -633,13 +636,6 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     margin-top: 4rem;
     padding-top: 3rem;
     border-top: 2px solid var(--text);
-}
-.about-image {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 2rem;
 }
 .about-content h2 {
     font-family: 'Newsreader', Georgia, serif;
@@ -1083,6 +1079,13 @@ main { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
     font-size: 0.95rem;
     line-height: 1.7;
 }
+.faq-item a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.faq-item a:hover {
+    color: var(--carrot);
+}
 
 /* === Footer === */
 footer {
@@ -1136,7 +1139,7 @@ footer .footer-updated, .footer-updated {
     .filter-buttons { gap: 0.4rem; }
     .filter-btn { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
     nav { gap: 2rem; }
-    header.hero { min-height: 70vh; }
+    header.hero { min-height: 65vh; padding: 4rem 2rem 3rem; }
     .section-header h2 { font-size: 2.5rem; }
 }
 
@@ -1145,7 +1148,7 @@ footer .footer-updated, .footer-updated {
     .logo-container { flex-direction: column; gap: 0.5rem; }
     .carrot-logo { width: 60px; height: 60px; }
     .logo { font-size: 2.5rem; }
-    header.hero { min-height: 60vh; }
+    header.hero { min-height: 55vh; padding: 3rem 1.5rem 2.5rem; }
     .section-header h2 { font-size: 2rem; }
     nav { gap: 1.5rem; padding: 1rem; }
     nav a { font-size: 0.8rem; }

@@ -12,6 +12,16 @@
 
 # Redirect broken/placeholder pages to homepage
 [[redirects]]
+  from = "/restaurants"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/restaurants/"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/blog"
   to = "/"
   status = 301
