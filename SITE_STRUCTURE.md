@@ -12,8 +12,8 @@ bmoreveg/
 ├── files/
 │   ├── index.html              # Expanded version (more restaurants)
 │   ├── thank-you.html          # Newsletter subscription confirmation page
-│   ├── baltimore-skyline.jpg   # About section hero image
-│   └── bmoreveg-logo.svg       # Carrot logo
+│   ├── baltimore-skyline.jpg   # Legacy image (no longer referenced)
+│   └── bmoreveg-logo.svg       # Carrot logo (used for og:image)
 └── README.md
 ```
 
