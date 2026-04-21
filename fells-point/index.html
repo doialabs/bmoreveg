@@ -72,7 +72,7 @@
         </div>
 
         <div class="subpage-intro">
-            <p>Fells Point's cobblestone streets are home to some of Baltimore's most distinctive veg dining. Little Donna's blends Polish and Italian cuisines in a cozy living-room setting, and Ekiben operates a popular location here with generous Asian fusion bowls. It's a neighborhood where every spot has real personality.</p>
+            <p>Fells Point's cobblestone streets are home to some of Baltimore's most distinctive veg dining. Little Donna's blends Polish and Italian cuisines in a cozy living-room setting, Ekiben operates a popular location here with generous Asian fusion bowls, and just up the hill into Butchers Hill, La Barrita Restobar serves warm Argentinian empanadas and grilled provoleta. It's a neighborhood where every spot has real personality.</p>
         </div>
 
         <section class="subpage-listings">
@@ -96,6 +96,27 @@
                     <button class="share-btn" type="button">Share</button>
                 </div>
                 <p class="last-verified">Last verified: March 2026</p>
+            </article>
+
+            <article class="place" id="la-barrita" data-veg="veg-friendly">
+                <div class="place-header"><h3>La Barrita Restobar</h3><span class="neighborhood">Butchers Hill &middot; Fells Point</span></div>
+                <div class="place-meta">
+                    <span class="category">Argentinian Resto Bar</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="vibe">Warm corner Argentinian spot just uphill from Fells Point with a real neighborhood feel</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Vegetable empanadas, provoleta, grilled vegetables, chimichurri sides
+                </div>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=32+N+Chester+St+Baltimore+MD+21231" target="_blank" rel="noopener">Directions</a>
+                    <a href="/fells-point/">Fells Point</a>
+                    <a href="https://www.labarritarestobar.com" target="_blank" rel="noopener">Website</a>
+                    <button class="share-btn" type="button">Share</button>
+                </div>
+                <p class="last-verified">Last verified: April 2026</p>
             </article>
 
             <article class="place" id="ekiben" data-veg="veg-friendly">
@@ -202,7 +223,7 @@
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Fells Point Veg-Friendly Restaurants | bmoreveg",
-    "numberOfItems": 2,
+    "numberOfItems": 3,
     "itemListElement": [
         {
             "@type": "ListItem",
@@ -229,6 +250,30 @@
         {
             "@type": "ListItem",
             "position": 2,
+            "item": {
+                "@type": "Restaurant",
+                "name": "La Barrita Restobar",
+                "servesCuisine": "Argentinian",
+                "priceRange": "$$",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "32 N Chester St",
+                    "addressLocality": "Baltimore",
+                    "addressRegion": "MD",
+                    "postalCode": "21231",
+                    "addressCountry": "US"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 39.2884,
+                    "longitude": -76.5834
+                },
+                "url": "https://bmoreveg.com/#la-barrita"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
             "item": {
                 "@type": "Restaurant",
                 "name": "Ekiben",
