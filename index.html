@@ -476,6 +476,46 @@
                 <p class="last-verified">Last verified: March 2026</p>
             </article>
 
+            <article class="place animate-on-scroll" id="seppia" data-neighborhood="hampden" data-price="3" data-veg="pescatarian" data-lat="39.3314" data-lng="-76.6368" data-name="Seppia">
+                <div class="place-header"><h3>Seppia</h3><span class="neighborhood">Hampden</span></div>
+                <div class="place-meta">
+                    <span class="category">Coastal Italian &amp; Seafood</span>
+                    <span class="veg-badge pescatarian">Pescatarian</span>
+                    <span class="price">$$$</span>
+                </div>
+                <p class="vibe">Coastal Italian on The Avenue from the La Cuchara team &mdash; regional Italian cooking that shifts with the seasons, with handmade pastas and thoughtful vegetable plates alongside the seafood</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Whole artichoke with bagna cauda, fresh handmade pastas, seasonal vegetable antipasti
+                </div>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=901+W+36th+St+Baltimore+MD+21211" target="_blank" rel="noopener">Directions</a>
+                    <a href="https://www.seppiabaltimore.com" target="_blank" rel="noopener">Website</a>
+                    <button class="share-btn" type="button">Share</button>
+                </div>
+                <p class="last-verified">Last verified: April 2026</p>
+            </article>
+
+            <article class="place animate-on-scroll" id="la-barrita" data-neighborhood="fells-point" data-price="2" data-veg="veg-friendly" data-lat="39.2884" data-lng="-76.5834" data-name="La Barrita Restobar">
+                <div class="place-header"><h3>La Barrita Restobar</h3><span class="neighborhood">Butchers Hill &middot; Fells Point</span></div>
+                <div class="place-meta">
+                    <span class="category">Argentinian Resto Bar</span>
+                    <span class="veg-badge veg-friendly">Veg-Friendly</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="vibe">Corner Argentinian resto bar just up from Fells Point with a warm, neighborhood feel &mdash; empanadas, grilled provoleta, and a solid wine list make it an easy veg-friendly stop</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Vegetable empanadas, provoleta, grilled vegetable plates, chimichurri sides
+                </div>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=32+N+Chester+St+Baltimore+MD+21231" target="_blank" rel="noopener">Directions</a>
+                    <a href="https://www.labarritarestobar.com" target="_blank" rel="noopener">Website</a>
+                    <button class="share-btn" type="button">Share</button>
+                </div>
+                <p class="last-verified">Last verified: April 2026</p>
+            </article>
+
             <article class="place animate-on-scroll" id="di-pasquales-italian-marketplace" data-neighborhood="canton" data-price="2" data-veg="veg-friendly" data-lat="39.2891" data-lng="-76.5714" data-name="Di Pasquale's Italian Marketplace">
                 <div class="place-header"><h3>Di Pasquale's Italian Marketplace</h3><span class="neighborhood">Canton · Brewers Hill</span></div>
                 <div class="place-meta">
@@ -742,10 +782,10 @@
 
         // === Neighborhood intro data ===
         var neighborhoodIntros = {
-            'hampden': 'Hampden is home to some of Baltimore\u2019s best veg-friendly dining, from Asian fusion at Ekiben to craft roastery Artifact Coffee, the farm-to-table oyster bar at Whitehall Mill, and the upscale Woodberry Kitchen in a stunning renovated factory.',
+            'hampden': 'Hampden is home to some of Baltimore\u2019s best veg-friendly dining, from Asian fusion at Ekiben to craft roastery Artifact Coffee, the farm-to-table oyster bar at Whitehall Mill, coastal Italian cooking at Seppia on The Avenue, and the upscale Woodberry Kitchen in a stunning renovated factory.',
             'remington': 'Remington\u2019s food scene punches above its weight with Sicilian baking at Doppio, Oaxacan tacos at Clavel, and the beloved laminated pastries of La Maison.',
             'canton': 'Canton offers everything from Japanese-inspired pastries at Caf\u00e9 Dear Leon to house-made Italian at Love Pomelo and a 100-year-old Italian marketplace at Di Pasquale\u2019s.',
-            'fells-point': 'Fells Point brings eclectic charm with Polish-Italian comfort food at Little Donna\u2019s and Ekiben\u2019s generous Asian fusion bowls.',
+            'fells-point': 'Fells Point and the adjoining Butchers Hill blocks bring eclectic charm with Polish-Italian comfort food at Little Donna\u2019s and Ekiben\u2019s generous Asian fusion bowls, plus Argentinian empanadas and provoleta at La Barrita Restobar.',
             'mt-vernon': 'Mt. Vernon anchors Baltimore\u2019s specialty coffee scene with Ceremony Coffee Roasters, offering minimalist vibes and high-scoring single-origin beans.',
             'downtown': 'Downtown Baltimore surprises with Cazbar, an ornate Turkish restaurant boasting 150+ dishes and a full vegetarian mezes spread.',
             'station-north': 'Station North\u2019s arts district is home to Toki Underground, a creative ramen shop with some of the best vegan bowls and bao buns in the city.',
@@ -1078,12 +1118,14 @@
             {"@type":"ListItem","position":15,"item":{"@type":"Restaurant","name":"True Chesapeake Oyster Co.","url":"https://bmoreveg.com/#true-chesapeake-oyster-co"}},
             {"@type":"ListItem","position":16,"item":{"@type":"Restaurant","name":"Woodberry Kitchen","url":"https://bmoreveg.com/#woodberry-kitchen"}},
             {"@type":"ListItem","position":17,"item":{"@type":"Restaurant","name":"The Duchess","url":"https://bmoreveg.com/#the-duchess"}},
-            {"@type":"ListItem","position":18,"item":{"@type":"Restaurant","name":"Di Pasquale's Italian Marketplace","url":"https://bmoreveg.com/#di-pasquales-italian-marketplace"}},
-            {"@type":"ListItem","position":19,"item":{"@type":"Restaurant","name":"Cazbar","url":"https://bmoreveg.com/#cazbar"}},
-            {"@type":"ListItem","position":20,"item":{"@type":"Restaurant","name":"Little Georgia","url":"https://bmoreveg.com/#little-georgia"}},
-            {"@type":"ListItem","position":21,"item":{"@type":"Restaurant","name":"Royal Taj","url":"https://bmoreveg.com/#royal-taj"}},
-            {"@type":"ListItem","position":22,"item":{"@type":"Restaurant","name":"Ananda","url":"https://bmoreveg.com/#ananda"}},
-            {"@type":"ListItem","position":23,"item":{"@type":"Restaurant","name":"Mango Grove","url":"https://bmoreveg.com/#mango-grove"}}
+            {"@type":"ListItem","position":18,"item":{"@type":"Restaurant","name":"Seppia","url":"https://bmoreveg.com/#seppia"}},
+            {"@type":"ListItem","position":19,"item":{"@type":"Restaurant","name":"La Barrita Restobar","url":"https://bmoreveg.com/#la-barrita"}},
+            {"@type":"ListItem","position":20,"item":{"@type":"Restaurant","name":"Di Pasquale's Italian Marketplace","url":"https://bmoreveg.com/#di-pasquales-italian-marketplace"}},
+            {"@type":"ListItem","position":21,"item":{"@type":"Restaurant","name":"Cazbar","url":"https://bmoreveg.com/#cazbar"}},
+            {"@type":"ListItem","position":22,"item":{"@type":"Restaurant","name":"Little Georgia","url":"https://bmoreveg.com/#little-georgia"}},
+            {"@type":"ListItem","position":23,"item":{"@type":"Restaurant","name":"Royal Taj","url":"https://bmoreveg.com/#royal-taj"}},
+            {"@type":"ListItem","position":24,"item":{"@type":"Restaurant","name":"Ananda","url":"https://bmoreveg.com/#ananda"}},
+            {"@type":"ListItem","position":25,"item":{"@type":"Restaurant","name":"Mango Grove","url":"https://bmoreveg.com/#mango-grove"}}
         ]
     }
     </script>
@@ -1174,6 +1216,8 @@
         { "@context": "https://schema.org", "@type": "Restaurant", "name": "True Chesapeake Oyster Co.", "servesCuisine": "Seafood", "priceRange": "$$$", "address": { "@type": "PostalAddress", "streetAddress": "3300 Clipper Mill Rd", "addressLocality": "Baltimore", "addressRegion": "MD", "postalCode": "21211", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.329, "longitude": -76.6368 }, "url": "https://bmoreveg.com/#true-chesapeake-oyster-co" },
         { "@context": "https://schema.org", "@type": "Restaurant", "name": "Woodberry Kitchen", "servesCuisine": "New American", "priceRange": "$$$", "address": { "@type": "PostalAddress", "streetAddress": "2010 Clipper Park Rd", "addressLocality": "Baltimore", "addressRegion": "MD", "postalCode": "21211", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.3340, "longitude": -76.6438 }, "url": "https://bmoreveg.com/#woodberry-kitchen" },
         { "@context": "https://schema.org", "@type": "Restaurant", "name": "The Duchess", "servesCuisine": "Chamorro, English Pub", "priceRange": "$$", "address": { "@type": "PostalAddress", "streetAddress": "1002 W 36th St", "addressLocality": "Baltimore", "addressRegion": "MD", "postalCode": "21211", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.3308, "longitude": -76.6344 }, "url": "https://bmoreveg.com/#the-duchess" },
+        { "@context": "https://schema.org", "@type": "Restaurant", "name": "Seppia", "servesCuisine": "Coastal Italian, Seafood", "priceRange": "$$$", "address": { "@type": "PostalAddress", "streetAddress": "901 W 36th St", "addressLocality": "Baltimore", "addressRegion": "MD", "postalCode": "21211", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.3314, "longitude": -76.6368 }, "url": "https://bmoreveg.com/#seppia" },
+        { "@context": "https://schema.org", "@type": "Restaurant", "name": "La Barrita Restobar", "servesCuisine": "Argentinian", "priceRange": "$$", "address": { "@type": "PostalAddress", "streetAddress": "32 N Chester St", "addressLocality": "Baltimore", "addressRegion": "MD", "postalCode": "21231", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.2884, "longitude": -76.5834 }, "url": "https://bmoreveg.com/#la-barrita" },
         { "@context": "https://schema.org", "@type": "Restaurant", "name": "Di Pasquale's Italian Marketplace", "servesCuisine": "Italian", "priceRange": "$$", "address": { "@type": "PostalAddress", "streetAddress": "3700 Gough St", "addressLocality": "Baltimore", "addressRegion": "MD", "postalCode": "21224", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.2891, "longitude": -76.5714 }, "url": "https://bmoreveg.com/#di-pasquales-italian-marketplace" },
         { "@context": "https://schema.org", "@type": "Restaurant", "name": "Cazbar", "servesCuisine": "Turkish", "priceRange": "$$", "address": { "@type": "PostalAddress", "streetAddress": "316 N Charles St", "addressLocality": "Baltimore", "addressRegion": "MD", "postalCode": "21201", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.2964, "longitude": -76.6156 }, "url": "https://bmoreveg.com/#cazbar" },
         { "@context": "https://schema.org", "@type": "Restaurant", "name": "Little Georgia", "servesCuisine": "Georgian", "priceRange": "$$", "address": { "@type": "PostalAddress", "streetAddress": "2 Hanover Pike", "addressLocality": "Reisterstown", "addressRegion": "MD", "postalCode": "21136", "addressCountry": "US" }, "geo": { "@type": "GeoCoordinates", "latitude": 39.4714, "longitude": -76.8313 }, "url": "https://bmoreveg.com/#little-georgia" },
