@@ -19,6 +19,28 @@
   to = "/"
   status = 301
 
+# Charles Village neighborhood removed (no current listings)
+[[redirects]]
+  from = "/charles-village"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/charles-village/"
+  to = "/"
+  status = 301
+
+# Parkville neighborhood removed (Pavan Foods permanently closed)
+[[redirects]]
+  from = "/parkville"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/parkville/"
+  to = "/"
+  status = 301
+
 [[redirects]]
   from = "/restaurants/"
   to = "/"
