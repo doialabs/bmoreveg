@@ -1,0 +1,67 @@
+# bmoreveg
+
+> bmoreveg is a curated guide to the best vegetarian, vegan, and veg-friendly
+> restaurants, cafes, and bakeries in Baltimore, Maryland. Every listing is
+> hand-picked and verified, with neighborhood, price tier, dish recommendations,
+> and an interactive map. Last reviewed: May 2026.
+
+## About
+
+- Coverage area: Baltimore City and the surrounding Maryland suburbs (Cockeysville, Reisterstown, Columbia, Fulton).
+- Listings are organized by category (Coffee, Bakeries, Restaurants), by neighborhood, and by theme (Vegan, Brunch, Date Night, Cheap Eats, Indian).
+- Veg classification per listing: "all-veg" (fully vegetarian), "pescatarian", or "veg-friendly" (strong dedicated vegetarian/vegan options).
+- Site: https://bmoreveg.com
+
+## Coffee
+
+- [Ceremony Coffee Roasters](https://bmoreveg.com/#ceremony-coffee-roasters) — Specialty coffee, Mt. Vernon. Minimalist cafe pouring high-scoring single-origin coffee. https://ceremonycoffee.com
+- [Artifact Coffee](https://bmoreveg.com/#artifact-coffee) — Roastery & cafe, Hampden. Spacious warehouse roastery with house-roasted coffee, donuts, and outdoor seating. https://www.artifactcoffee.com
+
+## Bakeries
+
+- [Doppio Pasticceria](https://bmoreveg.com/#doppio-pasticceria) — Sicilian bakery, Remington. Mills its own grain for Sicilian-style pastries. https://www.doppiobaltimore.com
+- [Café Dear Leon](https://bmoreveg.com/#cafe-dear-leon) — Bakery cafe, Canton. Laminated pastries and a rotating, often vegan-adaptable menu. https://cafedearleon.com
+- [La Maison](https://bmoreveg.com/#la-maison) — French bakery, Remington. Sister bakery to Café Dear Leon; croissants and laminated pastries. https://cafedearleon.com
+
+## Restaurants
+
+- [Love Pomelo](https://bmoreveg.com/#love-pomelo) — Italian, Canton. Aperitivo bar with house-made pastas and a vegetable-forward menu. https://lovepomelorestaurant.com
+- [Little Donna's](https://bmoreveg.com/#little-donnas) — Polish-Italian, Fells Point. Cozy spot blending Polish and Italian cooking, from pierogi to pizza. https://www.littledonnas.com
+- [Toki Underground](https://bmoreveg.com/#toki-underground) — Ramen, Station North (Greenmount Ave). Dedicated vegan ramen and bao alongside the classics. https://www.tokiunderground.com
+- [Clavel](https://bmoreveg.com/#clavel) — Oaxacan Mexican, Remington. Mezcaleria and taqueria grinding its own masa, with vegan-friendly tacos and sides. https://barclavel.com
+- [Namaste](https://bmoreveg.com/#namaste) — Indian & Nepali, Roland Park / Cold Spring. Open daily with extensive vegetarian options and standout momos. https://www.namastebaltimore.com
+- [Sangam](https://bmoreveg.com/#sangam) — South Indian, Cockeysville (north of Timonium). Crispy dosas and South Indian thalis. https://sangamindiancuisine.com
+- [Ekiben](https://bmoreveg.com/#ekiben) — Asian fusion, Hampden & Fells Point. Generous steamed buns and bowls, including vegan tofu and tempura options. https://ekibenbaltimore.com
+- [True Chesapeake Oyster Co.](https://bmoreveg.com/#true-chesapeake-oyster-co) — Seafood (pescatarian), Hampden. Farm-to-table oyster bar in the historic Whitehall Mill. https://truechesapeake.com
+- [Woodberry Kitchen](https://bmoreveg.com/#woodberry-kitchen) — New American, Hampden. Pioneering farm-to-table kitchen, now serving as the Tavern at Woodberry Kitchen. https://www.woodberrykitchen.com
+- [The Duchess](https://bmoreveg.com/#the-duchess) — Chamorro & English pub, Hampden. Pacific Islander and pub cooking with strong veg options. https://www.theduchessbaltimore.com
+- [Seppia](https://bmoreveg.com/#seppia) — Coastal Italian, Hampden. From the La Cuchara team; handmade pastas and seasonal vegetable plates. https://www.seppiabaltimore.com
+- [La Barrita Restobar](https://bmoreveg.com/#la-barrita) — Argentinian, Butchers Hill / Fells Point. Empanadas, grilled provoleta, and a wine list. https://www.labarritarestobar.com
+- [Di Pasquale's Italian Marketplace](https://bmoreveg.com/#di-pasquales-italian-marketplace) — Italian market & deli, Canton. Family-run since 1914; house-made mozzarella, pastas, and sandwiches. https://www.dipasquales.com
+- [Cazbar](https://bmoreveg.com/#cazbar) — Turkish, Downtown. Extensive vegetarian meze spread you can build a full meal from. https://www.cazbar.com
+- [Little Georgia](https://bmoreveg.com/#little-georgia) — Georgian, Reisterstown. Khachapuri and khinkali with a deep Georgian wine list. https://little-georgia.square.site
+- [Royal Taj](https://bmoreveg.com/#royal-taj) — Indian, Columbia. Upscale Indian fine dining with an extensive vegetarian menu. https://royaltajmd.com
+- [Ananda](https://bmoreveg.com/#ananda) — Indian, Fulton (Maple Lawn). Refined Indian dining from the Ambassador Dining Room team. https://anandarestaurant.net
+- [Mango Grove](https://bmoreveg.com/#mango-grove) — Vegetarian Indian, Columbia. Fully vegetarian; dosas, chaat, and curries, many available vegan. https://themangogrove.net
+
+## Neighborhood guides
+
+- https://bmoreveg.com/hampden/
+- https://bmoreveg.com/remington/
+- https://bmoreveg.com/canton/
+- https://bmoreveg.com/fells-point/
+- https://bmoreveg.com/mt-vernon/
+- https://bmoreveg.com/downtown/
+- https://bmoreveg.com/station-north/
+- https://bmoreveg.com/roland-park/
+- https://bmoreveg.com/timonium/
+- https://bmoreveg.com/columbia/
+- https://bmoreveg.com/reisterstown/
+
+## Category guides
+
+- https://bmoreveg.com/vegan/
+- https://bmoreveg.com/brunch/
+- https://bmoreveg.com/date-night/
+- https://bmoreveg.com/cheap-eats/
+- https://bmoreveg.com/indian/
