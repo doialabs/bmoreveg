@@ -12,7 +12,7 @@ bmoreveg/
 ├── files/
 │   ├── index.html              # Expanded version (more restaurants)
 │   ├── thank-you.html          # Newsletter subscription confirmation page
-│   ├── baltimore-skyline.jpg   # Legacy image (no longer referenced)
+│   ├── baltimore-harbor.svg    # Inner Harbor illustration (About section)
 │   └── bmoreveg-logo.svg       # Carrot logo (used for og:image)
 └── README.md
 ```

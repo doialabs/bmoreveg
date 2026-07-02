@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Illustration of Baltimore's Inner Harbor skyline">
+  <title>Baltimore Inner Harbor</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FDF3E3"/>
+      <stop offset="0.65" stop-color="#FBE3C4"/>
+      <stop offset="1" stop-color="#F7CFA4"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FC0C8"/>
+      <stop offset="1" stop-color="#5E98A3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect x="0" y="0" width="1200" height="430" fill="url(#sky)"/>
+
+  <!-- sun -->
+  <circle cx="955" cy="140" r="72" fill="#F5794A" opacity="0.18"/>
+  <circle cx="955" cy="140" r="52" fill="#F5794A" opacity="0.9"/>
+
+  <!-- birds -->
+  <g stroke="#4A6B70" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M180 120 q10 -10 20 0 q10 -10 20 0"/>
+    <path d="M250 90 q8 -8 16 0 q8 -8 16 0"/>
+    <path d="M780 100 q9 -9 18 0 q9 -9 18 0"/>
+  </g>
+
+  <!-- distant skyline layer (hazy) -->
+  <g fill="#9DBBBB">
+    <rect x="60" y="300" width="52" height="130"/>
+    <rect x="150" y="270" width="60" height="160"/>
+    <rect x="360" y="255" width="66" height="175"/>
+    <rect x="455" y="290" width="46" height="140"/>
+    <rect x="700" y="265" width="58" height="165"/>
+    <rect x="1035" y="285" width="70" height="145"/>
+    <rect x="1130" y="310" width="46" height="120"/>
+  </g>
+
+  <!-- main skyline layer -->
+  <g fill="#42646B">
+    <!-- rowhouses on the left -->
+    <g>
+      <rect x="18" y="360" width="42" height="70"/>
+      <rect x="60" y="345" width="42" height="85"/>
+      <rect x="102" y="358" width="42" height="72"/>
+      <rect x="144" y="348" width="42" height="82"/>
+      <!-- rowhouse cornices -->
+      <rect x="14" y="354" width="50" height="8"/>
+      <rect x="56" y="339" width="50" height="8"/>
+      <rect x="98" y="352" width="50" height="8"/>
+      <rect x="140" y="342" width="50" height="8"/>
+    </g>
+
+    <!-- Bromo Seltzer-style clock tower -->
+    <g>
+      <rect x="228" y="200" width="46" height="230"/>
+      <rect x="222" y="192" width="58" height="10"/>
+      <rect x="234" y="168" width="34" height="26"/>
+      <path d="M234 168 l17 -22 l17 22 z"/>
+    </g>
+
+    <!-- mid towers -->
+    <rect x="310" y="245" width="58" height="185"/>
+    <rect x="378" y="215" width="70" height="215"/>
+    <rect x="458" y="275" width="48" height="155"/>
+
+    <!-- pentagonal World Trade Center -->
+    <g>
+      <rect x="560" y="185" width="84" height="245"/>
+      <path d="M560 185 l42 -30 l42 30 z"/>
+    </g>
+
+    <!-- more towers -->
+    <rect x="672" y="235" width="62" height="195"/>
+    <rect x="744" y="285" width="46" height="145"/>
+
+    <!-- aquarium-style angular glass roof -->
+    <g>
+      <path d="M830 430 l0 -95 l95 -55 l0 150 z"/>
+      <path d="M935 430 l0 -140 l70 45 l0 95 z"/>
+    </g>
+
+    <!-- right-side blocks -->
+    <rect x="1050" y="330" width="54" height="100"/>
+    <rect x="1114" y="352" width="64" height="78"/>
+  </g>
+
+  <!-- clock face on the tower -->
+  <circle cx="251" cy="230" r="15" fill="#FDF3E3"/>
+  <g stroke="#42646B" stroke-width="3" stroke-linecap="round">
+    <line x1="251" y1="230" x2="251" y2="220"/>
+    <line x1="251" y1="230" x2="259" y2="234"/>
+  </g>
+
+  <!-- window hints on the big towers -->
+  <g fill="#FDF3E3" opacity="0.55">
+    <rect x="392" y="232" width="8" height="12"/><rect x="410" y="232" width="8" height="12"/><rect x="428" y="232" width="8" height="12"/>
+    <rect x="392" y="258" width="8" height="12"/><rect x="410" y="258" width="8" height="12"/><rect x="428" y="258" width="8" height="12"/>
+    <rect x="576" y="205" width="8" height="12"/><rect x="594" y="205" width="8" height="12"/><rect x="612" y="205" width="8" height="12"/>
+    <rect x="576" y="231" width="8" height="12"/><rect x="594" y="231" width="8" height="12"/><rect x="612" y="231" width="8" height="12"/>
+  </g>
+
+  <!-- water -->
+  <rect x="0" y="430" width="1200" height="170" fill="url(#water)"/>
+
+  <!-- building reflections -->
+  <g fill="#4A7B85" opacity="0.5">
+    <rect x="228" y="430" width="46" height="52"/>
+    <rect x="378" y="430" width="70" height="44"/>
+    <rect x="560" y="430" width="84" height="58"/>
+    <rect x="830" y="430" width="175" height="40"/>
+  </g>
+
+  <!-- wave lines -->
+  <g stroke="#CFE8EA" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8">
+    <path d="M40 470 q25 -10 50 0 q25 10 50 0"/>
+    <path d="M620 500 q25 -10 50 0 q25 10 50 0"/>
+    <path d="M910 470 q25 -10 50 0 q25 10 50 0"/>
+    <path d="M1040 535 q25 -10 50 0 q25 10 50 0"/>
+    <path d="M120 555 q25 -10 50 0 q25 10 50 0"/>
+  </g>
+
+  <!-- USS Constellation-style tall ship -->
+  <g>
+    <!-- bowsprit -->
+    <line x1="300" y1="497" x2="245" y2="468" stroke="#2E4347" stroke-width="6" stroke-linecap="round"/>
+    <!-- hull -->
+    <path d="M295 500 L565 500 L543 548 Q430 562 317 548 Z" fill="#2E4347"/>
+    <rect x="295" y="487" width="270" height="13" fill="#F5794A"/>
+    <!-- masts -->
+    <g stroke="#2E4347" stroke-width="7" stroke-linecap="round">
+      <line x1="355" y1="490" x2="355" y2="330"/>
+      <line x1="430" y1="490" x2="430" y2="295"/>
+      <line x1="505" y1="490" x2="505" y2="345"/>
+    </g>
+    <!-- yards (cross beams) -->
+    <g stroke="#2E4347" stroke-width="5" stroke-linecap="round">
+      <line x1="320" y1="355" x2="390" y2="355"/>
+      <line x1="327" y1="400" x2="383" y2="400"/>
+      <line x1="390" y1="320" x2="470" y2="320"/>
+      <line x1="397" y1="370" x2="463" y2="370"/>
+      <line x1="404" y1="420" x2="456" y2="420"/>
+      <line x1="475" y1="375" x2="535" y2="375"/>
+      <line x1="480" y1="420" x2="530" y2="420"/>
+    </g>
+    <!-- rigging -->
+    <g stroke="#2E4347" stroke-width="2" opacity="0.7">
+      <line x1="355" y1="330" x2="300" y2="493"/>
+      <line x1="355" y1="335" x2="250" y2="470"/>
+      <line x1="430" y1="295" x2="357" y2="490"/>
+      <line x1="430" y1="295" x2="503" y2="490"/>
+      <line x1="505" y1="345" x2="560" y2="493"/>
+    </g>
+    <!-- ship reflection -->
+    <path d="M330 566 l200 0 l-14 18 l-172 0 z" fill="#3E6C76" opacity="0.5"/>
+  </g>
+
+  <!-- small sailboat -->
+  <g>
+    <path d="M905 520 l70 0 l-12 18 l-46 0 z" fill="#2E4347"/>
+    <line x1="940" y1="520" x2="940" y2="455" stroke="#2E4347" stroke-width="4" stroke-linecap="round"/>
+    <path d="M940 460 l0 55 l-38 0 z" fill="#FDF3E3"/>
+    <path d="M944 462 l0 53 l30 -8 z" fill="#F5794A"/>
+  </g>
+
+  <!-- buoy accents -->
+  <circle cx="120" cy="510" r="7" fill="#F5794A"/>
+  <circle cx="1130" cy="490" r="7" fill="#F5794A"/>
+</svg>
