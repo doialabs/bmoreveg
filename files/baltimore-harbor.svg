@@ -1,170 +1,181 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Illustration of Baltimore's Inner Harbor skyline">
-  <title>Baltimore Inner Harbor</title>
-  <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FDF3E3"/>
-      <stop offset="0.65" stop-color="#FBE3C4"/>
-      <stop offset="1" stop-color="#F7CFA4"/>
-    </linearGradient>
-    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#8FC0C8"/>
-      <stop offset="1" stop-color="#5E98A3"/>
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-label="Illustration of Baltimore's Inner Harbor in the bmoreveg style, with the carrot mascot sailing past the skyline">
+  <title>Baltimore Inner Harbor, bmoreveg style</title>
 
-  <!-- sky -->
-  <rect x="0" y="0" width="1200" height="430" fill="url(#sky)"/>
+  <!-- background matches the site's page color -->
+  <rect x="0" y="0" width="1200" height="520" fill="#FAFAF8"/>
 
   <!-- sun -->
-  <circle cx="955" cy="140" r="72" fill="#F5794A" opacity="0.18"/>
-  <circle cx="955" cy="140" r="52" fill="#F5794A" opacity="0.9"/>
+  <circle cx="1010" cy="110" r="64" fill="#F5A882" opacity="0.45"/>
+  <circle cx="1010" cy="110" r="46" fill="#F5794A"/>
 
-  <!-- birds -->
-  <g stroke="#4A6B70" stroke-width="3" fill="none" stroke-linecap="round">
-    <path d="M180 120 q10 -10 20 0 q10 -10 20 0"/>
-    <path d="M250 90 q8 -8 16 0 q8 -8 16 0"/>
-    <path d="M780 100 q9 -9 18 0 q9 -9 18 0"/>
+  <!-- birds, same round-cap stroke style as the logo -->
+  <g stroke="#2D5A27" stroke-width="3.5" fill="none" stroke-linecap="round">
+    <path d="M170 105 q11 -11 22 0 q11 -11 22 0"/>
+    <path d="M255 75 q9 -9 18 0 q9 -9 18 0"/>
+    <path d="M795 90 q10 -10 20 0 q10 -10 20 0"/>
   </g>
 
-  <!-- distant skyline layer (hazy) -->
-  <g fill="#9DBBBB">
-    <rect x="60" y="300" width="52" height="130"/>
-    <rect x="150" y="270" width="60" height="160"/>
-    <rect x="360" y="255" width="66" height="175"/>
-    <rect x="455" y="290" width="46" height="140"/>
-    <rect x="700" y="265" width="58" height="165"/>
-    <rect x="1035" y="285" width="70" height="145"/>
-    <rect x="1130" y="310" width="46" height="120"/>
+  <!-- distant skyline layer (light green) -->
+  <g fill="#5A9C4E" opacity="0.35">
+    <rect x="55" y="250" width="52" height="120"/>
+    <rect x="330" y="225" width="62" height="145"/>
+    <rect x="455" y="255" width="46" height="115"/>
+    <rect x="700" y="235" width="56" height="135"/>
+    <rect x="1035" y="255" width="66" height="115"/>
+    <rect x="1125" y="280" width="50" height="90"/>
   </g>
 
-  <!-- main skyline layer -->
-  <g fill="#42646B">
-    <!-- rowhouses on the left -->
-    <g>
-      <rect x="18" y="360" width="42" height="70"/>
-      <rect x="60" y="345" width="42" height="85"/>
-      <rect x="102" y="358" width="42" height="72"/>
-      <rect x="144" y="348" width="42" height="82"/>
-      <!-- rowhouse cornices -->
-      <rect x="14" y="354" width="50" height="8"/>
-      <rect x="56" y="339" width="50" height="8"/>
-      <rect x="98" y="352" width="50" height="8"/>
-      <rect x="140" y="342" width="50" height="8"/>
+  <!-- main skyline -->
+  <g>
+    <!-- rowhouses -->
+    <g fill="#5A9C4E">
+      <rect x="20" y="310" width="40" height="60"/>
+      <rect x="60" y="296" width="40" height="74"/>
+      <rect x="100" y="308" width="40" height="62"/>
+      <rect x="140" y="298" width="40" height="72"/>
+    </g>
+    <g fill="#4A7C42">
+      <rect x="16" y="304" width="48" height="8" rx="3"/>
+      <rect x="56" y="290" width="48" height="8" rx="3"/>
+      <rect x="96" y="302" width="48" height="8" rx="3"/>
+      <rect x="136" y="292" width="48" height="8" rx="3"/>
+    </g>
+    <!-- rowhouse doors -->
+    <g fill="#FAFAF8">
+      <rect x="34" y="342" width="12" height="28" rx="5"/>
+      <rect x="74" y="342" width="12" height="28" rx="5"/>
+      <rect x="114" y="342" width="12" height="28" rx="5"/>
+      <rect x="154" y="342" width="12" height="28" rx="5"/>
     </g>
 
-    <!-- Bromo Seltzer-style clock tower -->
+    <!-- clock tower -->
     <g>
-      <rect x="228" y="200" width="46" height="230"/>
-      <rect x="222" y="192" width="58" height="10"/>
-      <rect x="234" y="168" width="34" height="26"/>
-      <path d="M234 168 l17 -22 l17 22 z"/>
+      <rect x="222" y="170" width="44" height="200" fill="#4A7C42"/>
+      <rect x="216" y="162" width="56" height="10" rx="4" fill="#2D5A27"/>
+      <rect x="228" y="138" width="32" height="26" fill="#4A7C42"/>
+      <path d="M228 138 l16 -22 l16 22 z" fill="#2D5A27"/>
+      <circle cx="244" cy="200" r="15" fill="#FAFAF8"/>
+      <g stroke="#2D2D2D" stroke-width="3" stroke-linecap="round">
+        <line x1="244" y1="200" x2="244" y2="190"/>
+        <line x1="244" y1="200" x2="252" y2="204"/>
+      </g>
     </g>
 
     <!-- mid towers -->
-    <rect x="310" y="245" width="58" height="185"/>
-    <rect x="378" y="215" width="70" height="215"/>
-    <rect x="458" y="275" width="48" height="155"/>
+    <rect x="300" y="215" width="56" height="155" fill="#5A9C4E"/>
+    <rect x="368" y="185" width="68" height="185" fill="#4A7C42"/>
+    <rect x="448" y="245" width="46" height="125" fill="#5A9C4E"/>
 
     <!-- pentagonal World Trade Center -->
     <g>
-      <rect x="560" y="185" width="84" height="245"/>
-      <path d="M560 185 l42 -30 l42 30 z"/>
+      <rect x="548" y="160" width="80" height="210" fill="#4A7C42"/>
+      <path d="M548 160 l40 -28 l40 28 z" fill="#2D5A27"/>
     </g>
 
     <!-- more towers -->
-    <rect x="672" y="235" width="62" height="195"/>
-    <rect x="744" y="285" width="46" height="145"/>
+    <rect x="656" y="205" width="60" height="165" fill="#5A9C4E"/>
+    <rect x="726" y="255" width="44" height="115" fill="#4A7C42"/>
 
-    <!-- aquarium-style angular glass roof -->
-    <g>
-      <path d="M830 430 l0 -95 l95 -55 l0 150 z"/>
-      <path d="M935 430 l0 -140 l70 45 l0 95 z"/>
+    <!-- aquarium-style angular roofline -->
+    <g fill="#4A7C42">
+      <path d="M812 370 l0 -82 l88 -50 l0 132 z"/>
+      <path d="M910 370 l0 -126 l64 42 l0 84 z"/>
     </g>
+    <path d="M812 288 l88 -50 l0 14 l-88 50 z" fill="#2D5A27"/>
 
     <!-- right-side blocks -->
-    <rect x="1050" y="330" width="54" height="100"/>
-    <rect x="1114" y="352" width="64" height="78"/>
+    <rect x="1006" y="300" width="52" height="70" fill="#5A9C4E"/>
+    <rect x="1068" y="322" width="60" height="48" fill="#4A7C42"/>
+
+    <!-- windows, page-colored like the logo highlights -->
+    <g fill="#FAFAF8" opacity="0.9">
+      <rect x="382" y="202" width="8" height="12" rx="2"/><rect x="399" y="202" width="8" height="12" rx="2"/><rect x="416" y="202" width="8" height="12" rx="2"/>
+      <rect x="382" y="228" width="8" height="12" rx="2"/><rect x="399" y="228" width="8" height="12" rx="2"/><rect x="416" y="228" width="8" height="12" rx="2"/>
+      <rect x="562" y="180" width="8" height="12" rx="2"/><rect x="580" y="180" width="8" height="12" rx="2"/><rect x="598" y="180" width="8" height="12" rx="2"/>
+      <rect x="562" y="206" width="8" height="12" rx="2"/><rect x="580" y="206" width="8" height="12" rx="2"/><rect x="598" y="206" width="8" height="12" rx="2"/>
+      <rect x="670" y="222" width="8" height="12" rx="2"/><rect x="688" y="222" width="8" height="12" rx="2"/>
+      <rect x="670" y="248" width="8" height="12" rx="2"/><rect x="688" y="248" width="8" height="12" rx="2"/>
+    </g>
   </g>
 
-  <!-- clock face on the tower -->
-  <circle cx="251" cy="230" r="15" fill="#FDF3E3"/>
-  <g stroke="#42646B" stroke-width="3" stroke-linecap="round">
-    <line x1="251" y1="230" x2="251" y2="220"/>
-    <line x1="251" y1="230" x2="259" y2="234"/>
+  <!-- waterline -->
+  <line x1="0" y1="370" x2="1200" y2="370" stroke="#e5e5e5" stroke-width="3"/>
+
+  <!-- water: round-cap squiggle strokes, like the carrot's stripe lines -->
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#e5e5e5" stroke-width="5">
+      <path d="M40 415 q28 -12 56 0 q28 12 56 0"/>
+      <path d="M620 470 q28 -12 56 0 q28 12 56 0"/>
+      <path d="M180 490 q28 -12 56 0 q28 12 56 0"/>
+      <path d="M1020 420 q28 -12 56 0 q28 12 56 0"/>
+      <path d="M840 495 q28 -12 56 0 q28 12 56 0"/>
+    </g>
+    <g stroke="#5A9C4E" stroke-width="4" opacity="0.55">
+      <path d="M90 448 q24 -10 48 0 q24 10 48 0"/>
+      <path d="M660 452 q24 -10 48 0 q24 10 48 0"/>
+      <path d="M400 500 q24 -10 48 0 q24 10 48 0"/>
+      <path d="M1080 490 q24 -10 48 0 q24 10 48 0"/>
+      <path d="M240 468 q24 -10 48 0 q24 10 48 0"/>
+    </g>
   </g>
 
-  <!-- window hints on the big towers -->
-  <g fill="#FDF3E3" opacity="0.55">
-    <rect x="392" y="232" width="8" height="12"/><rect x="410" y="232" width="8" height="12"/><rect x="428" y="232" width="8" height="12"/>
-    <rect x="392" y="258" width="8" height="12"/><rect x="410" y="258" width="8" height="12"/><rect x="428" y="258" width="8" height="12"/>
-    <rect x="576" y="205" width="8" height="12"/><rect x="594" y="205" width="8" height="12"/><rect x="612" y="205" width="8" height="12"/>
-    <rect x="576" y="231" width="8" height="12"/><rect x="594" y="231" width="8" height="12"/><rect x="612" y="231" width="8" height="12"/>
-  </g>
-
-  <!-- water -->
-  <rect x="0" y="430" width="1200" height="170" fill="url(#water)"/>
-
-  <!-- building reflections -->
-  <g fill="#4A7B85" opacity="0.5">
-    <rect x="228" y="430" width="46" height="52"/>
-    <rect x="378" y="430" width="70" height="44"/>
-    <rect x="560" y="430" width="84" height="58"/>
-    <rect x="830" y="430" width="175" height="40"/>
-  </g>
-
-  <!-- wave lines -->
-  <g stroke="#CFE8EA" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8">
-    <path d="M40 470 q25 -10 50 0 q25 10 50 0"/>
-    <path d="M620 500 q25 -10 50 0 q25 10 50 0"/>
-    <path d="M910 470 q25 -10 50 0 q25 10 50 0"/>
-    <path d="M1040 535 q25 -10 50 0 q25 10 50 0"/>
-    <path d="M120 555 q25 -10 50 0 q25 10 50 0"/>
-  </g>
-
-  <!-- USS Constellation-style tall ship -->
+  <!-- tall ship -->
   <g>
-    <!-- bowsprit -->
-    <line x1="300" y1="497" x2="245" y2="468" stroke="#2E4347" stroke-width="6" stroke-linecap="round"/>
+    <line x1="292" y1="428" x2="240" y2="402" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round"/>
+    <path d="M288 430 L556 430 L536 482 Q422 496 308 482 Z" fill="#2D2D2D"/>
+    <rect x="288" y="416" width="268" height="14" rx="6" fill="#F5794A"/>
+    <g stroke="#2D2D2D" stroke-width="7" stroke-linecap="round">
+      <line x1="348" y1="420" x2="348" y2="268"/>
+      <line x1="422" y1="420" x2="422" y2="235"/>
+      <line x1="496" y1="420" x2="496" y2="282"/>
+    </g>
+    <g stroke="#2D2D2D" stroke-width="5" stroke-linecap="round">
+      <line x1="315" y1="292" x2="381" y2="292"/>
+      <line x1="322" y1="334" x2="374" y2="334"/>
+      <line x1="384" y1="258" x2="460" y2="258"/>
+      <line x1="391" y1="306" x2="453" y2="306"/>
+      <line x1="398" y1="352" x2="446" y2="352"/>
+      <line x1="468" y1="310" x2="524" y2="310"/>
+      <line x1="473" y1="352" x2="519" y2="352"/>
+    </g>
+    <g stroke="#2D2D2D" stroke-width="2" opacity="0.6">
+      <line x1="348" y1="268" x2="294" y2="424"/>
+      <line x1="348" y1="272" x2="244" y2="404"/>
+      <line x1="422" y1="235" x2="350" y2="420"/>
+      <line x1="422" y1="235" x2="494" y2="420"/>
+      <line x1="496" y1="282" x2="551" y2="424"/>
+    </g>
+  </g>
+
+  <!-- carrot mascot sailing a dinghy -->
+  <g>
+    <!-- mast and sails, to the right of the carrot -->
+    <line x1="998" y1="428" x2="998" y2="316" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1006 324 l0 94 l52 -14 z" fill="#F5794A"/>
+    <path d="M990 344 l0 74 l-36 0 z" fill="#5A9C4E"/>
     <!-- hull -->
-    <path d="M295 500 L565 500 L543 548 Q430 562 317 548 Z" fill="#2E4347"/>
-    <rect x="295" y="487" width="270" height="13" fill="#F5794A"/>
-    <!-- masts -->
-    <g stroke="#2E4347" stroke-width="7" stroke-linecap="round">
-      <line x1="355" y1="490" x2="355" y2="330"/>
-      <line x1="430" y1="490" x2="430" y2="295"/>
-      <line x1="505" y1="490" x2="505" y2="345"/>
+    <path d="M856 430 L1046 430 L1028 466 Q951 476 874 466 Z" fill="#2D2D2D"/>
+    <rect x="856" y="420" width="190" height="11" rx="5" fill="#E8663A"/>
+    <!-- the carrot, matching the site logo -->
+    <g transform="translate(838 332) scale(0.82)">
+      <path d="M60 108 C45 108 35 85 33 65 C31 45 38 28 60 28 C82 28 89 45 87 65 C85 85 75 108 60 108Z" fill="#F5794A"/>
+      <path d="M45 50 Q60 48 75 50" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M43 65 Q60 62 77 65" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M46 80 Q60 77 74 80" stroke="#E8663A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M60 30 C60 30 45 18 42 8 C40 2 48 -2 54 6 C56 9 58 15 60 22" fill="#4A7C42"/>
+      <path d="M60 30 C60 30 60 12 60 4 C60 -2 68 -2 68 4 C68 12 65 22 62 28" fill="#5A9C4E"/>
+      <path d="M60 30 C60 30 75 18 78 8 C80 2 72 -2 66 6 C64 9 62 15 60 22" fill="#4A7C42"/>
+      <ellipse cx="50" cy="55" rx="5" ry="6" fill="#2D2D2D"/>
+      <ellipse cx="70" cy="55" rx="5" ry="6" fill="#2D2D2D"/>
+      <circle cx="48" cy="53" r="2" fill="#FFFFFF"/>
+      <circle cx="68" cy="53" r="2" fill="#FFFFFF"/>
+      <ellipse cx="42" cy="65" rx="5" ry="3" fill="#F5A882" opacity="0.7"/>
+      <ellipse cx="78" cy="65" rx="5" ry="3" fill="#F5A882" opacity="0.7"/>
+      <path d="M52 72 Q60 80 68 72" stroke="#2D2D2D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
     </g>
-    <!-- yards (cross beams) -->
-    <g stroke="#2E4347" stroke-width="5" stroke-linecap="round">
-      <line x1="320" y1="355" x2="390" y2="355"/>
-      <line x1="327" y1="400" x2="383" y2="400"/>
-      <line x1="390" y1="320" x2="470" y2="320"/>
-      <line x1="397" y1="370" x2="463" y2="370"/>
-      <line x1="404" y1="420" x2="456" y2="420"/>
-      <line x1="475" y1="375" x2="535" y2="375"/>
-      <line x1="480" y1="420" x2="530" y2="420"/>
-    </g>
-    <!-- rigging -->
-    <g stroke="#2E4347" stroke-width="2" opacity="0.7">
-      <line x1="355" y1="330" x2="300" y2="493"/>
-      <line x1="355" y1="335" x2="250" y2="470"/>
-      <line x1="430" y1="295" x2="357" y2="490"/>
-      <line x1="430" y1="295" x2="503" y2="490"/>
-      <line x1="505" y1="345" x2="560" y2="493"/>
-    </g>
-    <!-- ship reflection -->
-    <path d="M330 566 l200 0 l-14 18 l-172 0 z" fill="#3E6C76" opacity="0.5"/>
   </g>
 
-  <!-- small sailboat -->
-  <g>
-    <path d="M905 520 l70 0 l-12 18 l-46 0 z" fill="#2E4347"/>
-    <line x1="940" y1="520" x2="940" y2="455" stroke="#2E4347" stroke-width="4" stroke-linecap="round"/>
-    <path d="M940 460 l0 55 l-38 0 z" fill="#FDF3E3"/>
-    <path d="M944 462 l0 53 l30 -8 z" fill="#F5794A"/>
-  </g>
-
-  <!-- buoy accents -->
-  <circle cx="120" cy="510" r="7" fill="#F5794A"/>
-  <circle cx="1130" cy="490" r="7" fill="#F5794A"/>
+  <!-- buoys -->
+  <circle cx="110" cy="440" r="7" fill="#F5794A"/>
+  <circle cx="1160" cy="450" r="7" fill="#F5794A"/>
 </svg>
