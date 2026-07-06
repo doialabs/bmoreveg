@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downtown Veg-Friendly Restaurants | bmoreveg</title>
-    <meta name="description" content="Veg-friendly dining in Downtown Baltimore. Cazbar Turkish restaurant with 150+ dishes and extensive vegetarian mezes. Guide on bmoreveg.">
+    <meta name="description" content="Veg-friendly dining in Downtown Baltimore. The Land of Kush vegan soul food and Cazbar’s Turkish vegetarian mezes. Guide on bmoreveg.">
     <link rel="canonical" href="https://bmoreveg.com/downtown/">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Downtown Veg-Friendly Restaurants | bmoreveg">
-    <meta property="og:description" content="Veg-friendly dining in Downtown Baltimore. Cazbar Turkish restaurant with 150+ dishes and extensive vegetarian mezes. Guide on bmoreveg.">
+    <meta property="og:description" content="Veg-friendly dining in Downtown Baltimore. The Land of Kush vegan soul food and Cazbar’s Turkish vegetarian mezes. Guide on bmoreveg.">
     <meta property="og:image" content="https://bmoreveg.com/files/og-image.png">
     <meta property="og:url" content="https://bmoreveg.com/downtown/">
     <meta property="og:site_name" content="bmoreveg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Downtown Veg-Friendly Restaurants | bmoreveg">
-    <meta name="twitter:description" content="Veg-friendly dining in Downtown Baltimore. Cazbar Turkish restaurant with 150+ dishes and extensive vegetarian mezes. Guide on bmoreveg.">
+    <meta name="twitter:description" content="Veg-friendly dining in Downtown Baltimore. The Land of Kush vegan soul food and Cazbar’s Turkish vegetarian mezes. Guide on bmoreveg.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -70,10 +70,31 @@
         </div>
 
         <div class="subpage-intro">
-            <p>Downtown Baltimore surprises plant-forward diners with Cazbar, an ornate Turkish restaurant offering more than 150 dishes. The vegetarian mezes spread is extensive, Turkish coffee is served traditionally, and weekend belly dancing adds atmosphere you won't find anywhere else in the city.</p>
+            <p>Downtown Baltimore holds two very different veg destinations. The Land of Kush is the city's award-winning, fully vegan soul food institution — vegan crab cakes, rib tips, and collards that have earned national attention since 2011. A few blocks east, Cazbar serves an extensive Turkish vegetarian mezes spread in an ornate dining room, with traditionally poured Turkish coffee and weekend belly dancing.</p>
         </div>
 
         <section class="subpage-listings">
+
+            <article class="place" id="the-land-of-kush" data-veg="all-veg">
+                <div class="place-header"><h3>The Land of Kush</h3><span class="neighborhood">Seton Hill &middot; Downtown</span></div>
+                <div class="place-meta">
+                    <span class="category">Vegan Soul Food</span>
+                    <span class="veg-badge all-veg">All Veg</span>
+                    <span class="price">$$</span>
+                </div>
+                <p class="vibe">Baltimore's award-winning vegan soul food institution since 2011 &mdash; hearty, fully plant-based plates that convert skeptics</p>
+                <div class="what-to-order">
+                    <span class="what-to-order-label">What to order:</span>
+                    Vegan Maryland crab cakes, barbecue rib tips, collard greens, mac and cheese
+                </div>
+                <div class="place-links">
+                    <a href="https://www.google.com/maps/search/?api=1&query=840+N+Eutaw+St+Baltimore+MD+21201" target="_blank" rel="noopener">Directions</a>
+                    <a href="/downtown/">Downtown</a>
+                    <a href="https://landofkush.com" target="_blank" rel="noopener">Website</a>
+                    <button class="share-btn" type="button">Share</button>
+                </div>
+                <p class="last-verified">Last verified: July 2026</p>
+            </article>
 
             <article class="place" id="cazbar" data-veg="veg-friendly">
                 <div class="place-header"><h3>Cazbar</h3><span class="neighborhood">Downtown Baltimore</span></div>
@@ -174,11 +195,35 @@
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Downtown Veg-Friendly Restaurants | bmoreveg",
-    "numberOfItems": 1,
+    "numberOfItems": 2,
     "itemListElement": [
         {
             "@type": "ListItem",
             "position": 1,
+            "item": {
+                "@type": "Restaurant",
+                "name": "The Land of Kush",
+                "servesCuisine": "Vegan Soul Food",
+                "priceRange": "$$",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "840 N Eutaw St",
+                    "addressLocality": "Baltimore",
+                    "addressRegion": "MD",
+                    "postalCode": "21201",
+                    "addressCountry": "US"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 39.3005,
+                    "longitude": -76.6233
+                },
+                "url": "https://bmoreveg.com/#the-land-of-kush"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
             "item": {
                 "@type": "Restaurant",
                 "name": "Cazbar",
