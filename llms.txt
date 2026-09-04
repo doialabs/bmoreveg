@@ -3,7 +3,7 @@
 > bmoreveg is a curated guide to the best vegetarian, vegan, and veg-friendly
 > restaurants, cafes, and bakeries in Baltimore, Maryland. Every listing is
 > hand-picked and verified, with neighborhood, price tier, dish recommendations,
-> and an interactive map. Last reviewed: May 2026.
+> and an interactive map. Last reviewed: September 2026.
 
 ## About
 
@@ -36,6 +36,7 @@
 - [Woodberry Kitchen](https://bmoreveg.com/#woodberry-kitchen) — New American, Hampden. Pioneering farm-to-table kitchen, now serving as the Tavern at Woodberry Kitchen. https://www.woodberrykitchen.com
 - [The Duchess](https://bmoreveg.com/#the-duchess) — Chamorro & English pub, Hampden. Pacific Islander and pub cooking with strong veg options. https://www.theduchessbaltimore.com
 - [Seppia](https://bmoreveg.com/#seppia) — Coastal Italian, Hampden. From the La Cuchara team; handmade pastas and seasonal vegetable plates. https://www.seppiabaltimore.com
+- [Dylan's Oyster Cellar](https://bmoreveg.com/#dylans-oyster-cellar) — Oyster bar (pescatarian), Hampden. Corner raw bar with impeccably shucked Chesapeake and East Coast oysters. https://dylansoyster.com
 - [La Barrita Restobar](https://bmoreveg.com/#la-barrita) — Argentinian, Butchers Hill / Fells Point. Empanadas, grilled provoleta, and a wine list. https://www.labarritarestobar.com
 - [Di Pasquale's Italian Marketplace](https://bmoreveg.com/#di-pasquales-italian-marketplace) — Italian market & deli, Canton. Family-run since 1914; house-made mozzarella, pastas, and sandwiches. https://www.dipasquales.com
 - [The Land of Kush](https://bmoreveg.com/#the-land-of-kush) — Vegan soul food, Downtown / Seton Hill. Fully vegan soul food institution since 2011; vegan Maryland crab cakes, barbecue rib tips, collard greens. https://landofkush.com
